@@ -17,6 +17,8 @@
 
 다트의 모든 변수는 객체 (클래스의 인스턴스)를 참조하기 때문에 일반적으로 생성자를 사용하여 변수를 초기화 할 수 있습니다. 일부 기본 제공 타입에는 자체 생성자가 있습니다. 예를 들어 `Map()` 생성자를 사용하여 맵을 만들 수 있습니다.
 
+<p id="numbers"/>
+
 ### Numbers
 
 다트 숫자는 두 가지 종류로 나뉩니다.
@@ -86,6 +88,8 @@ const msPerSecond = 1000;
 const secondsUntilRetry = 5;
 const msUntilRetry = secondsUntilRetry  msPerSecond;
 ```
+
+<p id="strings"/>
 
 ### 문자열 (Strings)
 
@@ -164,6 +168,8 @@ const validConstString = '$aConstNum $aConstBool $aConstString';
 // const invalidConstString = '$aNum $aBool $aString $aConstList';
 ```
 
+<p id="booleans"/>
+
 ### Booleans
 
 부울 값을 나타 내기 위해 다트에는 `bool`이라는 타입이 있습니다. 두 개의 객체만 부울 타입을 갖습니다. 부울 리터럴 `true` 및 `false`는 모두 컴파일 타임 상수입니다.
@@ -187,6 +193,8 @@ assert(unicorn == null);
 var iMeantToDoThis = 0 / 0;
 assert(iMeantToDoThis.isNaN);
 ```
+
+<p id="lists"/>
 
 ### 리스트 (Lists)
 
@@ -253,6 +261,8 @@ var listOfStrings = [
 assert(listOfStrings[1] == '#1');
 ```
 
+<p id="sets"/>
+
 ### 세트 (Sets)
 
 다트의 세트는 순차적이지 않은 유일한 아이템들의 모음입니다. 세트에 대한 다트 지원은 세트 리터럴과 `Set` 타입에 의해 제공됩니다.
@@ -303,7 +313,9 @@ final constantSet = const {
 // constantSet.add('helium'); // Uncommenting this causes an error.
 ```
 
-다트 2.3에서, 세트는 리스트처럼 스프레스 연산자 (...와 ...?)와 `collection if`와 `collection for`를 지원합니다. 자세한 내용은 리스트 스프레드 연산자([list spread operator](https://dart.dev/guides/language/language-tour#spread-operator)) 및 리스트 콜렉션 연산자([list collection operator](https://dart.dev/guides/language/language-tour#collection-operators)) 토론을 참조하십시오.
+다트 2.3에서, 세트는 리스트처럼 스프레스 연산자 (...와 ...?)와 `collection if`와 `collection for`를 지원합니다. 자세한 내용은 [리스트 스프레드 연산자](operators.md#list spread operator) 및 [리스트 콜렉션 연산자](operators.md#list collection operator) 토론을 참조하십시오.
+
+<p id="maps"/>
 
 ### 맵 (Maps)
 
@@ -383,6 +395,8 @@ final constantMap = const {
 
 다트 2.3 부터 맵은 스프레드 연산자(`...` 와  `...?`) 와  `collection if` , `collection for`, 리스트처럼 지원합니다.
 
+<p id="runes"/>
+
 ### 룬 (Runes)
 
 다트에서 룬은 UTF-32 코드 문자열의 포인트입니다.
@@ -397,6 +411,8 @@ Unicode 코드 포인트를 표현하는 일반적인 방법은`\uXXXX`입니다
 
 <iframe src="https://dartpad.dartlang.org/embed-inline.html?id=589bc5c95318696cefe5&amp;verticalRatio=65" style="border: 1px solid #ccc;" width="100%" height="333px">
 </iframe>
+<p id="symbols"/>
+
 ### 심볼 (Symbols)
 
 심볼 객체는 다트 프로그램에서 선언 된 연산자 또는 식별자를 나타냅니다. 심볼을 사용할 필요는 없지만, 이름으로 식별자를 참조하는 API는 식별자 이름을 변경하지만 식별자 심볼은 변경하지 않으므로 가치가 없지 않습니다.

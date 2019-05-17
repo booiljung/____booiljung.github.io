@@ -4,6 +4,8 @@
 
 다트는 한 줄 주석, 여러 줄 주석 및 문서 주석을 지원합니다.
 
+<p id="single-line-comments"/>
+
 ###  한 줄 주석 (Single-line comments)
 
 한 줄 주석은  `//`으로 시작합니다. 주석 내용은 `//` 와 라인 끝 사이에 있어야 하며, 이것은 다트 컴파일러가 무시합니다.
@@ -14,6 +16,8 @@ void main() {
   print('Welcome to my Llama farm!');
 }
 ```
+
+<p id="multi-line-comments"/>
 
 ###  여러 줄 주석 (Multi-line comments)
 
@@ -31,6 +35,8 @@ void main() {
    */
 }
 ```
+
+<p id="documentation-comments"/>
 
 ###  문서 주석 (Documentation comments)
 

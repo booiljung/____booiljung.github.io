@@ -6,6 +6,8 @@
 
 라이브러리는 [packages](https://dart.dev/guides/packages)를 사용하여 배포 할 수 있습니다.
 
+<p id="using-libraries"/>
+
 ###  라이브러리 사용법 (Using libraries)
 
 한 라이브러리의 네임스페이스를 다른 라이브러리의 스코프에서 사용하는 방법을 지정하려면 `import`를 사용하십시오.
@@ -24,6 +26,8 @@ import 'package:test/test.dart';
 
 > **Note:** URI는 유일한(uniform) 자원 식별자를 나타냅니다. URLs (uniform resource locator)는 common kind of URI입니다.
 
+<p id="specifying-a-library-prefix"/>
+
 #### 라이브러리 전위자 지정 (Specifying a library prefix)
 
 충돌하는 식별자가있는 두 라이브러리를 가져 오는 경우 하나 또는 두 라이브러리의 전위자를 지정할 수 있습니다. 예를 들어, library1과 library2에 모두 `Element` 클래스가 있는 경우 다음과 같은 코드가 있을 수 있습니다.
@@ -39,6 +43,8 @@ Element element1 = Element();
 lib2.Element element2 = lib2.Element();
 ```
 
+<p id="importing-only-part-of-a-library"/>
+
 #### 라이브러리의 일부를 임포트 (Importing only part of a library)
 
 라이브러리의 일부만 사용하려면 선택적으로 라이브러리를 가져올 수 있습니다. 예 :
@@ -50,6 +56,8 @@ import 'package:lib1/lib1.dart' show foo;
 // foo를 제외한 모든 이름을 임포트.
 import 'package:lib2/lib2.dart' hide foo;
 ```
+
+<p id="lazily-loading-a-library"/>
 
 #### 라이브러리의 지연 로딩 (Lazily loading a library)
 
@@ -74,7 +82,7 @@ Future greet() async {
 }
 ```
 
-앞의 코드에서 `await` 키워드는 라이브러리가 로드 될 때까지 실행을 일시 중지합니다. `async`와`await`에 대한 더 자세한 정보는 [asynchrony support](./10_asynchrony_support.md)를 참조하십시오.
+앞의 코드에서 `await` 키워드는 라이브러리가 로드 될 때까지 실행을 일시 중지합니다. `async`와`await`에 대한 더 자세한 정보는 [asynchrony support](asynchrony_support.md)를 참조하십시오.
 
 라이브러리에서 `loadLibrary()`를 여러번 호출 할 수 있습니다. 라이브러리는 한 번만 로드됩니다.
 
@@ -82,10 +90,12 @@ Future greet() async {
 
 - 지연 라이브러리의 상수는 임포트 파일의 상수가 아닙니다. 지연 라이브러리가 로드 될 때까지 이러한 상수는 존재하지 않는다는 것을 염두하세요.
 - 임포트 파일에서 지연 라이브러리의 타입을 사용할 수 없습니다. 대신 지연 라이브러리와 임포트 파일 모두에서 가져온 라이브러리로 인터페이스 타입을 이동하는 것을 고려해야 합니다.
-- 다트는 `loadLibrary()`를 `named as namespace `를 사용하여 정의한 네임 스페이스에 암묵적으로 삽입합니다. `loadLibrary()`함수는 [Future](https://dart.dev/guides/libraries/library-tour#future)를 반환합니다.
+- 다트는 `loadLibrary()`를 `named as namespace `를 사용하여 정의한 네임 스페이스에 암묵적으로 삽입합니다. `loadLibrary()`함수는 [Future](asynchrony_support.md#handling-future)를 반환합니다.
 
 > **Dart VM difference:** 다트VM은 `loadLibrary()`를 호출하기 전에 지연된 라이브러리의 멤버들에게 접근을 허용 합니다. 이 동작은 변경 될 수 있으므로 **현재 VM 동작에 종속되지 않습니다.** 자세한 내용은 [issue # 33118.]을 참조하십시오.
 >
+
+<p id="implementing-libraries"/>
 
 ###  라이브러리 구현하기 (Implementing libraries)
 

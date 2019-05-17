@@ -32,9 +32,13 @@ bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 
 함수는 필수 매개 변수와 선택적 매개 변수의 두 가지 유형의 매개 변수를 가질 수 있습니다. 필요한 매개 변수가 먼저 나열되고 그 뒤에 선택적 매개 변수가 나열됩니다. 명명된 선택적 매개 변수는 `@required`로 표시 될 수도 있습니다. 자세한 내용은 다음 섹션을 참조하십시오.
 
+<p id="optional-parameters"/>
+
 #### 선택적 매개 변수 (Optional parameters)
 
 선택적 매개 변수는 위치 지정 또는 이름 지정 중 하나 일 수 있지만 둘 다를 지정할 수는 없습니다.
+
+<p id="optional-named-parameters"/>
 
 ##### 선택적 명명 된 매개 변수 (Optional named parameters)
 
@@ -63,6 +67,8 @@ const Scrollbar({Key key, @required Widget child})
 
 [`Required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)는 [meta](https://pub.dev/packages/meta) 패키지에 정의되어 있습니다. `package:meta/meta.dart`를 직접 가져 오거나 Flutter의`package:flutter/material.dart`와 같이`meta`를 내보내는 또 다른 패키지를 가져 오십시오.
 
+<p id="optional-positional-parameters"/>
+
 ##### 선택적 위치 매개 변수 (Optional positional parameters)
 
 `[]`에 함수 매개 변수 세트를 래핑하면 선택적 위치 매개 변수로 표시됩니다.
@@ -89,6 +95,8 @@ assert(say('Bob', 'Howdy') == 'Bob says Howdy');
 assert(say('Bob', 'Howdy', 'smoke signal') ==
     'Bob says Howdy with a smoke signal');
 ```
+
+<p id="default-parameter-value"/>
 
 #### 매개 변수 기본 값 (Default parameter value)
 
@@ -142,6 +150,8 @@ void doStuff(
 }
 ```
 
+<p id="main-function"/>
+
 ### `main()` 함수
 
 모든 앱은 app의 진입점 역할을하는 최상위 `main()`함수를 가져야 합니다.  `main()`함수는 `void`를 리턴하고 인수를 위한 선택적 `List<String>` 매개 변수를 갖습니다.
@@ -157,7 +167,7 @@ void main() {
 ```
 
 > 노트 :
-> 위의 코드에서 `..`구문은 [캐스케이드](https://dart.dev/guides/language/language-tour#cascade-notation-)이라고합니다. 캐스케이드를 사용하면 단일 객체의 멤버에 대해 여러 작업을 수행 할 수 있습니다.
+> 위의 코드에서 `..`구문은 [캐스케이드](operators.md#cascade-notation)이라고합니다. 캐스케이드를 사용하면 단일 객체의 멤버에 대해 여러 작업을 수행 할 수 있습니다.
 
 다음은 인수를 취하는 명령 행 응용 프로그램을 위한 `main ()`함수의 예입니다 :
 
@@ -173,6 +183,8 @@ void main(List<String> arguments) {
 ```
 
 [args library](https://pub.dev/packages/args)를 사용하여 명령 줄 인수를 정의하고 구문 분석 할 수 있습니다.
+
+<p id="functions-as-first-class-objects"/>
 
 ### 일급 객체 함수 (Functions as first-class objects)
 
@@ -197,6 +209,8 @@ assert(loudify('hello') == '!!! HELLO !!!');
 ```
 
 이 예제에서는 익명의 함수를 사용합니다. 다음 섹션에서 더 자세히 설명합니다.
+
+<p id="anonymous-functions"/>
 
 ### 익명 함수 (Anonymous functions)
 
@@ -232,6 +246,8 @@ list.forEach(
     (item) => print('${list.indexOf(item)}: $item'));
 ```
 
+<p id="lexical-scope"/>
+
 ### 어휘 범위 (Lexical scope)
 
 다트는 어휘 범위가 지정된 언어입니다. 즉, 변수의 범위는 코드의 레이아웃에 의해 정적으로 결정됩니다. 변수가 범위 내에 있는지 보려면 "중괄호를 바깥으로 따라가면 알 수 있습니다".
@@ -261,6 +277,8 @@ void main() {
 
 `nestedFunction()`이 최상위 수준까지 모든 수준의 변수를 사용하는 방법에 주목하십시오.
 
+<p id="lexical-closures"/>
+
 ###  어휘 클로저 (Lexical closures)
 
 클로저는 함수가 원래 범위 외부에서 사용되는 경우에도 어휘 범위의 변수에 액세스 할 수 있는 함수 객체입니다.
@@ -284,6 +302,8 @@ void main() {
   assert(add4(3) == 7);
 }
 ```
+
+<p id="testing-functions-for-equality"/>
 
 ### 함수 항등성 테스트 (Testing functions for equality)
 
@@ -321,6 +341,8 @@ void main() {
   assert(v.baz != w.baz);
 }
 ```
+
+<p id="return-values"/>
 
 ### 반환값 (Return values)
 

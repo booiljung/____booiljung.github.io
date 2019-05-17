@@ -23,7 +23,9 @@ name = 45;
 String name = 'Bob';
 ```
 
-##### 기본값 (Default value)
+<p id="default-value"/>
+
+#### 기본값 (Default value)
 
 코드에서 명시적으로 초기화 되지 않은 변수는 `null`로 초기화 됩니다.
 
@@ -32,7 +34,9 @@ int lineCount;
 assert(lineCount == null);
 ```
 
-##### Final과 const
+<p id="final-and-const"/>
+
+#### Final과 const
 
 변수의 값을 변경하지 않으려면 `var` 대신 또는 타입에 `final` 또는 `const`를 사용합니다. `final` 변수는 한 번만 설정할 수 있습니다. `const` 변수는 컴파일 타임 상수입니다. (const 변수는 암시적으로 final 변수입니다.) 최종 최상위 또는 클래스 변수는 처음 사용될 때 초기화됩니다.
 

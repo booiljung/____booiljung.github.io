@@ -2,9 +2,11 @@
 
 ##  비동기 지원 (Asynchrony support)
 
-다트 라이브러리는 [Future](https://api.dartlang.org/stable/dart-async/Future-class.html) 또는 [Stream](https://api.dartlang.org/stable/dart-async/Stream-class.html)개체를 반환하는 함수로 가득합니다.  이러한 함수는 **비동기(asynchrony)**입니다. 시간이 많이 소요되는 작업 (예: I/O)을 설정 한 후 해당 작업이 완료 될 때까지 기다리지 않고 반환됩니다.
+다트 라이브러리는 [Future](#handling-futures) 또는 [Stream](#handling-streams)개체를 반환하는 함수로 가득합니다.  이러한 함수는 **비동기(asynchrony)**입니다. 시간이 많이 소요되는 작업 (예: I/O)을 설정 한 후 해당 작업이 완료 될 때까지 기다리지 않고 반환됩니다.
 
 `async` 및 `await` 키워드는 비동기 프로그래밍을 지원하므로 동기 코드와 비슷한 비동기 코드를 작성할 수 있습니다.
+
+<p id="handling-futres"/>
 
 ###  퓨처를 다루는 법 (Handling Futures)
 
@@ -59,6 +61,8 @@ Future main() async {
 }
 ```
 
+<p id="declaring-async-functions"/>
+
 ###  비동기 함수 선언 (Declaring async functions)
 
 async 함수는 본문이 `async` 한정자로 표시되는 함수입니다.
@@ -78,6 +82,8 @@ Future<String> lookUpVersion() async => '1.0.0';
 함수의 본문에는 퓨처 API를 사용할 필요가 없습니다. 다트는 필요한 경우 `Future` 개체를 만듭니다.
 
 함수가 유용한 값을 반환하지 않으면 반환 형식을 `Future<void>`로 만드십시오.
+
+<p id="handling-streams"/>
 
 ###  스트림 다루기 (Handling Streams)
 

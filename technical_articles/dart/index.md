@@ -14,11 +14,15 @@
 
 다트는 웹상에서 바로 다트 코드를 작성하고 실험해 볼 수 있는 [DartPad](https://dartpad.dartlang.org)를 제공합니다.
 
-### 목차
+## 목차
+
+- [Installation of Dart](installation_of_dart.md)
+
+### 번역
 
 - [번역 기준](rules_of_translation.md)
-- [다트 플랫폼](./dart_platforms/index.md)
-- [다트 언어로의 여행 (A tour to the Dart language)](./language_tour/index.md)
+- [공식문서 번역: 다트 플랫폼](./dart_platforms/index.md)
+- [공식문서 번역: 다트 언어로의 여행 (A tour to the Dart language)](./language_tour/index.md)
 - 코어 라이브러리로의 여행 (A tour to the core libraries)
 
 ---

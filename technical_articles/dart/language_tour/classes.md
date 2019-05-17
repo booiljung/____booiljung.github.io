@@ -4,6 +4,8 @@
 
 다트는 클래스 및 믹스인 기반 상속을 사용하는 객체 지향 언어입니다. 모든 객체는 클래스의 인스턴스이며 모든 클래스는 [Object](https://api.dartlang.org/stable/dart-core/Object-class.html)에서 파생됩니다. 믹스인 기반 상속은 모든 클래스 (Object를 제외하고)는 정확히 하나의 수퍼 클래스를 가지므로 클래스 본문은 여러 클래스 계층에서 다시 사용할 수 있습니다.
 
+<p id="using-class-members"/>
+
 ###  클래스 멤버를 사용하기 (Using class members)
 
 객체는 함수와 데이터로 구성된 멤버를가집니다 (각각 메소드와 인스턴스 변수). 메소드를 호출하면 객체에서 호출 합니다. 메소드는 해당 객체의 함수 및 데이터에 액세스 할 수 있습니다.
@@ -30,6 +32,8 @@ num distance = p.distanceTo(Point(4, 4));
 p?.y = 4;
 ```
 
+<p id="using-constructors"/>
+
 ###  생성자 사용하기 (Using constructors)
 
 생성자를 사용하여 객체를 만들 수 있습니다. 생성자 이름은`ClassName` 또는`ClassName.identifier` 일 수 있습니다. 예를 들어, 다음 코드는 `Point()`와 `Point.fromJson()` 생성자를 사용하여 `Point` 객체를 생성합니다 :
@@ -48,7 +52,7 @@ var p2 = new Point.fromJson({'x': 1, 'y': 2});
 
 > **Version note:** Dart 2에서는`new` 키워드가 선택 사항이되었습니다.
 
-일부 클래스는 [상수 생성자(constant constructors)](https://dart.dev/guides/language/language-tour#constant-constructors)를 제공합니다. 상수 생성자를 사용하여 컴파일 타임 상수를 생성하려면 생성자 이름 앞에 `const` 키워드를 넣으십시오 :
+일부 클래스는 [상수 생성자(constant constructors)](classes.md#constant-constructors)를 제공합니다. 상수 생성자를 사용하여 컴파일 타임 상수를 생성하려면 생성자 이름 앞에 `const` 키워드를 넣으십시오 :
 
 ```dart
 var p = const ImmutablePoint(2, 2);
@@ -94,6 +98,8 @@ assert(!identical(a, b)); // NOT the same instance!
 
 > **Version note:** `const` 키워드는 Dart 2의 상수 컨텍스트 내에서 선택 사항이되었습니다.
 
+<p id="getting-an-object's-type"/>
+
 ###  개체 타입 얻기 (Getting an object’s type)
 
 런타임에 객체의 타입을 얻으려면 [Type](https://api.dartlang.org/stable/dart-core/Type-class.html) 객체를 반환하는 Object의 `runtimeType` 속성을 사용할 수 있습니다.
@@ -105,6 +111,8 @@ print('The type of a is ${a.runtimeType}');
 ---
 
 여기까지 클래스를 사용하는 방법을 보았습니다. 이 섹션의 나머지 부분에서는 클래스를 구현하는 방법을 보여줍니다.
+
+<p id="instance-variables"/>
 
 ###  인스턴스 변수 (Instance variables)
 
@@ -120,7 +128,7 @@ class Point {
 
 모든 초기화되지 않은 인스턴스 변수는 `null` 값을 갖습니다.
 
-모든 인스턴스 변수는 암시적 `getter` 메소드를 생성합니다. Non-final 인스턴스 변수는 암시적 setter 메소드도 생성합니다. 자세한 내용은 [Getters and setters](https://dart.dev/guides/language/language-tour#getters-and-setters)를 참조하십시오.
+모든 인스턴스 변수는 암시적 `getter` 메소드를 생성합니다. Non-final 인스턴스 변수는 암시적 setter 메소드도 생성합니다. 자세한 내용은 [게터와 세터](classes.md#gatters-and-setters)를 참조하십시오.
 
 ```dart
 class Point {
@@ -138,9 +146,11 @@ void main() {
 
 (생성자 또는 메서드 대신) 선언 된 인스턴스 변수를 초기화하면 생성자 및 초기화 목록이 실행되기 전에 인스턴스가 만들어 질 때 값이 설정됩니다.
 
+<p id="constructors"/>
+
 ###  생성자 (Constructors)
 
-클래스와 같은 이름의 함수를 생성하여 생성자를 선언합니다 (또 선택적으로 [Named constructors](https://dart.dev/guides/language/language-tour#named-constructors)에 설명 된 추가 식별자). 생성자의 가장 일반적인 형태인 제너레이티브 생성자(generative constructor)는 클래스의 새 인스턴스를 만듭니다.
+클래스와 같은 이름의 함수를 생성하여 생성자를 선언합니다 (또 선택적으로 [Named constructors](classes.md#named-constructors)에 설명 된 추가 식별자). 생성자의 가장 일반적인 형태인 제너레이티브 생성자(generative constructor)는 클래스의 새 인스턴스를 만듭니다.
 
 ```dart
 class Point {
@@ -170,13 +180,19 @@ class Point {
 }
 ```
 
+<p id="default-constructors"/>
+
 #### 기본 생성자 (Default constructors)
 
 생성자를 선언하지 않으면 기본 생성자가 제공됩니다. 기본 생성자는 인수가 없으며 수퍼 클래스에서 인수가 없는 생성자를 호출합니다.
 
+<p id="constructors-aren't-inherited"/>
+
 #### 생성자는 상속되지 않음. (Constructors aren’t inherited)
 
 서브 클래스는 슈퍼 클래스에서 생성자를 상속받지 않습니다. constructor을 선언하지 않는 서브 클래스는, 디폴트 (인수 없음, 이름 없음)의 constructor만을 가집니다.
+
+<p id="named-constructors"/>
 
 #### 명명 된 생성자 (Named constructors)
 
@@ -198,9 +214,11 @@ class Point {
 
 생성자는 상속되지 않는다는 것을 기억하세요. 즉, 수퍼 클래스의 이름 지정된 생성자가 서브 클래스에 상속되지 않는다는 것을 의미합니다. 수퍼 클래스에 정의 된 이름 지정된 생성자로 서브 클래스를 만들려면 해당 생성자를 서브 클래스에 구현해야합니다.
 
+<p id="invoking-a-non-default-superclass-constructor"/>
+
 #### 디폴트가 아닌 슈퍼 클래스 생성자 호출하기 (Invoking a non-default superclass constructor)
 
-디폴트에서는, 서브 클래스의 constructor은, 슈퍼 클래스의 이름이 없는 인수 없음의 생성자을 호출합니다. 수퍼 클래스의 생성자는 생성자 본문의 처음에 호출됩니다. [(initializer list) 이니셜 라이저 목록](https://dart.dev/guides/language/language-tour#initializer-list)도 사용중인 경우 수퍼 클래스가 호출되기 전에 실행됩니다. 요약하면 실행 순서는 다음과 같습니다.
+디폴트에서는, 서브 클래스의 constructor은, 슈퍼 클래스의 이름이 없는 인수 없음의 생성자을 호출합니다. 수퍼 클래스의 생성자는 생성자 본문의 처음에 호출됩니다. [초기자 목록](classes.md#initializer-list)도 사용중인 경우 수퍼 클래스가 호출되기 전에 실행됩니다. 요약하면 실행 순서는 다음과 같습니다.
 
 1. 초기자 리스트
 2. 수퍼 클래스의 인자 없는 생성자.
@@ -221,7 +239,9 @@ class Employee extends Person {
 
 > **Warning:** 수퍼 클래스 생성자에 대한 인수는 `this`에 접근 할 수 없습니다. 예를 들어, 인수는 정적 메소드를 호출 할 수 있지만 인스턴스 메소드는 호출 할 수 없습니다.
 
-#### 초기화 리스트 (Initializer list)
+<p id="initializer-list"/>
+
+#### 초기화 목록 (Initializer list)
 
 수퍼 클래스 생성자를 호출하는 것 외에도 생성자 본문이 실행되기 전에 인스턴스 변수를 초기화 할 수 있습니다. 쉼표로 이니셜 라이저를 구분하십시오.
 
@@ -249,6 +269,10 @@ Point.withAssert(this.x, this.y) : assert(x >= 0) {
 
 <iframe src="https://dartpad.dartlang.org/embed-inline.html?id=7a9764702c0608711e08&amp;verticalRatio=85" style="border: 1px solid #ccc;" width="100%" height="420px">
 </iframe>
+<p id="redirecting constructors"/>
+
+<p id="redirecting-constuctors"/>
+
 #### 생성자 리디렉션 (Redirecting constructors)
 
 때로는 생성자의 유일한 목적은 동일한 클래스의 다른 생성자로 리디렉션하는 것입니다. 리디렉션 생성자의 본문은 비어 있으며 콜론 (`:`) 다음에 생성자 호출이 나타납니다.
@@ -265,6 +289,8 @@ class Point {
 }
 ```
 
+<p id="constant-constructors"/>
+
 #### 상수 생성자 (Constant constructors)
 
 클래스가 변경되지 않는 객체를 생성하면 이러한 객체를 컴파일 타임 상수로 만들 수 있습니다. 이렇게하려면 `const` 생성자를 정의하고 모든 인스턴스 변수가 `final`인지 확인하십시오.
@@ -280,7 +306,9 @@ class ImmutablePoint {
 }
 ```
 
-상수 생성자는 항상 상수를 생성하지는 않습니다. 자세한 내용은 [using constructors](https://dart.dev/guides/language/language-tour#using-constructors) 섹션을 참조하십시오.
+상수 생성자는 항상 상수를 생성하지는 않습니다. 자세한 내용은 [using constructors](classes.md#using-constructors) 섹션을 참조하십시오.
+
+<p id="factory-constuctors"/>
 
 #### 팩토리 생성자 (Factory constructors)
 
@@ -325,9 +353,13 @@ var logger = Logger('UI');
 logger.log('Button clicked');
 ```
 
+<p id="methods"/>
+
 ###  메소드 (Methods)
 
 메서드는 개체에 동작(behavior) 제공하는 함수입니다.
+
+<p id="instance-methods"/>
 
 #### 인스턴스 메소드 (Instance methods)
 
@@ -348,6 +380,8 @@ class Point {
   }
 }
 ```
+
+<p id="getters-and-setters"/>
 
 #### 게터와 세터 (Getters and setters)
 
@@ -378,9 +412,11 @@ getter와 setter를 사용하면 클라이언트 코드를 변경하지 않고 �
 
 > **Note:** 증분(`++`)과 같은 연산자는 getter가 명시적으로 정의되었는지 여부에 관계없이 예상대로 작동합니다. 예기치 않은 부작용을 피하기 위해 연산자는 getter를 한 번만 호출하여 해당 값을 임시 변수에 저장합니다.
 
+<p id="abstract-methods"/>
+
 #### 추상 메소드 (Abstract methods)
 
-인스턴스의 getter 및 setter 메서드는 추상화 될 수 있으며, 인터페이스를 정의하지만, 구현을 다른 클래스로 남겨 둡니다. 추상 메소드는 [추상 클래스 (abstract classes)](https://dart.dev/guides/language/language-tour#abstract-classes)에만 존재할 수 있습니다.
+인스턴스의 getter 및 setter 메서드는 추상화 될 수 있으며, 인터페이스를 정의하지만, 구현을 다른 클래스로 남겨 둡니다. 추상 메소드는 [추상 클래스 (abstract classes)](classes.md#abstract-classes)에만 존재할 수 있습니다.
 
 메소드 추상화를 만들려면 메소드 본문 대신 세미콜론(;)을 사용하십시오.
 
@@ -398,11 +434,13 @@ class EffectiveDoer extends Doer {
 }
 ```
 
+<p id="abstract-classes"/>
+
 ###  추상 클래스 (Abstract classes)
 
-abstract 한정자를 사용하여 인스턴스화 할 수 없는 추상 클래스를 정의하세요. 추상 클래스는 인터페이스를 정의 할 때 유용합니다. 추상 클래스를 인스턴스화 할 수 있게 하려면 [factory constructor](https://dart.dev/guides/language/language-tour#factory-constructors)을 정의하세요.
+abstract 한정자를 사용하여 인스턴스화 할 수 없는 추상 클래스를 정의하세요. 추상 클래스는 인터페이스를 정의 할 때 유용합니다. 추상 클래스를 인스턴스화 할 수 있게 하려면 [factory constructor](classes.md#factory-constructors)을 정의하세요.
 
-추상 클래스는 [추상 메소드 (abstract method)](https://dart.dev/guides/language/language-tour#abstract-methods)를 사용하는 경우가 많습니다. 다음은 추상 메소드가 있는 추상 클래스를 선언하는 예제입니다.
+추상 클래스는 [추상 메소드 (abstract method)](classes.md#abstract-methods)를 사용하는 경우가 많습니다. 다음은 추상 메소드가 있는 추상 클래스를 선언하는 예제입니다.
 
 ```dart
 // 이 클래스는 abstract로 선언되므로 인스턴스화 할 수 없습니다.
@@ -412,6 +450,8 @@ abstract class AbstractContainer {
   void updateChildren(); // 추상 메소드
 }
 ```
+
+<p id="implicit-interfaces"/>
 
 ###  암시적 인터페이스 (Implicit interfaces)
 
@@ -453,6 +493,8 @@ void main() {
 class Point implements Comparable, Location {...}
 ```
 
+<p id="extending-a-class"/>
+
 ###  클래스를 확장하기 (Extending a class)
 
 서브 클래스를 생성하기 위해서 `extends`를 사용하고 수퍼 클래스를 참조하기 위해 `super`를 사용하십시오 :
@@ -477,6 +519,8 @@ class SmartTelevision extends Television {
 }
 ```
 
+<p id="overriding-members"/>
+
 #### 멤버 오버라이딩 (Overriding members)
 
 서브 클래스는 인스턴스 메소드, getter 및 setter를 오버라이딩 할 수 있습니다. `@override` 주석을 사용하여 의도적으로 멤버를 오버라이드하고 있음을 나타낼 수 있습니다 :
@@ -490,6 +534,8 @@ class SmartTelevision extends Television {
 ```
 
 [type safe](https://dart.dev/guides/language/sound-dart) 코드에서 메소드 매개 변수 또는 인스턴스 변수의 타입을 줄이려면 [covariant 키워드](https://dart.dev/guides/language/sound-problems#the-covariant-keyword)를 사용할 수 있습니다.
+
+<p id="overridable-operators"/>
 
 #### 오버로드 가능한 연산자 (Overridable operators)
 
@@ -530,7 +576,9 @@ void main() {
 
 `==`를 오버라이드(override)하면, Object의 `hashCode` getter도 오버라이드 (override) 할 필요가 있습니다. `==`와`hashCode`를 오버라이드하는 예제는 [Implementing map keys](https://dart.dev/guides/libraries/library-tour#implementing-map-keys)를 보십시오.
 
-재정의에 대한 자세한 내용은 일반적으로 [클래스 확장 (Extending a class)](https://dart.dev/guides/language/language-tour#extending-a-class)을 참조하십시오.
+재정의에 대한 자세한 내용은 일반적으로 [클래스 확장 (Extending a class)](classes.md#extending-a-class)을 참조하십시오.
+
+<p id="noSuchMethod"/>
 
 #### noSuchMethod()
 
@@ -555,9 +603,13 @@ class A {
 
 자세한 내용은 비공식 [noSuchMethod forward specification](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)을 참조하십시오.
 
+<p id="enumerated-types"/>
+
 ###  열거 타입 (Enumerated types)
 
 enumerations 또는 enums이라고도하는 열거 타입은 고정 된 수의 상수 값을 나타내는 데 사용되는 특별한 종류의 클래스입니다.
+
+<p id="using-enums"/>
 
 #### Using enums
 
@@ -605,6 +657,8 @@ switch (aColor) {
 - 열거 타입을 명시적으로 인스턴스화 할 수 없습니다.
 
 자세한 내용은 [Dart language specification](https://dart.dev/guides/language/spec) 를 참조하세요.
+
+<p id="adding-features-to-a-class-mixins"/>
 
 ###  클래스에 피처 추가하기 : 믹스인 (Adding features to a class: mixins)
 
@@ -658,9 +712,13 @@ mixin MusicalPerformer on Musician {
 
 **Version note:** `mixin` 키워드 지원은 Dart 2.1에서 소개되었습니다. 이전 버전의 코드는 대개 대신`추상 클래스 '를 사용했습니다. 2.1 mixin 변경 사항에 대한 자세한 내용은 [Dart SDK changelog](https://github.com/dart-lang/sdk/blob/master/CHANGELOG.md) 및 [2.1 mixin specification](https://github.com/dart-lang/language/blob/master/accepted/2.1/super-mixins/feature-specification.md#dart-2-mixin-declarations).
 
+<p id="class-variables-and-methods"/>
+
 ###  클래스 변수 및 메소드 (Class variables and methods)
 
 class-wide 변수와 메소드를 구현하려면 `static` 키워드를 사용하십시오.
+
+<p id="static-variables"/>
 
 #### 정적 변수 (Static variables)
 
@@ -680,6 +738,8 @@ void main() {
 정적 변수는 사용될 때까지 초기화되지 않습니다.
 
 > **Note:** 이 페이지는 상수 이름에 `lowerCamelCase`를 선호하는 [stype guide recommendation](https://dart.dev/guides/language/effective-dart/style#identifiers)을 따릅니다.
+
+<p id="static-methods"/>
 
 #### 정적 메소드 (Static methods)
 

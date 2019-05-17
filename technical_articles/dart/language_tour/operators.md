@@ -2,7 +2,9 @@
 
 ## 연산자 (Operators)
 
-다트는 다음 표에 표시된 연산자를 정의합니다. [Overridable operators](https://dart.dev/guides/language/language-tour#overridable-operators)에 설명 된대로 이러한 연산자를 재정의 할 수 있습니다.
+다트는 다음 표에 표시된 연산자를 정의합니다. [Overridable operators](#overridable-operators)에 설명 된대로 이러한 연산자를 재정의 할 수 있습니다.
+
+<p id="operators">
 
 | Description                                  | Operator                                                     |
 | -------------------------------------------- | ------------------------------------------------------------ |
@@ -34,7 +36,7 @@ c ? a : b
 a is T
 ```
 
-[연산자 테이블](https://dart.dev/guides/language/language-tour#operators)에서 각 연산자는 그 뒤에 오는 행의 연산자보다 우선 순위가 높습니다. 예를 들어, 곱셈 연산자`%`는 우선 순위가 같고 논리적 AND 연산자 `&&`보다 우선 순위가 높은 항등 연산자 `==`를 사용합니다. 우선 순위는 다음 두 줄의 코드가 같은 방식으로 실행됨을 의미합니다.
+[연산자 테이블](#operators)에서 각 연산자는 그 뒤에 오는 행의 연산자보다 우선 순위가 높습니다. 예를 들어, 곱셈 연산자`%`는 우선 순위가 같고 논리적 AND 연산자 `&&`보다 우선 순위가 높은 항등 연산자 `==`를 사용합니다. 우선 순위는 다음 두 줄의 코드가 같은 방식으로 실행됨을 의미합니다.
 
 ```dart
 // 괄호는 가독성을 향상시킵니다.
@@ -43,6 +45,8 @@ if ((n % i == 0) && (d % i == 0)) ...
 // 읽기가 어렵지만 동급.
 if (n % i == 0 && d % i == 0) ...
 ```
+
+<p id="arithmetic-operator"/>
 
 ### 산술 연산자 (Arithmetic operator)
 
@@ -102,6 +106,8 @@ b = a--; // b가 값을 얻은 후에 a를 감소시킵니다.
 assert(a != b); // -1 != 0
 ```
 
+<p id="equality-and-relational-operators"/>
+
 ### 항등 및 관계 연산자 (Equality and relational operators)
 
 다음 표는 항등 및 관계 연산자의 의미를 나열합니다.
@@ -118,7 +124,7 @@ assert(a != b); // -1 != 0
 두 객체 x와 y가 같은 것을 나타내는지 테스트하려면 `==` 연산자를 사용하세요. 두 개의 객체가 정확히 동일한 객체인지 여부를 알아야하는 경우는 [`identical()`](https://api.dartlang.org/stable/dart-core/identical.html) 함수를 대신 사용하세요. 다음은 `==` 연산자가 작동하는 방식입니다 :
 
 1. x 또는 y가 `null`일때, 양쪽 모두가 `null`의 경우는 `true`를 돌려 주며, 1개 만이 `null`의 경우는 `false`를 돌려줍니다.
-2. 메소드 호출 `x.==(y)`의 결과를 반환하세요. (즉, `==`와 같은 연산자는 첫 번째 피연산자에서 호출되는 메소드입니다. [재정의 연산자](https://dart.dev/guides/language/language-tour#overridable-operators)에서 볼 수 있듯이 `==`를 비롯한 많은 연산자를 재정의 할 수도 있습니다.
+2. 메소드 호출 `x.==(y)`의 결과를 반환하세요. (즉, `==`와 같은 연산자는 첫 번째 피연산자에서 호출되는 메소드입니다. [재정의 연산자](#overridable-operators)에서 볼 수 있듯이 `==`를 비롯한 많은 연산자를 재정의 할 수도 있습니다.
 
 다음은 항등 연산자와 관계 연산자를 사용하는 예입니다.
 
@@ -130,6 +136,8 @@ assert(2 < 3);
 assert(3 >= 3);
 assert(2 <= 3);
 ```
+
+<p id="type-test-operators"/>
 
 ### 타입 테스트 연산자 (Type test operators)
 
@@ -159,6 +167,8 @@ if (emp is Person) {
 ```
 
 **Note:** 위 코드는 동일하지 않습니다. `emp`가 `null`이거나 `Person`이 아니라면, 첫 번째 예제 (`is`)는 아무 것도하지 않습니다. 두 번째 (`as `와 함께)는 예외를 던집니다.
+
+<p id="assignment-operators"/>
 
 ###  대입 연산자 (Assignment operators)
 
@@ -192,6 +202,8 @@ a *= 3; // 곱하며 대입: a = a * 3
 assert(a == 6);
 ```
 
+<p id="logical-operators"/>
+
 ###  논리 연산자 (Logical operators)
 
 논리 연산자를 사용하여 부울 표현식을 반전 또는 결합 할 수 있습니다.
@@ -209,6 +221,8 @@ if (!done && (col == 0 || col == 3)) {
   // ...Do something...
 }
 ```
+
+<p id="bitwise-and-shift-operators"/>
 
 ###  비트열 및 시프트 연산자 (Bitwise and shift operators)
 
@@ -237,9 +251,11 @@ assert((value << 4) == 0x220); // Shift left
 assert((value >> 4) == 0x02); // Shift right
 ```
 
+<p id="conditional-expressions"/>
+
 ###  조건식 (Conditional expressions)
 
-다트는 두 개의 연산자를 사용하여 [if-else](https://dart.dev/guides/language/language-tour#if-and-else) 구문을 필요로하는 표현식을 간결하게 평가할 수 있습니다.
+다트는 두 개의 연산자를 사용하여 [if-else](control_flow_statements.md#if-and-else) 구문을 필요로하는 표현식을 간결하게 평가할 수 있습니다.
 
 - `condition ? 표현식1 : 표현식2`
 
@@ -276,6 +292,8 @@ String playerName(String name) {
   }
 }
 ```
+
+<p id="cascade-notation"/>
 
 ###  캐스케이드 표기법 (Cascade notation) (`..`)
 
@@ -327,6 +345,8 @@ sb.write('foo')
 > **Note:** 엄밀히 말하면, 캐스케이드의 "이중 점"표기법은 연산자가 아닙니다. 이는 다트 구문의 일부일뿐 입니다.
 
 번역주: 그래서 연산자(operator)가 아니고 표기법 (notation)이라고 합니다.
+
+<p id="other-operators"/>
 
 ###  그외의 연산자 (Other operators)
 

@@ -11,11 +11,13 @@
 -  `switch` 와 `case` 
 - `assert`
 
-[Exception](https://dart.dev/guides/language/language-tour#exceptions)에서 설명한대로`try-catch`와`throw`를 사용하여 제어 흐름에 영향을 미칠 수 있습니다.
+[Exception](exceptions.md)에서 설명한대로`try-catch`와`throw`를 사용하여 제어 흐름에 영향을 미칠 수 있습니다.
+
+<p id="if-and-else"/>
 
 ###  If 와 else
 
-다트는 다음 예제에서 볼 수 있듯이 `else` 이 선택적인 `if` 문을 지원합니다. [conditional expression](https://dart.dev/guides/language/language-tour#conditional-expressions)도 참조하십시오.
+다트는 다음 예제에서 볼 수 있듯이 `else` 이 선택적인 `if` 문을 지원합니다. [conditional expression](control-flow-statements.md#conditional-expressions)도 참조하십시오.
 
 ```dart
 if (isRaining()) {
@@ -27,7 +29,9 @@ if (isRaining()) {
 }
 ```
 
-자바 스크립트와 달리 조건은 부울 값을 사용해야 하며 그 밖의 것은 없습니다. 자세한 내용은 [Booleans](https://dart.dev/guides/language/language-tour#booleans)를 참조하십시오.
+자바 스크립트와 달리 조건은 부울 값을 사용해야 하며 그 밖의 것은 없습니다. 자세한 내용은 [Booleans](variables.md#booleans)를 참조하십시오.
+
+<p id="for-loop"/>
 
 ###  For 루프
 
@@ -67,6 +71,8 @@ for (var x in collection) {
 }
 ```
 
+<p id="while-and-do-while-loop"/>
+
 ###  While 과 do-while 루프
 
 `while` 루프는 루프 앞에서 루프 조건을 평가합니다 :
@@ -84,6 +90,8 @@ do {
   printLine();
 } while (!atEndOfPage());
 ```
+
+<p id="break-and-continue"/>
 
 ###  Break 와 continue
 
@@ -116,9 +124,11 @@ candidates
     .forEach((c) => c.interview());
 ```
 
+<p id="switch-and-case"/>
+
 ###  Switch 와 case
 
-Dart의 switch 문은 `==`를 사용하여 정수, 문자열 또는 컴파일 타임 상수를 비교합니다. 비교된 객체는 모두 같은 클래스의 인스턴스가 되어야 하며 (그 하위 타입이 아닌) 클래스는 `==`을 오버라이드해서는 안됩니다. [Enumerated types](https://dart.dev/guides/language/language-tour#enumerated-types)는`switch` 문에서 잘 작동합니다.
+Dart의 switch 문은 `==`를 사용하여 정수, 문자열 또는 컴파일 타임 상수를 비교합니다. 비교된 객체는 모두 같은 클래스의 인스턴스가 되어야 하며 (그 하위 타입이 아닌) 클래스는 `==`을 오버라이드해서는 안됩니다. [Enumerated types](classes.md#enumerated-types)는`switch` 문에서 잘 작동합니다.
 
 **Note:** 다트의 switch 문은 인터프리터나 스캐너와 같이 제한된 상황에서만 사용할 수 있습니다.
 
@@ -196,6 +206,8 @@ switch (command) {
 ```
 
 `case` 절은 그 절의 범위 안에서만 볼 수있는 지역 변수를 가질 수 있습니다.
+
+<p id="assert"/>
 
 ###  Assert
 

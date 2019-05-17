@@ -8,6 +8,8 @@
 
 다트는 [Exception](https://api.dartlang.org/stable/dart-core/Exception-class.html)과 [Error](https://api.dartlang.org/stable/dart-core/Error)를 제공합니다. 물론 할 수 있다면 예외를 정의할 수 있습니다. 그러나 다트 프로그램은 Exception 및 Error 객체뿐만 아니라 모든 null이 아닌 객체를 예외로 throw 할 수 있습니다.
 
+<p id="throw"/>
+
 ###  Throw
 
 다음은 예외를 throw하거나 raise 하는 예제입니다.
@@ -29,6 +31,8 @@ throw 'Out of llamas!';
 ```dart
 void distanceTo(Point other) => throw UnimplementedError();
 ```
+
+<p id="catch"/>
 
 ###  Catch
 
@@ -98,6 +102,8 @@ void main() {
 }
 ```
 
+<p id="finally"/>
+
 ###  Finally
 
 예외가 발생했는지 여부에 관계없이 일부 코드가 실행되도록하려면 `finally` 절을 사용하십시오. 예외와 일치하는`catch` 절이 없으면 `finally` 절이 실행 된 후에 예외가 전파됩니다.
@@ -123,7 +129,7 @@ try {
 }
 ```
 
-라이브러리 둘러보기의 [Exception](https://dart.dev/guides/libraries/library-tour#exceptions) 섹션을 읽어보십시오.
+라이브러리 둘러보기의 [Exception](exceptions.md) 섹션을 읽어보십시오.
 
 ## 문서 변경 이력
 

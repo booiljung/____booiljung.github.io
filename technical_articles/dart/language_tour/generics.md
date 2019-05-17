@@ -4,6 +4,8 @@
 
 [List](https://api.dartlang.org/stable/dart-core/List-class.html)의 기본 배열 유형에 대한 API 문서를 보면 형식이 실제로 `List<E>`입니다. `<...>`표기법은 List를 제네릭(또는  매개변수화) 타입으로 표시합니다. 타입은 타입 매개 변수가 있는 타입입니다. [By Convention](https://dart.dev/guides/language/effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters) 대부분의 타입 변수는 `E`, `T`, `S`, `K` 및 `V`와 같은 한 문자로 된 이름을 가지고 있습니다.
 
+<p id="why-use-generics"/>
+
 ###  왜 제네릭을 사용해야 할까요? (Why use generics?)
 
 제네릭은 타입 안전성을 위해 종종 필요하지만 코드 실행을 허용하는 것보다 많은 장점이 있습니다.
@@ -50,6 +52,8 @@ abstract class Cache<T> {
 
 이 코드에서 `T`는 스탠드-인 타입니다. 개발자가 나중에 정의 할 수있는 타입이라고 생각할 수 있는 자리 표시자(placeholder) 입니다.
 
+<p id="using-collection-literals"/>
+
 ###  콜렉션 리터럴 사용하기 (Using collection literals)
 
 리스트, 세트 및 맵 리터럴을 매개 변수화 할 수 있습니다. 매개 변수화 된 리터럴은 여는 괄호 앞에`<타입>`(리스트와 세트에 대해) 또는 `<키타입, 값타입>`(맵에 대해)을 추가한다는 것을 제외하고는 이미 본 리터럴과 같습니다. 다음은 유형화 된 리터럴 사용의 예입니다:
@@ -63,6 +67,8 @@ var pages = <String, String>{
   'humans.txt': 'We are people, not machines'
 };
 ```
+
+<p id="using-parameterized-types-with-constuctors"/>
 
 ###  생성자에서 매개 변수화 된 타입 사용 (Using parameterized types with constructors)
 
@@ -78,6 +84,8 @@ var nameSet = Set<String>.from(names);
 var views = Map<int, View>();
 ```
 
+<p id="generic-collections-and-the-types-they-contain"/>
+
 ###  Generic collections and the types they contain
 
 다트의 제네릭 형식은 reified 형식이므로 런타임에 형식 정보를 전달합니다. 예를 들어 컬렉션의 타입을 테스트 할 수 있습니다.
@@ -89,6 +97,8 @@ print(names is List<String>); // true
 ```
 
 **Note:** 반대로 자바의 제네릭은 erasure를 사용합니다. 즉, 일반 타입 매개 변수는 런타임에 제거됩니다. 자바에서는 객체가 List인지 여부를 테스트 할 수 있지만 `List<String>`인지 테스트 할 수는 없습니다.
+
+<p id="restricting-the-parameterized-type"/>
 
 ###  매개 변수 타입의 제약하는 방법 (Restricting the parameterized type)
 
@@ -122,6 +132,8 @@ print(foo); // 'Foo<SomeBaseClass>'의 인스턴스
 ```dart
 var foo = Foo<Object>();
 ```
+
+<p id="using-generic-methods"/>
 
 ###  제네릭 타입 메소드 사용법 (Using generic methods)
 
