@@ -52,7 +52,7 @@ flutter packages upgrade
 마지막으로 터미널에서 webdev 명령을 실행할 수 있는지 확인합니다. 이를 위해 `PATH`에 다음 폴더를 추가해야합니다.
 
 ```sh
-<플러터가 설치된 디렉토리>/.pub-cache/bin
+<사용자홈>/.pub-cache/bin
 ```
 
 이것이 확인되면, 이제 Flutter for the Web을 실행할 준비가 되었습니다.
