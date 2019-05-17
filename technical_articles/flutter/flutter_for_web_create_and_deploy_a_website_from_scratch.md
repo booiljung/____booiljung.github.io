@@ -75,7 +75,13 @@ webdev serve
 
 터미널에서 다음과 같은 출력을 얻을 것 입니다.
 
-![img](flutter_for_web_create_and_deploy_a_website_from_scratch.assets/1_WrfivCAjnCZfR9o_8_nwYA.png)
+```sh
+(base) booil@booil1804:~/workspace/neuronlog/neuronlog$ webdev serve
+[INFO] Serving `web` on http://localhost:8080
+[INFO] Running build completed, took 22.2s
+[INFO] Caching finalized dependency graph completed, took 212ms
+[INFO] Succeeded after 22.4s with 548 outputs (3169 actions)
+```
 
 성공한 메시지를 보게 되면, 심호흡을 한번하고, 브라우저를 열어 미래의 크로스 플랫폼 개발을 볼 수 있습니다. `localhost:8080` 으로 접속하면 눈앞에서 마법이 펼쳐집니다.
 
@@ -87,6 +93,19 @@ webdev serve
 
 ```
 webdev serve --auto restart
+```
+
+(역자주) 그러면 터미널에 아래와 같이 표시될 것입니다.
+
+```sh
+[INFO] Serving `web` on http://localhost:8080
+[INFO] Running build completed, took 302ms
+[INFO] Caching finalized dependency graph completed, took 189ms
+[INFO] Succeeded after 513ms with 0 outputs (0 actions)
+[INFO] Updating asset graph completed, took 13ms
+[INFO] Running build completed, took 2.2s
+[INFO] Caching finalized dependency graph completed, took 170ms
+[INFO] Succeeded after 2.4s with 9 outputs (7 actions)
 ```
 
 `localhost:8080`을 한 번 실행하는 브라우저 탭을 새로 고침하세요. 이제 `lib`디렉토리 내부의 소스 코드에, 플러터 앱과 tada에서 하는 것처럼, 원하는  코드를 경하면, 브라우저에서 모든 변경 사항을 실시간으로 볼 수 있게 됩니다.
@@ -174,7 +193,7 @@ class MyWebsite extends StatelessWidget {
 
 잊지말고 `Ayush shekhar`를 독자의 이름으로 변경하세요. 그러면, 아래와 같은 웹사이트를 보게 될 것입니다.
 
-![img](flutter_for_web_create_and_deploy_a_website_from_scratch.assets/1_P-i68GPNBi7HRpcX6acDgQ.png)
+![1558097730418](flutter_for_web_create_and_deploy_a_website_from_scratch.assets/1558097730418.png)
 
 우리는 이미 사랑에 빠졌습니다. 심호흡을 한번 더 하시구요.
 
@@ -188,11 +207,24 @@ webdev build
 
 아마도 아래처럼 출력 될 것입니다.
 
-![img](flutter_for_web_create_and_deploy_a_website_from_scratch.assets/1_-BM6xmVKaPi9OxLUy5NkgQ.png)
+```
+[WARNING] No actions completed for 15.0s, waiting on:
+  - build_web_compilers:entrypoint on web/main.dart
+
+[INFO] build_web_compilers:entrypoint on web/main.dart: Dart2Js finished with:
+
+Compiled 17,493,184 characters Dart to 928,844 characters JavaScript in 16.1 seconds
+Dart file (web/main.dart) compiled to JavaScript: web/main.dart.js
+[INFO] Running build completed, took 18.7s
+[INFO] Caching finalized dependency graph completed, took 212ms
+[INFO] Creating merged output dir `build` completed, took 2.1s
+[INFO] Writing asset manifest completed, took 6ms
+[INFO] Succeeded after 21.1s with 47 outputs (2145 actions)
+```
 
 명령을 실행하면 프로젝트 폴더에서 `build`라는 새 폴더가 생성 된 것을 볼 수 있습니다.
 
-![img](flutter_for_web_create_and_deploy_a_website_from_scratch.assets/1_UlVehmemYuD2g2k9nar5lA.png)
+![1558098039694](flutter_for_web_create_and_deploy_a_website_from_scratch.assets/1558098039694.png)
 
 이 폴더가 배포하게될 폴더입니다.
 
