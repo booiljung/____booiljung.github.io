@@ -12,13 +12,17 @@ Google Material 디자인과 디자인 애셋들이 제공 됩니다: 시각 디
 
 풍부한 단일 디자인의 [위젯](https://www.youtube.com/playlist?list=PLOU2XLYxmsIL0pH0zWe_ZOHgGhZ7UasUE) 지식으로 Android, iOS, Web, Windows, macOS, Linux GUI를 구성할 수 있습니다.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Be9UH1kXFDw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 Flutter Wedget of a Week: Hero
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Be9UH1kXFDw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 
-![img](experience_of_flutter_for_a_week..assets/0_XaqUM2laHn4N9aGv.gif)
+
+
+
+![img](experience_of_flutter_for_a_week.assets/0_XaqUM2laHn4N9aGv.gif)
+
+
 
 운영체제에 따라 운영체제 네이티브 컨트롤이 제공되고 자동으로 구성 됩니다.
 
@@ -26,19 +30,29 @@ Flutter Wedget of a Week: Hero
 
 ![좌측 아이폰X 우측 안드로이드](experience_of_flutter_for_a_week.assets/1_4dSyF9z9lAYvHVxFPS_oiw.png)
 
+
+
 좌측 아이폰 X, 우측 넥서스 6 [이미지 출처](https://startflutter.com/themes/flutter-chat-app/)
 
 ![flutter_chat_app_gif](experience_of_flutter_for_a_week.assets/flutter_chat_app_gif.gif)
 
+
+
 유니티 같이 뛰어난 게임 엔진에서 볼 수 있는 간결하고 사용하기 편한 애니메이션 컴포넌트들을 제공합니다.
 
+
+
 Dart 언어만으로 Android/iOS용 **네이티브 앱**을 개발 할 수 있습니다. (다트가 AOT를 지원하기 때문이며, 각 운영체제에 의존하는 기능은 `AndroidMenifest.xml` 또는 `AppDelegate.m` 및 프로젝트 파일을 편집하거나 애니메이션되는 런처를 위해 xib 파일을 해야 할 수도 있습니다.) 
+
+
 
 다른 웹 프레임워크들이 프론트엔드를 위해 HTML과 자바스크립트를 편집해야 하는데 비해, Dart 만으로 웹 프론트엔드 앱을 개발 할 수 있습니다: 플러터가 DOM을 조작하여 HTML과 자바스크립트를 삽입합니다. 디자인과 비지니스 로직을 분리하려면 아키텍처로 구성 할 수 있습니다. 다른 웹 피처를 삽입하기 위해 `index.html`을 편집 할 수도 있습니다. 
 
 좌측 파이어폭스 브라우저, 우측 크롬 브라우저.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YjDmjvV0I8s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 
 다트 언어의 특징인데, 자바스크립트, 자바, C언어, 파이썬(루비), CSS, Objective-C, Swift에서 가져온 특징들이 있으며, 매개 변수를 생략하거나, HTML이나 CSS로 코딩하는 느낌을 주기도 하여 가독성이 좋습니다. 자바스크립트에 있는 문제점은 제거되어 더 안전합니다.
 
@@ -53,29 +67,31 @@ Center(
 ) // Center (이 코멘트는 IDE에 자동으로 렌더링 됩니다)
 ```
 
-![Flutter Gallery app](experience_of_flutter_for_a_week..assets/1_ixLiB5aU96pKsPiZBhmuMQ.gif)
+![Flutter Gallery app](experience_of_flutter_for_a_week.assets/1_ixLiB5aU96pKsPiZBhmuMQ.gif)
 
-![Posse Gallery app](experience_of_flutter_for_a_week..assets/1_0wUIUYFYxVBrz-fzhdO88g.gif)
+![Posse Gallery app](experience_of_flutter_for_a_week.assets/1_0wUIUYFYxVBrz-fzhdO88g.gif)
 
-![Posse Gallery app](experience_of_flutter_for_a_week..assets/1_o-KbeRBGYA7Tz_WwoUP2uQ.gif)
+![Posse Gallery app](experience_of_flutter_for_a_week.assets/1_o-KbeRBGYA7Tz_WwoUP2uQ.gif)
 
 Windows, macOS, Linux 데스크탑 앱을 개발할 수 있습니다: 아직 구글의 공식 지원은 없으며 시간이 더 필요해 보입니다.
 
 윈도우 10에서 데스크탑 앱. [출처](https://medium.com/flutter-community/flutter-from-mobile-to-desktop-93635e8de64e)
 
-![Windows 10](experience_of_flutter_for_a_week..assets/1_YCCipPVHRj_yhqVHHi6gug.png)
+![Windows 10](experience_of_flutter_for_a_week.assets/1_YCCipPVHRj_yhqVHHi6gug.png)
 
 맥오에스 모하비에서 데스크탑 앱. [출처](https://medium.com/flutter-community/flutter-from-mobile-to-desktop-93635e8de64e)
 
-![macOS Mojave](experience_of_flutter_for_a_week..assets/1_rZ7-bqYIvAn3dE3IxnMjxw.png)
+![macOS Mojave](experience_of_flutter_for_a_week.assets/1_rZ7-bqYIvAn3dE3IxnMjxw.png)
 
 우분투 18.04 LTS에서 데스크탑 앱. [출처](https://medium.com/flutter-community/flutter-from-mobile-to-desktop-93635e8de64e)
 
-![Ubuntu 18.04 LTS](experience_of_flutter_for_a_week..assets/1_jbP7yfRZzRUbuOdkf5zAfw.png)
+![Ubuntu 18.04 LTS](experience_of_flutter_for_a_week.assets/1_jbP7yfRZzRUbuOdkf5zAfw.png)
 
 - 핫 스테이트 리로드를 지원합니다. 코드를 수정하고 파일을 저장하면 1초 이내에 자동으로 업데이트 됩니다.
 
-![hot stateful reload](experience_of_flutter_for_a_week..assets/1_oE-etcL1SzjYrNWTac9RtQ.gif)
+![hot stateful reload](experience_of_flutter_for_a_week.assets/1_oE-etcL1SzjYrNWTac9RtQ.gif)
+
+
 
 프로젝트에서 패키지를 관리 합니다: 다른 프레임워크 라이브러리들은 프레임워크가 패키지 저장소를 컨트롤 하지 못합니다. 어느 IDE들은 소스 코드의 import 구문을 해석하고 자동으로 패키지들을 구성해주기도 합니다. 플러터에서는 `pubspec.yaml`에 패키지 이름, 버전과 프레임워크의 버전을 명시하면 자동 또는 수동으로 일괄 업데이트 되며, 이 파일 자체가 의존 패키지에 대한 문서가 됩니다. 프로젝트가 사용할 패키지의 버전을 명시하므로 따로 여러개의 환경 저장소를 유지할 필요가 없습니다.
 
