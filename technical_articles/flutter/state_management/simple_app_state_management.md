@@ -1,15 +1,17 @@
 # 간단한 앱 상태 관리; Simple app state management
 
-## Contents     
+원문: [Flutter: Docs/Development/Data & backend/State management/Simple app sate management](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple)
 
-- [우리의 예제 ](#our_example)
-- [상태를 위쪽으로 들어 올리기](#lifting_state_up)
-- [상태에 접근하기](#accessing_the_state)
+## Contents
+
+- [우리의 예제 (Out example)](#our_example)
+- [상태를 위쪽으로 들어 올리기 (Lifting state up)](#lifting_state_up)
+- [상태에 접근하기 (Accessing the state)](#accessing_the_state)
 - [Model](#model)
 - [ScopedModel](#scopedmodel)
 - ScopedModelDescendant
   - [ScopedModel.of](#scopedmodelof)
-- [Putting it all together](#putting-it-all-together)
+- [함께 모아 놓기 (Putting it all together)](#putting-it-all-together)
 
 이제 [선언적 UI 프로그래밍](https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative)과 [일시 및 앱 상태](https : // flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app)에 대해 배워으니 있으니, 간단한 앱 상태 관리에 대해 배울 준비가 되었습니다.
 
@@ -17,7 +19,8 @@
 
 즉, 다른 React 프레임워크에서 상태 관리에 대한 배경 지식이 있는 경우 [다음 페이지](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)에 나열된 패키지 및 자습서를 찾을 수 있습니다.
 
-<p id="out_example">
+<p id="out_example"/>
+
 
 ##  우리의 예제
 
@@ -37,7 +40,8 @@
 
 이것은 우리에게 첫 질문을 줍니다: 우리는 카트의 현재 상태를 어디에 두어야 하는가?
 
-<p id="lifting_state_up">
+<p id="lifting_state_up"/>
+
 
 ## 상태를 위쪽으로 들어 올리기 (Lifting state up)
 
@@ -101,7 +105,7 @@ Widget build(BuildContext context) {
 
 이제 장바구니 상태를 어디에 두는 지 알았으므로 여기에 액세스하는 방법을 살펴 보겠습니다.
 
-<p id = "accessing_the_state">
+<p id = "accessing_the_state"/>
 
 ## 상태 접근 (Accessing the state)
 
@@ -135,7 +139,8 @@ void myTapCallback(Item item) {
 - `ScopedModel`
 - `ScopedModelDescendant`
 
-<p id = "model">
+<p id = "model"/>
+
 
 ##  Model
 
@@ -180,7 +185,8 @@ test('adding item increases total cost', () {
 
 But `Model` really starts to make sense when used with the rest of the `scoped_model` package.
 
-<p id = "scopedmodel">
+<p id = "scopedmodel"/>
+
 
 ## ScopedModel
 
@@ -219,7 +225,8 @@ ScopedModel<SomeOtherModel>(
 )
 ```
 
-<p id = "scopedmodeldescendant">
+<p id = "scopedmodeldescendant"/>
+
 
 ##  ScopedModelDescendant
 
@@ -295,7 +302,8 @@ return HumongousWidget(
 );
 ```
 
-<p id = "scopedmodelof)">
+<p id = "scopedmodelof)"/>
+
 
 ###  ScopedModel.of
 
@@ -315,9 +323,8 @@ Note: You can also use `ScopedModelDescendant<CartModel>(builder: myBuilder, reb
 
 Note: `ScopedModelDescendant <CartModel>(builder: myBuilder, rebuildOnChange : false)` 를 사용할 수도 있지만, 길기 때문에 빌더 함수를 정의해야합니다.
 
-<p id = "putting-it-all-together)">
-
-##  Putting it all together
+<p id = "putting-it-all-together)"/>
+##  함께 모아 놓기 (Putting it all together)
 
 이 글에서 다루는 [chack out the example](https://github.com/filiph/samples/tree/scoped-model-shopper/model_shopper)가 가능합니다. 좀 더 간단한 것을 원한다면 [build with scoped model](https://github.com/flutter/samples/tree/master/scoped_model_counter)와 같은 간단한 카운터 앱의 모습을 볼 수 있습니다.
 

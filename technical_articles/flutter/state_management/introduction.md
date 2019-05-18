@@ -1,5 +1,7 @@
 # 소개; Introduction
 
+원문: [Flutter: Docs/Development/Data & backend/State management/Introduction](https://flutter.dev/docs/development/data-and-backend/state-mgmt/intro)
+
 *반응 형 앱의 상태 관리에 대해 이미 잘 알고 있는 경우 이 섹션을 건너 뛰어도 되지만, [다른 접근 방식 목록](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)을 검토하는 것이 좋습니다.*
 
 ![A short animated gif that shows the workings of a simple declarative state management system. This is explained in full in one of the following pages. Here it's just a decoration.](introduction.assets/state-management-explainer-5495afe6c3d6162f145107fe45794583bc4f2b55be377c76a92ab210be74c033.gif)

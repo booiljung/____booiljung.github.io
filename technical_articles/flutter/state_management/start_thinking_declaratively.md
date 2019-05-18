@@ -1,5 +1,7 @@
 # 선언적으로 생각하기; Start thinking declaratively
 
+원문: [Flutter: Docs/Development/Data & backend/State management/Thinking declaratively](https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative)
+
 Android SDK 또는 iOS UIKit 같은 명령형 프레임워크에서 Flutter를 사용하려는 경우 새로운 관점에서 앱 개발을 고려해야 합니다.
 
 많은 가정은 Flutter에 적용되지 않을 수도 있습니다. 예를 들어, Flutter에서는 UI의 일부를 수정하는 대신 처음부터 수정하는 것이 좋습니다. Flutter는 필요한 경우 모든 프레임에서 조차도 이를 수행 할 수 있을 정도로 빠릅니다.

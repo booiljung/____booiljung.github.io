@@ -1,16 +1,20 @@
 # 일시 상태와 앱 상태; Differentiate between ephemeral state and app state
 
- ## Contents     
+원문: [Flutter: Docs/Development/Data & backend/State management/ephemeral vs app state](https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app)
 
-- [Ephemeral state](https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app#ephemeral-state)
-- [App state](https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app#app-state)
-- [There is no clear-cut rule](https://flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app#there-is-no-clear-cut-rule)
+## Contents
+
+- [일시 상태 (Ephemeral state)](#ephemeral-state)
+- [앱 상태 (App state)](#app-state)
+- [규칙은 없어요 (There is no clear-cut rule)](there-is-no-clear-cut-rule)
 
 *이 문서는 앱 상태, 일시 상태 및 Flutter 앱에서 각 상태를 관리하는 방법을 소개합니다.*
 
 가장 넓은 의미에서 앱 상태는 앱이 실행될 때 메모리에 존재하는 모든 것입니다. 여기에는 앱의 애셋과, UI, 애니메이션 상태, 텍스처, 글꼴 등에 대해 Flutter 프레임워크가 유지하는 모든 변수가 포함됩니다. 이 상태를 가능한 한 광범위하게 정의 할 수는 있지만, 앱을 설계하는 데는 그리 유용하지 않습니다.
 
 첫째, 개발자는 일부 상태 (텍스처와 같은)조차 관리하지 않습니다. 이 프레임워크는 개발자를 대신합니다. 그러므로 상태에 대한보다 유용한 정의는 "어느 시점에서라도 UI를 **재구성**하기 위해 필요한 모든 데이터"입니다. 둘째로, 자신을 관리하는 상태는 일시 상태와 앱 상태의 두 가지 개념 유형으로 구분할 수 있습니다.
+
+<p id="ephemeral-state"/>
 
 ##  일시 상태 (Ephemeral state)
 
@@ -54,6 +58,8 @@ class _MyHomepageState extends State<MyHomepage> {
 
 여기서 `setState()`와 `StatefulWidget`의 `State` 클래스 안에 있는 필드를 사용하는 것은 자연스럽습니다. 앱의 다른 부분은 `_index`에 접근 할 필요가 없습니다. 변수는 `MyHomepage` 위젯 내에서만 변경됩니다. 그리고 사용자가 앱을 닫고 다시 시작하면`_index`가 0으로 재설정 되더라도 상관 없습니다.
 
+<p id="app-state"/>
+
 ##  앱 상태 (App state)
 
 일시적이지 않은 상태 - 앱의 여러 부분에서 공유하려는 상태, 사용자 세션간에 유지하려는 상태 - 는 애플리케이션 상태 (공유 상태라고도 함)라고 합니다.
@@ -67,6 +73,8 @@ class _MyHomepageState extends State<MyHomepage> {
 - 뉴스 앱의 기사 읽기 / 읽지 않음 상태
 
 앱 상태를 관리하려면, 옵션을 조사해야 합니다. 선택은 앱의 복잡성과 특성, 팀의 이전 경험 및 기타 여러 측면에 따라 다릅니다. 계속 읽으세요.
+
+<p id = "there-is-no-clear-cut-rule"/>
 
 ##  명확한 규칙은 없습니다 (There is no clear-cut rule)
 
