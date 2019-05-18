@@ -40,6 +40,8 @@ Dart 언어만으로 Android/iOS용 **네이티브 앱**을 개발 할 수 있�
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YjDmjvV0I8s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+다트 언어의 특징인데, 자바스크립트, 자바, C언어, 파이썬(루비), CSS, Objective-C, Swift에서 가져온 특징들이 있으며, 매개 변수를 생략하거나, HTML이나 CSS로 코딩하는 느낌을 주기도 하여 가독성이 좋습니다. 자바스크립트에 있는 문제점은 제거되어 더 안전합니다.
+
 ```dart
 Center(
   child: Column(
@@ -126,6 +128,7 @@ dependency_overrides:
 - 인력 자원이 부족하여 짧은 시간에 웹, 모바일에 대응 해야 하는 스타트업에 적합합니다.
 - 개발 비용 절감 압박을 받는 SI 업체에 적합할 수 있습니다.
 - 플러터 개발자가 희소함에서 발생하는 팀 빌딩에 리스크도 있습니다.
+- 다른 경쟁 프레임워크가 등장하지 않는다면 주류 기술이 될 가능성이 높다고 개인적으로 예상합니다.
 
 ## 참조
 
