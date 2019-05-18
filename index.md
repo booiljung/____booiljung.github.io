@@ -2,6 +2,10 @@
 
 #### 최신 글
 
+- Flutter: [일주일간의 플러터 경험](technical_articles/flutter/experience_of_flutter_for_a_week.md)
+- Flutter: [웹을 위한 플러터: 웹사이트를 밑바닥부터 만들고 배포하기](technical_articles/flutter/flutter_for_web_create_and_deploy_a_website_from_scratch.md)
+- Flutter: [우분투에 플러터 설치하기](technical_articles/flutter/installation_of_flutter_on_ubuntu.md)
+
 - Dart: [A tour to the Dart language](./technical_articles/dart/index.md)
 - Image processing: [Convert photos to Sketches](./technical_articles/image_processing/convert_photos_to_sketches.md)
 - Machine Learning: [머신러닝 인퍼런스를 위한 RabbitMQ 데모](technical_articles/machine_learning/rabbitmq_demo_for_machine_learning_inference.md)
