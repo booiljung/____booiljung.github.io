@@ -28,7 +28,7 @@
 
 예를 들어, 다음과 같은 간단한 응용 프로그램을 생각해 보겠습니다.
 
-이 앱에는 로그인 프롬프트, 카탈로그 및 장바구니 (각각 `MyLoginScreen`, `MyCatalog` 및 `MyCart` 위젯으로 표시됨)의 세 가지 화면이 있습니다. 쇼핑 앱 일 수도 있지만 단순한 소셜 네트워킹 앱에서 동일한 구조를 상상할 수 있습니다 ('벽'에 대해 카탈로그 교체 및 '즐겨 찾기'에 대해 카트 교체).
+이 앱에는 로그인 프롬프트, 카탈로그 및 카트 (각각 `MyLoginScreen`, `MyCatalog` 및 `MyCart` 위젯으로 표시됨)의 세 가지 화면이 있습니다. 쇼핑 앱 일 수도 있지만 단순한 소셜 네트워킹 앱에서 동일한 구조를 상상할 수 있습니다 ('벽'에 대해 카탈로그 교체 및 '즐겨 찾기'에 대해 카트 교체).
 
 카탈로그 화면은 커스텀 앱 바 (`MyAppBar`)와 많은 리스트 아이템 (`MyListItems`)의 스크롤링 뷰를 포함합니다.
 
@@ -36,7 +36,7 @@
 
 ![A widget tree with MyApp at the top, and MyLoginScreen, MyCatalog and MyCart below it. MyLoginScreen and MyCart area leaf nodes, but MyCatalog have two children: MyAppBar and a list of MyListItems.](simple_app_state_management.assets/simple-widget-tree-19cb2528c56ef04924de364b4d0e08b73f4bcf7231aad0d6bc0eb1919e543fb9.png)
 
-그래서 우리는 `Wiget`이라는 하위 클래스가 적어도 6 개 있습니다. 그들 중 많은 것이 다른 곳에 "속해 있다"고 해야 할 것입니다. 예를 들어, 각 `MyListItem`은 장바구니에 추가 할 수 있기를 원할 것입니다. 또한 표시되는 항목이 이미 장바구니에 있는지 확인할 수도 있습니다.
+그래서 우리는 `Wiget`이라는 하위 클래스가 적어도 6 개 있습니다. 그들 중 많은 것이 다른 곳에 "속해 있다"고 해야 할 것입니다. 예를 들어, 각 `MyListItem`은 카트에 추가 할 수 있기를 원할 것입니다. 또한 표시되는 항목이 이미 카트에 있는지 확인할 수도 있습니다.
 
 이것은 우리에게 첫 질문을 줍니다: 우리는 카트의 현재 상태를 어디에 두어야 하는가?
 
@@ -91,7 +91,7 @@ void myTapHandler(BuildContext context) {
 Widget build(BuildContext context) {
   var cartModel = somehowGetMyCartModel(context);
   return SomeWidget(
-    // 장바구니의 현재 상태를 사용하여 UI를 한 번만 구성 합니다.
+    // 카트의 현재 상태를 사용하여 UI를 한 번만 구성 합니다.
     // ···
   );
 }
@@ -103,13 +103,13 @@ Widget build(BuildContext context) {
 
 위젯이 변경되지 않는다고 말하는 것은 이것을 의미합니다. **변경되지 않고 교체됩니다.**
 
-이제 장바구니 상태를 어디에 두는 지 알았으므로 여기에 액세스하는 방법을 살펴 보겠습니다.
+이제 카트 상태를 어디에 두는 지 알았으므로 여기에 액세스하는 방법을 살펴 보겠습니다.
 
 <p id = "accessing_the_state"/>
 
 ## 상태 접근 (Accessing the state)
 
-사용자가 카탈로그의 항목 중 하나를 클릭하면 장바구니에 추가됩니다. 하지만 장바구니가 `MyListItem`위에 유지 되고 있는데 어떻게 해야 할까요?
+사용자가 카탈로그의 항목 중 하나를 클릭하면 카트에 추가됩니다. 하지만 카트가 `MyListItem`위에 유지 되고 있는데 어떻게 해야 할까요?
 
 간단한 옵션은 `MyListItem`이 클릭 할 때 호출 할 수 있는 콜백을 제공하는 것입니다. 다트의 함수는 일급 클래스 객체이므로 원하는 방식으로 전달할 수 있습니다. 그래서, `MyCatalog` 안에 다음과 같은 것을 넣을 수 있습니다:
 
