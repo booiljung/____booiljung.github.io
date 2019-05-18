@@ -18,7 +18,7 @@ Flutter Wedget of a Week: Hero
 
 
 
-
+[이미지 출처: What’s Revolutionary about Flutter](https://medium.com/@dan_kim/%EB%B2%88%EC%97%AD-flutter%EB%8A%94-%EC%99%9C-%ED%98%81%EB%AA%85%EC%A0%81%EC%9D%B8%EA%B0%80-967c1dfcc5a9)
 
 ![img](experience_of_flutter_for_a_week.assets/0_XaqUM2laHn4N9aGv.gif)
 
@@ -67,11 +67,21 @@ Center(
 ) // Center (이 코멘트는 IDE에 자동으로 렌더링 됩니다)
 ```
 
+[이미지 출처: What’s Revolutionary about Flutter](https://medium.com/@dan_kim/%EB%B2%88%EC%97%AD-flutter%EB%8A%94-%EC%99%9C-%ED%98%81%EB%AA%85%EC%A0%81%EC%9D%B8%EA%B0%80-967c1dfcc5a9)
+
 ![Flutter Gallery app](experience_of_flutter_for_a_week.assets/1_ixLiB5aU96pKsPiZBhmuMQ.gif)
+
+[이미지 출처: What’s Revolutionary about Flutter](https://medium.com/@dan_kim/%EB%B2%88%EC%97%AD-flutter%EB%8A%94-%EC%99%9C-%ED%98%81%EB%AA%85%EC%A0%81%EC%9D%B8%EA%B0%80-967c1dfcc5a9)
 
 ![Posse Gallery app](experience_of_flutter_for_a_week.assets/1_0wUIUYFYxVBrz-fzhdO88g.gif)
 
+
+
+[이미지 출처: What’s Revolutionary about Flutter](https://medium.com/@dan_kim/%EB%B2%88%EC%97%AD-flutter%EB%8A%94-%EC%99%9C-%ED%98%81%EB%AA%85%EC%A0%81%EC%9D%B8%EA%B0%80-967c1dfcc5a9)
+
 ![Posse Gallery app](experience_of_flutter_for_a_week.assets/1_o-KbeRBGYA7Tz_WwoUP2uQ.gif)
+
+
 
 Windows, macOS, Linux 데스크탑 앱을 개발할 수 있습니다: 아직 구글의 공식 지원은 없으며 시간이 더 필요해 보입니다.
 
@@ -79,15 +89,21 @@ Windows, macOS, Linux 데스크탑 앱을 개발할 수 있습니다: 아직 구
 
 ![Windows 10](experience_of_flutter_for_a_week.assets/1_YCCipPVHRj_yhqVHHi6gug.png)
 
+
+
 맥오에스 모하비에서 데스크탑 앱. [출처](https://medium.com/flutter-community/flutter-from-mobile-to-desktop-93635e8de64e)
 
 ![macOS Mojave](experience_of_flutter_for_a_week.assets/1_rZ7-bqYIvAn3dE3IxnMjxw.png)
+
+
 
 우분투 18.04 LTS에서 데스크탑 앱. [출처](https://medium.com/flutter-community/flutter-from-mobile-to-desktop-93635e8de64e)
 
 ![Ubuntu 18.04 LTS](experience_of_flutter_for_a_week.assets/1_jbP7yfRZzRUbuOdkf5zAfw.png)
 
-- 핫 스테이트 리로드를 지원합니다. 코드를 수정하고 파일을 저장하면 1초 이내에 자동으로 업데이트 됩니다.
+
+
+핫 스테이트 리로드를 지원합니다. 코드를 수정하고 파일을 저장하면 1초 이내에 자동으로 업데이트 됩니다.
 
 ![hot stateful reload](experience_of_flutter_for_a_week.assets/1_oE-etcL1SzjYrNWTac9RtQ.gif)
 
@@ -128,6 +144,8 @@ dependency_overrides:
       url: https://github.com/flutter/flutter_web
       path: packages/flutter_web_ui
 ```
+
+
 
 ## 단점
 
