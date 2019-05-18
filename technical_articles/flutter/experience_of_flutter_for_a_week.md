@@ -163,6 +163,9 @@ dependency_overrides:
 - 개발 비용 절감 압박을 받는 SI 업체에 적합할 수 있습니다.
 - 플러터 개발자가 희소함에서 발생하는 팀 빌딩에 리스크도 있습니다.
 - 다른 경쟁 프레임워크가 등장하지 않는다면 주류 기술이 될 가능성이 높다고 개인적으로 예상합니다.
+- 아래 이미지: 스택오버플로우 프레임워크 그로쓰 [이미지 출처](https://www.altexsoft.com/blog/engineering/pros-and-cons-of-flutter-app-development/)
+
+![img](experience_of_flutter_for_a_week.assets/pasted-image-0-13image4.png)
 
 ## 참조
 
@@ -170,6 +173,7 @@ dependency_overrides:
 - [이미지 출처: Flutter: from Mobile to Desktop](https://medium.com/flutter-community/flutter-from-mobile-to-desktop-93635e8de64e)
 - [이미지 출처: Adding Google Maps to Flutter](https://medium.com/flutter-io/google-maps-and-flutter-cfb330f9a245)
 - [이미지 출처: Flutter Chat App](https://startflutter.com/themes/flutter-chat-app/)
+- [이미지 출처: The Good and the Bad of Flutter App Development](https://www.altexsoft.com/blog/engineering/pros-and-cons-of-flutter-app-development/)
 
 ## 문서 이력
 
