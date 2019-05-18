@@ -5,6 +5,7 @@
 ## Tips
 
 - Ubuntu 18.04 LTS에서 Android studio 보다 Visual Studio Code가 경쾌하고 빠릅니다.
+- Ubuntu 18.04 LTS에서 메모리 16기가가 원할하게 작동합니다.
 
 ## Contents
 
@@ -14,4 +15,9 @@
 - [Flutter: 웹 개발을 위한 webdev](https://dart.dev/tools/webdev#using-webdev-and-build_runner-commands)
 - [github: Flutter 엡데모: flutter/samples/web/README.md](https://github.com/flutter/samples/tree/master/web)
 - [번역: 웹을 위한 플러터: 웹사이트를 밑바닥부터 만들고 배포하기](flutter_for_web_create_and_deploy_a_website_from_scratch.md)
+- [번역: 상태 관리하기](state_management/index.md)
+
+## Demo
+
+- [Widget Demo](widget_demo.md)
 
