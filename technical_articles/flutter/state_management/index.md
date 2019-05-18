@@ -10,3 +10,4 @@
 
 - [간단한 앱 상태 관리 (Simple app state management)](simple_app_state_management.md)
 
+![A short animated gif that shows the workings of a simple declarative state management system. This is explained in full in one of the following pages. Here it's just a decoration.](index.assets/state-management-explainer-5495afe6c3d6162f145107fe45794583bc4f2b55be377c76a92ab210be74c033.gif)
