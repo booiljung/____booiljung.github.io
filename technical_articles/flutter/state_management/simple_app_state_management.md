@@ -13,9 +13,9 @@
   - [ScopedModel.of](#scopedmodelof)
 - [함께 모아 놓기 (Putting it all together)](#putting-it-all-together)
 
-이제 [선언적 UI 프로그래밍](https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative)과 [일시 및 앱 상태](https : // flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app)에 대해 배워으니 있으니, 간단한 앱 상태 관리에 대해 배울 준비가 되었습니다.
+이제 [선언적 UI 프로그래밍](https://flutter.dev/docs/development/data-and-backend/state-mgmt/declarative)과 [이페머럴 및 앱 상태](https : // flutter.dev/docs/development/data-and-backend/state-mgmt/ephemeral-vs-app)에 대해 배워으니 있으니, 간단한 앱 상태 관리에 대해 배울 준비가 되었습니다.
 
-이 페이지에서 우리는 `scoped_model` 패키지를 사용할 것입니다. Flutter를 처음 사용하고 다른 접근 방식 (Redux, Rx, hooks 등)을 선택해야하는 강력한 이유가 없는 경우 이 방법을 사용하는 것이 좋습니다. `scoped_model`은 이해하기 쉽고 많은 코드를 사용하지 않습니다. 또한 모든 다른 접근 방식에 적용 할 수 있는 개념을 사용합니다.
+이 페이지에서 우리는 `scoped_model` 패키지를 사용할 것입니다. Flutter를 처음 사용하고 다른 접근 방식 (Redux, Rx, hooks 등)을 선택해야 하는 강력한 이유가 없는 경우 이 방법을 사용하는 것이 좋습니다. `scoped_model`은 이해하기 쉽고 많은 코드를 사용하지 않습니다. 또한 모든 다른 접근 방식에 적용 할 수 있는 개념을 사용합니다.
 
 즉, 다른 React 프레임워크에서 상태 관리에 대한 배경 지식이 있는 경우 [다음 페이지](https://flutter.dev/docs/development/data-and-backend/state-mgmt/options)에 나열된 패키지 및 자습서를 찾을 수 있습니다.
 
@@ -28,9 +28,9 @@
 
 예를 들어, 다음과 같은 간단한 응용 프로그램을 생각해 보겠습니다.
 
-이 앱에는 로그인 프롬프트, 카탈로그 및 카트 (각각 `MyLoginScreen`, `MyCatalog` 및 `MyCart` 위젯으로 표시됨)의 세 가지 화면이 있습니다. 쇼핑 앱 일 수도 있지만 단순한 소셜 네트워킹 앱에서 동일한 구조를 상상할 수 있습니다 ('벽'에 대해 카탈로그 교체 및 '즐겨 찾기'에 대해 카트 교체).
+이 앱에는 로그인 프롬프트, 카탈로그 및 카트 (각각 `MyLoginScreen`, `MyCatalog` 및 `MyCart` 위젯으로 표시됨)의 세 가지 화면이 있습니다. 쇼핑 앱 일 수도 있지만 단순한 소셜 네트워킹 앱에서 동일한 구조를 상상할 수 있습니다 ('벽'에 대해 카탈로그 교체 및 '즐겨 찾기'에 대해 카트 교체; replace catalog for “wall” and cart for “favorites”; 에...?).
 
-카탈로그 화면은 커스텀 앱 바 (`MyAppBar`)와 많은 리스트 아이템 (`MyListItems`)의 스크롤링 뷰를 포함합니다.
+카탈로그 화면은 커스텀 앱 바(`MyAppBar`)와 많은 리스트 아이템 (`MyListItems`)의 스크롤링 뷰를 포함합니다.
 
 위젯 트리로 시각화 된 앱은 다음과 같습니다.
 
@@ -74,7 +74,7 @@ void updateWith(Item item) {
 
 UI의 현재 상태를 고려하여 새 데이터를 적용해야합니다. 이런 식으로 버그를 피하기는 어렵습니다.
 
-Flutter에서는 내용이 변경 될 때마다 새 위젯을 구성합니다. `MyCart.updateWith(somethingNew)`(메소드 호출) 대신 `MyCart(contents)`(생성자)를 사용합니다. 부모의 빌드 메소드에서만 새 위젯을 만들 수 있기 때문에 '내용'을 변경하려면 `MyCart`의 상위 또는 상위에 있어야 합니다.
+Flutter에서는 내용이 변경 될 때마다 새 위젯을 구성합니다. `MyCart.updateWith(somethingNew)`(메소드 호출) 대신 `MyCart(contents)`(생성자)를 사용합니다. 부모의 빌드 메소드에서만 새 위젯을 만들 수 있기 때문에 `contents`를 변경하려면 `MyCart`의 상위 또는 상위에 있어야 합니다.
 
 ```dart
 // 좋음
@@ -111,7 +111,7 @@ Widget build(BuildContext context) {
 
 사용자가 카탈로그의 항목 중 하나를 클릭하면 카트에 추가됩니다. 하지만 카트가 `MyListItem`위에 유지 되고 있는데 어떻게 해야 할까요?
 
-간단한 옵션은 `MyListItem`이 클릭 할 때 호출 할 수 있는 콜백을 제공하는 것입니다. 다트의 함수는 일급 클래스 객체이므로 원하는 방식으로 전달할 수 있습니다. 그래서, `MyCatalog` 안에 다음과 같은 것을 넣을 수 있습니다:
+간단한 옵션은 `MyListItem`이 클릭 할 때 호출 할 수 있는 콜백을 제공하는 것입니다. 다트의 함수는 일급 클래스 객체(First-class object)이므로 원하는 방식으로 전달할 수 있습니다. 그래서, `MyCatalog` 안에 다음과 같은 것을 넣을 수 있습니다:
 
 ```dart
 @override
@@ -127,7 +127,7 @@ void myTapCallback(Item item) {
 }
 ```
 
-간단한 옵션은 `MyListItem`이 클릭 할 때 호출 할 수 있는 콜백을 제공하는 것입니다. 다트의 함수는 퍼스트 클래스 객체이므로 원하는 방식으로 전달할 수 있습니다. 그래서, `MyCatalog` 안에 다음과 같은 것을 넣을 수 있습니다.
+간단한 옵션은 `MyListItem`이 클릭 할 때 호출 할 수 있는 콜백을 제공하는 것입니다. Dart의 함수는 퍼스트 클래스 객체이므로 원하는 방식으로 전달할 수 있습니다. 그래서, `MyCatalog` 안에 다음과 같은 것을 넣을 수 있습니다.
 
 다행스럽게도 Flutter에는 자손 위젯(즉, 자식들뿐만 아니라 아래에 있는 위젯)에 데이터 및 서비스를 제공하는 위젯 메커니즘이 있습니다. *모든 것은 위젯이다* 인 Flutter에서 기대할 수 있는 것처럼, 이 메커니즘은 단지 특별한 종류의 위젯들 (`InheritedWidget`, `InheritedNotifier`, `InheritedModel` 등) 일뿐입니다. 우리는 우리가 하려고 하는 것에 대해 약간 낮은 수준이기 때문에 여기에 포함시키지 않을 것입니다.
 
@@ -135,16 +135,15 @@ void myTapCallback(Item item) {
 
 `scoped_model`을 사용하면 콜백이나`InheritedWidgets`에 대해 걱정할 필요가 없습니다. 하지만 3 가지 개념을 이해해야 합니다.
 
-- `Model`
-- `ScopedModel`
+- `Model``
+- ``ScopedModel`
 - `ScopedModelDescendant`
 
 <p id = "model"/>
 
-
 ##  Model
 
-`scoped_model`에서 `Model`은 여러분의 어플리케이션 상태를 캡슐화합니다. 매우 간단한 응용 프로그램의 경우 하나의 모델만 있으면 됩니다. 복잡한 모델에는 여러 모델이 있습니다.
+`scoped_model`에서 `Model`은 여러분의 앱 상태를 캡슐화합니다. 매우 간단한 응용 프로그램의 경우 하나의 모델만 있으면 됩니다. 복잡한 모델에는 여러 모델이 있습니다.
 
 쇼핑 애플리케이션 예제에서, 우리는 `Model`에서 카트의 상태를 관리하려고 합니다. 모델을 확장하는 새로운 클래스를 만듭니다. 다음처럼:  
 
@@ -183,7 +182,7 @@ test('adding item increases total cost', () {
 });
 ```
 
-But `Model` really starts to make sense when used with the rest of the `scoped_model` package.
+그러나 `Model`은 `scoped_model` 패키지의 나머지 부분과 함께 사용될 때 실제로 의미를 갖기 시작합니다.
 
 <p id = "scopedmodel"/>
 
@@ -215,7 +214,7 @@ void main() {
 
 둘 이상의 모델을 제공하려면 `ScopedModels`를 중첩해야합니다.
 
-```
+```dart
 ScopedModel<SomeOtherModel>(
   model: myOtherModel,
   child: ScopedModel<CartModel>(
@@ -232,7 +231,7 @@ ScopedModel<SomeOtherModel>(
 
 `CartModel`이 상단의 `ScopedModel<CartModel>`선언을 통해 우리의 app에 있는 위젯에 제공되었으므로 그것을 사용할 수 있습니다.
 
-이것은`ScopedModelDescendant` 위젯을 통해 이루어집니다.
+이것은 `ScopedModelDescendant` 위젯을 통해 이루어집니다.
 
 ```dart
 return ScopedModelDescendant<CartModel>(
@@ -247,8 +246,6 @@ return ScopedModelDescendant<CartModel>(
 `ScopedModelDescendant` 위젯의 유일한 필수 인수는 빌더입니다. 빌더는 모델이 변경 될 때마다 호출되는 함수입니다. (즉, 모델에서 `notifyListeners()`를 호출하면 해당하는 모든 `ScopedModelDescendant` 위젯의 모든 빌더 메소드가 호출됩니다.)
 
 빌더는 세 가지 속성으로 호출됩니다. 첫 번째 것은`context`이며 모든 빌드 메소드에도 포함됩니다.
-
-The second attribute is `child`, which is there for optimization. If you have a large widget subtree under your `ScopedModelDescendant` that *doesn’t* change when the model changes, you can construct it once and get it through the builder.
 
 두 번째 속성은 `child`이며, 최적화를 위해 존재합니다. 모델 변경시 *변경되지 않는* `ScopedModelDescendant` 아래에 큰 위젯 하위 트리가 있는 경우, 한 번 작성하여 빌더를 통해 가져올 수 있습니다.
 
@@ -268,7 +265,7 @@ return ScopedModelDescendant<CartModel>(
 
 빌더 함수의 세 번째 인수는 모델입니다. 그것이 우리가 처음에 요구했던 것입니다. 모델의 데이터를 사용하여 주어진 시점에서 UI가 어떻게 표시되는지 정의 할 수 있습니다.
 
-`ScopedModelDescendant` 위젯을 가능한 트리 깊숙한 곳에 두는 것이 가장 좋은 방법입니다. 어딘가의 세부 묘사가 변경 되었기 때문에 UI의 상당 부분을 다시 빌드하고 싶지는 않을것 입니다.
+`ScopedModelDescendant` 위젯을 가능한 트리 깊숙한 곳에 두는 것이 가장 좋은 방법입니다. 어딘가의 세부 표현이 변경 되었기 때문에 UI의 상당 부분을 다시 빌드하고 싶지는 않을것 입니다.
 
 ```dart
 // 이렇게 하지 마세요.
@@ -319,16 +316,14 @@ ScopedModel.of<CartModel>(context).add(item);
 
 `notifyListeners`가 호출 될 때 빌드 메소드에서 위의 행을 사용하면 이 위젯이 다시 빌드되지 않습니다.
 
-Note: You can also use `ScopedModelDescendant<CartModel>(builder: myBuilder, rebuildOnChange: false)` but that’s longer and requires you to define the builder function.
-
-Note: `ScopedModelDescendant <CartModel>(builder: myBuilder, rebuildOnChange : false)` 를 사용할 수도 있지만, 길기 때문에 빌더 함수를 정의해야합니다.
+Note: `ScopedModelDescendant <CartModel>(builder: myBuilder, rebuildOnChange: false)` 를 사용할 수도 있지만, 길기 때문에 빌더 함수를 정의해야합니다.
 
 <p id = "putting-it-all-together)"/>
 ##  함께 모아 놓기 (Putting it all together)
 
 이 글에서 다루는 [chack out the example](https://github.com/filiph/samples/tree/scoped-model-shopper/model_shopper)가 가능합니다. 좀 더 간단한 것을 원한다면 [build with scoped model](https://github.com/flutter/samples/tree/master/scoped_model_counter)와 같은 간단한 카운터 앱의 모습을 볼 수 있습니다.
 
-`scoped_model`을 가지고 놀아 볼 준비가 되면, 먼저`pubspec.yaml`에 의존성을 추가하는 것을 잊지 마십시오.
+`scoped_model`을 가지고 실행할 준비가 되면, 먼저 `pubspec.yaml`에 의존성을 추가하는 것을 잊지 마십시오.
 
 ```yaml
 name: my_name
