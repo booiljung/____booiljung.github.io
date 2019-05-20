@@ -2,6 +2,7 @@
 
 #### 최신 글
 
+- Flutter: [bloc 번역](technical_articles/flutter/bloc/index.md)
 - Flutter: [Flutter Pub: BLOC 패턴을 사용한 Flutter 프로젝트 아키텍쳐 설계](technical_articles/flutter/state_management/architecture_your_flutter_project_using_bloc_pattern.md)
 - Flutter: [상태 관리](technical_articles/flutter/state_management/index.md)
 - Flutter: [일주일간의 플러터 경험](technical_articles/flutter/experience_of_flutter_for_a_week.md)
