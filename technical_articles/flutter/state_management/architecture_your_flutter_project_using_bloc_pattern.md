@@ -276,6 +276,8 @@ class MovieApiProvider {
 
 `fetchMovieList()` 메소드는 API에 대한 네트워크 호출을 담당합니다. 네트워크 호출이 완료되면 네트워크 호출이 성공했거나 성공할 경우 [`Future`](https://api.dartlang.org/stable/2.0.0/dart-async/Future-class.html) `ItemModel` 객체를 반환합니다. 실패하면 Exception를 던집니다.
 
+**역자주:** 위 소스코드에서 api 주소는 `https://api.themoviedb.org/3/movie/popular?api_key=$_apiKey`로 해야 합니다. (HTTP에서 HTTPS로 변경)
+
 다음으로 `resources` 패키지 안에 `repository.dart`라는 이름의 새 파일을 만들고 아래 코드를 복사하여 파일 안에 붙여 넣으세요.
 
 ```dart
@@ -321,6 +323,8 @@ final bloc = MoviesBloc();
 우리는  `import 'package:rxdart/rxdart.dart';`를 임포트 하고 있으며 이것은 이 파일 안에 모든 [RxDart](https://pub.dartlang.org/packages/rxdart) 관련 메소드와 클래스를 임포트 합니다. `MoviesBloc` 클래스 안에서 우리는 `fetchAllMovies()`에 접근하는 데 사용될 `Repository` 클래스 객체를 생성 합니다. 우리는 `ItemModel`의 형태로 서버에서 가져온 데이터를 추가하는 책임이 있는 [`PublishSubject`](https://pub.dartlang.org/documentation/rxdart/latest/rx/PublishSubject-class.html) 객체를 생성하고, UI 화면에 스트림으로 전달합니다. `ItemModel` 객체를 스트림으로 전달하기 위해 반환 타입이 [`Observable`](https://youtu.be/XbOuCBuQepI) 인 `allMovies()`메서드를 만들었습니다 (`Observables`를 이해하지 못한다면 이 비디오를 보세요). 마지막 행을 보면 `bloc` 객체가 생성됩니다. 이렇게 하면 우리는 `MoviesBloc` 클래스의 단일 인스턴스에 대한 액세스를 UI 화면에 제공합니다.
 
 반응형 프로그래밍이 무엇인지 모르는 경우 이 간단한 [설명](https://dzone.com/articles/only-introduction-reactive)을 읽어 보세요. 간단히 말하면, 서버에서 오는 새로운 데이터가 있을 때마다 간단히 반응하면 됩니다. 이 업데이트 작업을 단순화 하기 위해 우리는 `MoviesBloc` 클래스에서 발생하는 모든 변경 사항을 계속 관찰하고, 이에 따라 콘텐츠를 업데이트 하도록 UI 화면에 지시합니다. 새로운 데이터를 "관찰"하는 것은 `RxDart`를 사용하여 수행 할 수 있습니다.
+
+역자주: `movie_block.dart`에는 `bloc`라는 최상위 변수가 있습니다. 아키텍쳐를 새로 세워야 할 것으로 보입니다.
 
 이제 마지막 섹션. `ui` 패키지 내에 `movie_list.dart`라는 새 파일을 만들고, 아래 코드를 복사하여 붙여 넣으세요.:
 

@@ -17,6 +17,7 @@
 ## 목차
 
 - [Installation of Dart](installation_of_dart.md)
+- [다트 언어 빨리 보기](dart_language_quick_reference.md)
 
 ### 번역
 
