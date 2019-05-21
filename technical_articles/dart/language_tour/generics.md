@@ -154,6 +154,12 @@ T first<T>(List<T> ts) {
 - 인수의 타입 (`List<T>`).
 - 지역 변수의 타입 (`T tmp`).
 
+---
+
+이전: [클래스 (Classes)](./classes.md)
+
+다음: [라이브러리와 가시성 (Libraries and visibility)](./libraries_and_visibility.md)
+
 ## 문서 변경 이력
 
 2019년 5월 15일: 첫 작성.

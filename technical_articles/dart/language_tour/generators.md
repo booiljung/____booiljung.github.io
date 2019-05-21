@@ -2,7 +2,7 @@
 
 ##  제너레이터 (Generators)
 
-값의 시퀀스드를 지연하여 생성하려면 generator 함수를 사용하는 것을 고려하세요. 다트에는 두 종류의 제널이터 함수에 대한 지원이 내장되어 있습니다.
+값의 시퀀스를 지연하여 생성하려면 generator 함수를 사용하는 것을 고려하세요. 다트에는 두 종류의 제널이터 함수에 대한 지원이 내장되어 있습니다.
 
 -  **동기** 제너레이터: **Iterable** 개체를 반환.
 -  **비동기** 제너레이터: **Stream**개체를 반환.
@@ -12,7 +12,8 @@
 ```dart
 Iterable<int> naturalsTo(int n) sync* {
   int k = 0;
-  while (k < n) yield k++;
+  while (k < n)
+    yield k++;
 }
 ```
 
@@ -21,7 +22,8 @@ Iterable<int> naturalsTo(int n) sync* {
 ```dart
 Stream<int> asynchronousNaturalsTo(int n) async* {
   int k = 0;
-  while (k < n) yield k++;
+  while (k < n)
+    yield k++;
 }
 ```
 
@@ -35,6 +37,12 @@ Iterable<int> naturalsDownFrom(int n) sync* {
   }
 }
 ```
+
+---
+
+이전: [비동기 지원 (Asynchorony support)](./asynchrony_support.md)
+
+다음: [Callable classes](./callable_classes.md)
 
 ## 문서 변경 이력
 

@@ -2,7 +2,7 @@
 
 ##  클래스 (Classes)
 
-다트는 클래스 및 믹스인 기반 상속을 사용하는 객체 지향 언어입니다. 모든 객체는 클래스의 인스턴스이며 모든 클래스는 [Object](https://api.dartlang.org/stable/dart-core/Object-class.html)에서 파생됩니다. 믹스인 기반 상속은 모든 클래스 (Object를 제외하고)는 정확히 하나의 수퍼 클래스를 가지므로 클래스 본문은 여러 클래스 계층에서 다시 사용할 수 있습니다.
+Dart는 클래스 및 믹스인 기반 상속을 사용하는 객체 지향 언어입니다. 모든 객체는 클래스의 인스턴스이며 모든 클래스는 [Object](https://api.dartlang.org/stable/dart-core/Object-class.html)에서 파생됩니다. 믹스인 기반 상속은 모든 클래스 (Object를 제외하고)는 정확히 하나의 수퍼 클래스를 가지므로 클래스 본문은 여러 클래스 계층에서 다시 사용할 수 있습니다.
 
 <p id="using-class-members"/>
 
@@ -25,7 +25,7 @@ assert(p.y == 3);
 num distance = p.distanceTo(Point(4, 4));
 ```
 
-최좌측 피연산자가 null 일 때 예외를 피하려면 `.` 대신 `?.`를 사용하십시오 :
+최좌측 피연산자가 `null` 일 때 예외를 피하려면 `.` 대신 `?.`를 사용하십시오 :
 
 ```dart
 // p가 null가 아닌 경우, y 값을 4로 설정.
@@ -128,7 +128,7 @@ class Point {
 
 모든 초기화되지 않은 인스턴스 변수는 `null` 값을 갖습니다.
 
-모든 인스턴스 변수는 암시적 `getter` 메소드를 생성합니다. Non-final 인스턴스 변수는 암시적 setter 메소드도 생성합니다. 자세한 내용은 [게터와 세터](classes.md#gatters-and-setters)를 참조하십시오.
+모든 인스턴스 변수는 암시적 `getter` 메소드를 생성합니다. Non-final 인스턴스 변수는 암시적 `setter` 메소드도 생성합니다. 자세한 내용은 [게터와 세터](classes.md#gatters-and-setters)를 참조하십시오.
 
 ```dart
 class Point {
@@ -166,9 +166,9 @@ class Point {
 
 `this` 키워드는 현재 인스턴스를 참조합니다.
 
-> **Note:** 이름 충돌이있는 경우에만 `this`를 사용하십시오. 그렇지 않으면 다트 스타일은 `this`를 생략합니다.
+> **Note:** 이름 충돌이있는 경우에만 `this`를 사용하십시오. 그렇지 않으면 Dart 스타일은 `this`를 생략합니다.
 
-인스턴스 변수에 생성자 인수를 할당하는 패턴은 매우 일반적이므로 다트는 쉽게 만들 수있는 syntactic sugar을 가지고 있습니다:
+인스턴스 변수에 생성자 인수를 할당하는 패턴은 매우 일반적이므로 Dart는 쉽게 만들 수있는 syntactic sugar을 가지고 있습니다:
 
 ```dart
 class Point {
@@ -218,7 +218,7 @@ class Point {
 
 #### 디폴트가 아닌 슈퍼 클래스 생성자 호출하기 (Invoking a non-default superclass constructor)
 
-디폴트에서는, 서브 클래스의 constructor은, 슈퍼 클래스의 이름이 없는 인수 없음의 생성자을 호출합니다. 수퍼 클래스의 생성자는 생성자 본문의 처음에 호출됩니다. [초기자 목록](classes.md#initializer-list)도 사용중인 경우 수퍼 클래스가 호출되기 전에 실행됩니다. 요약하면 실행 순서는 다음과 같습니다.
+디폴트에서는, 서브 클래스의 constructor은, 슈퍼 클래스의 이름이 없는 인수 없는 생성자을 호출합니다. 수퍼 클래스의 생성자는 생성자 본문의 처음에 호출됩니다. [초기자 목록](classes.md#initializer-list)도 사용중인 경우 수퍼 클래스가 호출되기 전에 실행됩니다. 요약하면 실행 순서는 다음과 같습니다.
 
 1. 초기자 리스트
 2. 수퍼 클래스의 인자 없는 생성자.
@@ -241,9 +241,9 @@ class Employee extends Person {
 
 <p id="initializer-list"/>
 
-#### 초기화 목록 (Initializer list)
+#### 초기자 목록 (Initializer list)
 
-수퍼 클래스 생성자를 호출하는 것 외에도 생성자 본문이 실행되기 전에 인스턴스 변수를 초기화 할 수 있습니다. 쉼표로 이니셜 라이저를 구분하십시오.
+수퍼 클래스 생성자를 호출하는 것 외에도 생성자 본문이 실행되기 전에 인스턴스 변수를 초기화 할 수 있습니다. 쉼표로 초기자를 구분하십시오.
 
 ```dart
 // Initializer list sets instance variables before
@@ -257,7 +257,7 @@ Point.fromJson(Map<String, num> json)
 
 > **Warning:** 초기화 리스트의 오른쪽은 `this`에 접근 할 수 없습니다.
 
-개발하는 동안 초기화 리스트에서 `assert`를 사용하여 입력을 검증 할 수 있습니다.
+개발하는 동안 초기자 리스트에서 `assert`를 사용하여 입력을 검증 할 수 있습니다.
 
 ```dart
 Point.withAssert(this.x, this.y) : assert(x >= 0) {
@@ -265,7 +265,7 @@ Point.withAssert(this.x, this.y) : assert(x >= 0) {
 }
 ```
 
-초기화 리스트는 final 필드를 설정할 때 편리합니다. 다음 예제에서는 초기화 리스트의 마지막 세 필드를 초기화합니다. 코드를 실행 하려면 실행 버튼 ![img](index.assets/red-run-50a66e01c7e7a877dbc06e799d5bc4b73c4dace2926ec17b4493d8c3e939c59a-1557833292775.png) 를 누르세요.
+초기자 리스트는 `final` 필드를 설정할 때 편리합니다. 다음 예제에서는 초기자 리스트의 마지막 세 필드를 초기화합니다. 코드를 실행 하려면 실행 버튼 ![img](index.assets/red-run-50a66e01c7e7a877dbc06e799d5bc4b73c4dace2926ec17b4493d8c3e939c59a-1557833292775.png) 를 누르세요.
 
 <iframe src="https://dartpad.dartlang.org/embed-inline.html?id=7a9764702c0608711e08&amp;verticalRatio=85" style="border: 1px solid #ccc;" width="100%" height="420px">
 </iframe>
@@ -293,7 +293,7 @@ class Point {
 
 #### 상수 생성자 (Constant constructors)
 
-클래스가 변경되지 않는 객체를 생성하면 이러한 객체를 컴파일 타임 상수로 만들 수 있습니다. 이렇게하려면 `const` 생성자를 정의하고 모든 인스턴스 변수가 `final`인지 확인하십시오.
+클래스가 변경되지 않는 객체를 생성하면 이러한 객체를 컴파일 타임 상수로 만들 수 있습니다. 이렇게 하려면 `const` 생성자를 정의하고 모든 인스턴스 변수가 `final`인지 확인하십시오.
 
 ```dart
 class ImmutablePoint {
@@ -312,7 +312,7 @@ class ImmutablePoint {
 
 #### 팩토리 생성자 (Factory constructors)
 
-항상 클래스의 새 인스턴스를 생성하지는 않는 생성자를 구현할 때는`factory` 키워드를 사용하십시오. 예를 들어 팩토리 생성자는 캐시에서 인스턴스를 반환하거나 하위 유형의 인스턴스를 반환 할 수 있습니다.
+항상 클래스의 새 인스턴스를 생성하지는 않는 생성자를 구현할 때는 `factory` 키워드를 사용하십시오. 예를 들어 팩토리 생성자는 캐시에서 인스턴스를 반환하거나 하위 유형의 인스턴스를 반환 할 수 있습니다.
 
 다음 예제는 캐시에서 객체를 반환하는 팩토리 생성자를 보여줍니다.
 
@@ -344,7 +344,7 @@ class Logger {
 }
 ```
 
-**Note:** 팩토리 생성자는`this`에 접근 할 수 없습니다.
+**Note:** 팩토리 생성자는 `this`에 접근 할 수 없습니다.
 
 다른 생성자와 마찬가지로 `factory` 생성자를 호출하십시오.
 
@@ -363,7 +363,7 @@ logger.log('Button clicked');
 
 #### 인스턴스 메소드 (Instance methods)
 
-객체의 인스턴스 메소드는 인스턴스 변수와`this`에 접근 할 수 있습니다. 다음 예제의`distanceTo()`메소드는 인스턴스 메소드의 예입니다 :
+객체의 인스턴스 메소드는 인스턴스 변수와 `this`에 접근 할 수 있습니다. 다음 예제의 `distanceTo()`메소드는 인스턴스 메소드의 예입니다 :
 
 ```dart
 import 'dart:math';
@@ -385,7 +385,7 @@ class Point {
 
 #### 게터와 세터 (Getters and setters)
 
-getter 및 setter는 객체 속성에 대한 읽기 및 쓰기 액세스를 제공하는 특수 메소드입니다. 각 인스턴스 변수에는 암시적인 getter와 적절한 경우 setter가 있습니다. getter 및 setter 키워드를 사용하여 getter 및 setter를 구현하여 추가 속성을 만들 수 있습니다.
+getter 및 setter는 객체 속성에 대한 읽기 및 쓰기 액세스를 제공하는 특수 메소드입니다. 각 인스턴스 변수에는 암시적인 getter와 적절한 경우 setter가 있습니다. `get` 및 `set` 키워드를 사용하여 getter 및 setter를 구현하여 추가 속성을 만들 수 있습니다.
 
 ```dart
 class Rectangle {
@@ -438,7 +438,7 @@ class EffectiveDoer extends Doer {
 
 ###  추상 클래스 (Abstract classes)
 
-abstract 한정자를 사용하여 인스턴스화 할 수 없는 추상 클래스를 정의하세요. 추상 클래스는 인터페이스를 정의 할 때 유용합니다. 추상 클래스를 인스턴스화 할 수 있게 하려면 [factory constructor](classes.md#factory-constructors)을 정의하세요.
+`abstract` 한정자를 사용하여 인스턴스화 할 수 없는 추상 클래스를 정의하세요. 추상 클래스는 인터페이스를 정의 할 때 유용합니다. 추상 클래스를 인스턴스화 할 수 있게 하려면 [factory constructor](classes.md#factory-constructors)을 정의하세요.
 
 추상 클래스는 [추상 메소드 (abstract method)](classes.md#abstract-methods)를 사용하는 경우가 많습니다. 다음은 추상 메소드가 있는 추상 클래스를 선언하는 예제입니다.
 
@@ -460,7 +460,7 @@ abstract class AbstractContainer {
 클래스는 하나 이상의 인터페이스를 `implements` 절에서 선언하고 인터페이스에 필요한 API를 제공함으로써 구현합니다. 예 :
 
 ```dart
-// A person. The implicit interface contains greet().
+// Person 클래스. 묵시적 인터페이스로 greet()를 가짐.
 class Person {
   // In the interface, but visible only in this library.
   final _name;
@@ -521,7 +521,7 @@ class SmartTelevision extends Television {
 
 <p id="overriding-members"/>
 
-#### 멤버 오버라이딩 (Overriding members)
+#### 멤버 재정의 (Overriding members)
 
 서브 클래스는 인스턴스 메소드, getter 및 setter를 오버라이딩 할 수 있습니다. `@override` 주석을 사용하여 의도적으로 멤버를 오버라이드하고 있음을 나타낼 수 있습니다 :
 
@@ -537,9 +537,9 @@ class SmartTelevision extends Television {
 
 <p id="overridable-operators"/>
 
-#### 오버로드 가능한 연산자 (Overridable operators)
+#### 재정의 가능한 연산자 (Overridable operators)
 
-다음 표에 표시된 연산자를 재정의 할 수 있습니다. 예를 들어 `Vector` 클래스를 정의하면 두 개의 벡터를 추가하는`+`메서드를 정의 할 수 있습니다.
+다음 표에 표시된 연산자를 재정의 할 수 있습니다. 예를 들어 `Vector` 클래스를 정의하면 두 개의 벡터를 추가하는 `+`메서드를 정의 할 수 있습니다.
 
 | `<`  | `+`  | `|`  | `[]`  |
 | ---- | ---- | ---- | ----- |
@@ -550,7 +550,7 @@ class SmartTelevision extends Television {
 
 > **Note:** `!=`가 오버라이드 할 수 있는 연산자가 아니라는 것을 눈치 챘을 것입니다. `e1 != e2`라는 표현은 `!(e1 == e2)`의 syntactic sugar 일뿐입니다.
 
-다음은`+`와`-` 연산자를 오버라이드하는 클래스의 예입니다:
+다음은 `+`와 `-` 연산자를 재정의 하는 클래스의 예입니다:
 
 ```dart
 class Vector {
@@ -574,7 +574,7 @@ void main() {
 }
 ```
 
-`==`를 오버라이드(override)하면, Object의 `hashCode` getter도 오버라이드 (override) 할 필요가 있습니다. `==`와`hashCode`를 오버라이드하는 예제는 [Implementing map keys](https://dart.dev/guides/libraries/library-tour#implementing-map-keys)를 보십시오.
+`==`를 오버라이드(override)하면, Object의 `hashCode` getter도 오버라이드 (override) 할 필요가 있습니다. `==`와 `hashCode`를 오버라이드하는 예제는 [Implementing map keys](https://dart.dev/guides/libraries/library-tour#implementing-map-keys)를 보십시오.
 
 재정의에 대한 자세한 내용은 일반적으로 [클래스 확장 (Extending a class)](classes.md#extending-a-class)을 참조하십시오.
 
@@ -586,8 +586,7 @@ void main() {
 
 ```dart
 class A {
-  // Unless you override noSuchMethod, using a
-  // non-existent member results in a NoSuchMethodError.
+  // noSuchMethod를 재정의 하지 않고 존재하지 않은 멤버를 사용하면 NoSuchMethodError가 발생합니다.
   @override
   void noSuchMethod(Invocation invocation) {
     print('You tried to use a non-existent member: ' +
@@ -599,7 +598,7 @@ class A {
 다음 중 하나가 참이지 않는 한 구현되지 않은 메소드를 호출 할 수 없습니다.
 
 - 수신자(receiver)의 정적 타입이 `dynamic` 입니다.
-- 수신자(receiver)는 구현되지 않은 메소드를 정의하는 정적 타입을가집니다. (추상은 OK입니다.) 수신자의 동적 타입은 `Object` 클래스의 것과는 다른 `noSuchMethod()`구현을 가지고 있습니다.
+- 수신자(receiver)는 구현되지 않은 메소드를 정의하는 정적 타입을 가집니다. (추상은 OK입니다.) 수신자의 동적 타입은 `Object` 클래스의 것과는 다른 `noSuchMethod()`구현을 가지고 있습니다.
 
 자세한 내용은 비공식 [noSuchMethod forward specification](https://github.com/dart-lang/sdk/blob/master/docs/language/informal/nosuchmethod-forwarding.md)을 참조하십시오.
 
@@ -611,7 +610,7 @@ enumerations 또는 enums이라고도하는 열거 타입은 고정 된 수의 �
 
 <p id="using-enums"/>
 
-#### Using enums
+#### 열거형 사용 (Using enums)
 
 `enum` 키워드를 사용하여 열거 타입을 선언하십시오 :
 
@@ -682,7 +681,7 @@ class Maestro extends Person
 }
 ```
 
-믹스인을 구현하려면 Object를 확장하고 생성자를 선언하지 않는 클래스를 만듭니다. 믹스인을 일반 클래스로 사용하지 않으려면`class` 대신 `mixin` 키워드를 사용하십시오. 예 :
+믹스인을 구현하려면 Object를 확장하고 생성자를 선언하지 않는 클래스를 만듭니다. 믹스인을 일반 클래스로 사용하지 않으려면 `class` 대신 `mixin` 키워드를 사용하십시오. 예 :
 
 ```dart
 mixin Musical {
@@ -771,6 +770,12 @@ void main() {
 **Note:**  자주 사용되거나 널리 사용되는 유틸리티와 기능에 대해서는 정적 메서드 대신 최상위 함수를 사용하는 것이 좋습니다.
 
 정적 메서드를 컴파일 타임 상수로 사용할 수 있습니다. 예를 들어, 정적 메소드를 매개 변수로 상수 생성자에 전달할 수 있습니다.
+
+---
+
+이전: [예외 (Exceptions)](./exceptions.md)
+
+다음: [제네릭 (Generics)](./generics.md)
 
 ## 문서 변경 이력
 

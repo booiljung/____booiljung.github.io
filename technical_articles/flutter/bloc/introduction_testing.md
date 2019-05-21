@@ -1,3 +1,5 @@
+[Up](./index.md)
+
 # 테스트 (Testing)
 
 원문: [Bloc / Introduction / Testing](https://felangel.github.io/bloc/#/testing)
@@ -54,7 +56,7 @@ void main() {
 }
 ```
 
-**Note**: `groups`은 개별 테스트를 조직 할 뿐만 아니라, 모든 개별 테스트에 공통 `setUp` 및 `tearDown`을 공유 할 수 있는 컨텍스트를 만드는 데 사용됩니다.
+**Note**: `group`은 개별 테스트를 조직 할 뿐만 아니라, 모든 개별 테스트에 공통 `setUp` 및 `tearDown`을 공유 할 수 있는 컨텍스트를 만드는 데 사용됩니다.
 
 우리의 모든 테스트에 걸쳐 사용 될 `CounterBloc` 인스턴스를 만들어 보겠습니다.
 
@@ -86,7 +88,7 @@ group('CounterBloc', () {
 
 **Note**: 우리는`pub run test` 명령으로 모든 테스트를 실행할 수 있습니다.
 
-이 시점에서 첫 번째 합격 테스트가 있어야 합니다! 이제보다 복잡한 테스트를 작성해 보겠습니다.
+이 시점에서 첫 번째 합격 테스트가 있어야 합니다! 이제, 보다 복잡한 테스트를 작성해 보겠습니다.
 
 ```dart
 test('single Increment event updates state to 1', () {
@@ -115,3 +117,9 @@ test('single Decrement event updates state to -1', () {
 우리는 테스트를 실행하고 모두가 통과하고 있음을 볼 수 있어야 합니다.
 
 그게 다가 왔습니다. 테스트는 산들 바람에 빠져야 합니다. 우리는 코드를 수정하고 코드를 리팩터링 할 때 자신감을 가져야 합니다. (That's all there is to it, testing should be a breeze and we should feel confident when making changes and refactoring our code.)
+
+---
+
+이전: [아키텍쳐 (Architecture)](introduction_architecture.md)
+
+다음: [카운터 (Counter)](tutorials_flutter_counter.md)

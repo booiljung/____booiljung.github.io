@@ -11,7 +11,7 @@ block를 사용하려면 먼저 [Dart SDK](https://www.dartlang.org/install)를 
 Bloc은 몇가지 pub 패키지로 구성됩니다.
 
 - [bloc](https://pub.dartlang.org/packages/bloc) - 핵심 bloc 라이브러리.
-- [flutter_bloc](https://pub.dartlang.org/packages/flutter_bloc) - 신속하게 반응성 모바일 애플리케이션을 구축하기 위해 bloc으로 작업하도록 만들어진 강력한 Flutter 위젯.
+- [flutter_bloc](https://pub.dartlang.org/packages/flutter_bloc) - 신속하게 Reactive 모바일 애플리케이션을 구축하기 위해 bloc으로 작업하도록 만들어진 강력한 Flutter 위젯.
 - [angular_bloc](https://pub.dartlang.org/packages/angular_bloc) - 신속하게 반응성 웹 애플리케이션 구축하기 위해 bloc으로 작업하도록 만들어진 강력한 Angular 컴포넌트.
 
 <p id="install"/>
@@ -65,8 +65,6 @@ flutter packages get
 
 ## 임포트 (Import)
 
-Now that we have successfully installed bloc, we can create our `main.dart` and import bloc.
-
 이제 bloc을 성공적으로 설치 했으므로 `main.dart`를 만들어 bloc을 임포트 할 수 있습니다.
 
 ```dart
@@ -86,3 +84,7 @@ AngularDart 애플리케이션의 경우 angular_bloc을 가져올 수 있습니
 import 'package:bloc/bloc.dart';
 import 'package:angular_bloc/angular_bloc.dart';
 ```
+
+---
+
+다음: [왜 Bloc인가? (Why Bloc?)](introduction_why_bloc.md)

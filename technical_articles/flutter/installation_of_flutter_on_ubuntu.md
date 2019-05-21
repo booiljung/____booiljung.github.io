@@ -1,3 +1,5 @@
+[Up](./index.md)
+
 # Installation of Flutter on Ubuntu
 
 2019년 5월 14일

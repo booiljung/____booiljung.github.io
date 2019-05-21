@@ -62,6 +62,12 @@ void main() {
 }
 ```
 
+---
+
+이전: [격리 (Isolates)](./Isolates.md)
+
+다음: [메타데이터 (Metadata)](./metadata.md)
+
 ## 문서 변경 이력
 
 2019년 5월 15일: 첫 작성.

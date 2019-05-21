@@ -1,3 +1,5 @@
+[Up](./index.md)
+
 # 아키텍쳐 (Architecture)
 
 원문: [Bloc / Introduction / Architecture](https://felangel.github.io/bloc/#/architecture)
@@ -31,14 +33,14 @@ Bloc을 사용하면 애플리케이션을 세 개의 레이어로 분리 할 �
 
 ### 데이터 제공자 (Data Provide)
 
-> The data provider's responsibility is to provide raw data. The data provider should be generic and versatile.
+> 데이터 제공자의 책임은 원시 데이터를 제공하는 것입니다. 데이터 제공자는 포괄적이고 다재다능 해야 합니다.
 
-The data provider will usually expose simple APIs to perform [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations. We might have a `createData`, `readData`, `updateData`, and `deleteData` method as part of our data layer.
+데이터 제공 업체는 일반적으로 간단한 API를 제공하여 [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) 작업을 수행합니다. 우리는 데이터 레이어의 일부로 `createData`, `readData`, `updateData` 및 `deleteData` 메소드를 가질 수 있습니다.
 
 ```dart
 class DataProvider {
     Future<RawData> readData() async {
-        // Read from DB or make network request etc...
+        // DB에서 읽거나 네트워크 요청 등 ...
     }
 }
 ```
@@ -139,3 +141,10 @@ class PresentationComponent {
 ```
 
 지금까지는 코드 조각(snippet)을 몇 개 다루었지만, 모두 상당히 높은 수준이었습니다. 튜토리얼 섹션에서는 여러 가지 예제 애플리케이션을 빌드 할 때 이 모든 것을 함께 모으도록 하겠습니다.
+
+---
+
+이전: [핵심 개념 (Core Concepts)](introduction_core_concepts.md)
+
+다음: [테스트 (Testing)](introduction_testing.md)
+

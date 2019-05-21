@@ -2,11 +2,11 @@
 
 ##  예외 (Exceptions)
 
-다트 코드는 예외를 던지고 잡을 수 있습니다. 예외는 예상치 못한 일이 발생했음을 나타내는 오류를 나타냅니다. 예외를 잡지(catch) 않으면, 예외를 발생시킨 격리(isolate)가 일시 중단(suspend)되며, 일반적으로 격리(isolate) 및 해당 프로그램이 종료됩니다.
+Dart 코드는 예외를 던지고 잡을 수 있습니다. 예외는 예상치 못한 일이 발생했음을 나타내는 오류를 나타냅니다. 예외를 잡지(catch) 않으면, 예외를 발생시킨 격리(isolate)가 일시 중단(suspend)되며, 일반적으로 격리(isolate) 및 해당 프로그램이 종료됩니다.
 
-자바와 달리 다트의 모든 예외는 unchecked exceptions입니다. 메서드는 throw 할 수 있는 예외를 선언하지 않으며 예외를 catch 할 필요가 없습니다.
+Java와 달리 Dart의 모든 예외는 unchecked exceptions입니다. 메서드는 throw 할 수 있는 예외를 선언하지 않으며 예외를 catch 할 필요가 없습니다.
 
-다트는 [Exception](https://api.dartlang.org/stable/dart-core/Exception-class.html)과 [Error](https://api.dartlang.org/stable/dart-core/Error)를 제공합니다. 물론 할 수 있다면 예외를 정의할 수 있습니다. 그러나 다트 프로그램은 Exception 및 Error 객체뿐만 아니라 모든 null이 아닌 객체를 예외로 throw 할 수 있습니다.
+Dart는 [Exception](https://api.dartlang.org/stable/dart-core/Exception-class.html)과 [Error](https://api.dartlang.org/stable/dart-core/Error)를 제공합니다. 물론 할 수 있다면 예외를 정의할 수 있습니다. 그러나 다트 프로그램은 Exception 및 Error 객체뿐만 아니라 모든 null이 아닌 객체를 예외로 throw 할 수 있습니다.
 
 <p id="throw"/>
 
@@ -130,6 +130,12 @@ try {
 ```
 
 라이브러리 둘러보기의 [Exception](exceptions.md) 섹션을 읽어보십시오.
+
+---
+
+이전: [흐름 제어문 (Control flow statements)](./control_flow_statements.md)
+
+다음: [클래스 (Classes)](./classes.md)
 
 ## 문서 변경 이력
 

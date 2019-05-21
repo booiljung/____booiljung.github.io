@@ -11,7 +11,7 @@
 -  `switch` 와 `case` 
 - `assert`
 
-[Exception](exceptions.md)에서 설명한대로`try-catch`와`throw`를 사용하여 제어 흐름에 영향을 미칠 수 있습니다.
+[Exception](exceptions.md)에서 설명한대로 `try-catch`와 `throw`를 사용하여 제어 흐름에 영향을 미칠 수 있습니다.
 
 <p id="if-and-else"/>
 
@@ -44,7 +44,7 @@ for (var i = 0; i < 5; i++) {
 }
 ```
 
-다트의 for 루프의 클로저는 인덱스의 value를 포착하여 자바스크립트에서 흔히 볼 수있는 함정을 피합니다. 예를 들어 다음을 보세요.
+Dart의 for 루프의 클로저는 인덱스의 value를 포착하여 JavaScript에서 흔히 볼 수있는 함정을 피합니다. 예를 들어 다음을 보세요.
 
 ```dart
 var callbacks = [];
@@ -54,7 +54,7 @@ for (var i = 0; i < 2; i++) {
 callbacks.forEach((c) => c());
 ```
 
-예상대로 출력은 `0`이고 `1`입니다. 반대로 이 예제는 자바스크립트에서 `2`와`2`를 출력합니다.
+예상대로 출력은 `0`이고 `1`입니다. 반대로 이 예제는 Dart에서 `2`와`2`를 출력합니다.
 
 반복되는 객체가 반복 가능이라면 [forEach()](https://api.dartlang.org/stable/dart-core/Iterable/forEach.html) 메소드를 사용할 수 있습니다. `forEach()`를 사용하는 것은 현재 반복 카운터를 알 필요가 없는 경우에 좋은 옵션입니다 :
 
@@ -130,9 +130,9 @@ candidates
 
 Dart의 switch 문은 `==`를 사용하여 정수, 문자열 또는 컴파일 타임 상수를 비교합니다. 비교된 객체는 모두 같은 클래스의 인스턴스가 되어야 하며 (그 하위 타입이 아닌) 클래스는 `==`을 오버라이드해서는 안됩니다. [Enumerated types](classes.md#enumerated-types)는`switch` 문에서 잘 작동합니다.
 
-**Note:** 다트의 switch 문은 인터프리터나 스캐너와 같이 제한된 상황에서만 사용할 수 있습니다.
+**Note:** Dart의 `switch` 문은 인터프리터나 스캐너와 같이 제한된 상황에서만 사용할 수 있습니다.
 
-비어 있지 않은 `case` 절은 원칙적으로 `break` 문으로 끝납니다. 비어 있지 않은`case` 절을 끝내는 다른 유효한 방법은`continue`,`throw` 또는`return` 문입니다.
+비어 있지 않은 `case` 절은 원칙적으로 `break` 문으로 끝납니다. 비어 있지 않은 `case` 절을 끝내는 다른 유효한 방법은 `continue`, `throw` 또는 `return` 문입니다.
 
 `case` 절이 일치하지 않을 때 코드를 실행하려면 `default` 절을 사용하십시오 :
 
@@ -174,7 +174,7 @@ switch (command) {
 }
 ```
 
-그러나 다트는 빈 `case` 절을 지원하여 fall-through의 한 형태를 허용합니다.
+그러나 Dart는 빈 `case` 절을 지원하여 fall-through의 한 형태를 허용합니다.
 
 ```dart
 var command = 'CLOSED';
@@ -234,6 +234,12 @@ assert(urlString.startsWith('https'),
 ```
 
 `assert`의 첫 번째 인수는 부울 값으로 해석되는 모든 표현식이 될 수 있습니다. 표현식의 값이 `true`이면 어설션이 성공하고 실행이 계속됩니다. false 인 경우, 어설션이 실패하고 예외 ([AssertionError](https://api.dartlang.org/stable/dart-core/AssertionError-class.html))가 발생합니다.
+
+---
+
+이전: [연산자 (Operators)](./operators.md)
+
+다음: [예외 (Exceptions)](./exceptions.md)
 
 ## 문서 변경 이력
 

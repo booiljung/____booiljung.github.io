@@ -38,7 +38,7 @@ assert(lineCount == null);
 
 #### Final과 const
 
-변수의 값을 변경하지 않으려면 `var` 대신 또는 타입에 `final` 또는 `const`를 사용합니다. `final` 변수는 한 번만 설정할 수 있습니다. `const` 변수는 컴파일 타임 상수입니다. (const 변수는 암시적으로 final 변수입니다.) 최종 최상위 또는 클래스 변수는 처음 사용될 때 초기화됩니다.
+변수의 값을 변경하지 않으려면 `var` 대신 또는 타입에 `final` 또는 `const`를 사용합니다. `final` 변수는 한 번만 설정할 수 있습니다. `const` 변수는 컴파일 타임 상수입니다. (`const` 변수는 암시적으로 `final` 변수입니다.) `final` 최상위 또는 클래스 변수는 처음 사용될 때 초기화됩니다.
 
 ```sh
 final name = 'Bob';
@@ -51,7 +51,7 @@ final String nickname = 'Bobby';
 name = 'Alice'; // 오류!
 ```
 
-`const`는 컴파일 타임 상수입니다. const 변수가 클래스 수준에 있으면 정적 `const`로 표시합니다. 변수를 선언 할 때 숫자 또는 문자열 리터럴, `const` 변수 또는 상수에 대한 산술 연산의 결과와 같은 컴파일 타임 상수로 값을 설정합니다.
+`const`는 컴파일 타임(compile-time) 상수입니다. `const` 변수가 클래스 수준에 있으면 정적 `const`로 표시합니다. 변수를 선언 할 때 숫자 또는 문자열 리터럴, `const` 변수 또는 상수에 대한 산술 연산의 결과와 같은 컴파일 타임 상수로 값을 설정합니다.
 
 ```dart
 const bar = 1000000; // 압력 단위 (dynes/cm2)
@@ -79,6 +79,12 @@ foo = [1, 2, 3]; // Was const []
 ```dart
 baz = [42]; // 오류!
 ```
+
+---
+
+이전: [시작하기 (Getting started)](./getting_started.md)
+
+다음: [내장 타입 (Built in types)](./built_in_types.md)
 
 ## 문서 변경 이력
 

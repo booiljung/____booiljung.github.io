@@ -2,7 +2,7 @@
 
 ##  비동기 지원 (Asynchrony support)
 
-다트 라이브러리는 [Future](#handling-futures) 또는 [Stream](#handling-streams)개체를 반환하는 함수로 가득합니다.  이러한 함수는 **비동기(asynchrony)**입니다. 시간이 많이 소요되는 작업 (예: I/O)을 설정 한 후 해당 작업이 완료 될 때까지 기다리지 않고 반환됩니다.
+Dart 라이브러리는 [Future](#handling-futures) 또는 [Stream](#handling-streams)개체를 반환하는 함수로 가득합니다.  이러한 함수는 **비동기(asynchrony)**입니다. 시간이 많이 소요되는 작업 (예: I/O)을 설정 한 후 해당 작업이 완료 될 때까지 기다리지 않고 반환됩니다.
 
 `async` 및 `await` 키워드는 비동기 프로그래밍을 지원하므로 동기 코드와 비슷한 비동기 코드를 작성할 수 있습니다.
 
@@ -21,7 +21,7 @@
 await lookUpVersion();
 ```
 
-`await`을 사용하려면 코드가 `async`로 표시된 async 함수에 있어야 합니다.
+`await`을 사용하려면 코드가 `async`로 표시된 비동기 함수에 있어야 합니다.
 
 ```dart
 Future checkVersion() async {
@@ -50,7 +50,7 @@ var exitCode = await runExecutable(entrypoint, args);
 await flushThenExit(exitCode);
 ```
 
-`await expression`에서 `expression`의 값은 대개 `Future`입니다; 그렇지 않은 경우 값은 자동으로 `Future`에 래핑됩니다. 이 `Future` 객체는 객체를 반환하겠다는 약속을 나타냅니다. `await expression`의 값은 반환 된 객체입니다. 표현식을 기다리면 해당 객체를 사용할 수 있을 때까지 실행이 일시 중지됩니다.
+`await 표현식`에서 `표현식`의 값은 대개 `Future`입니다; 그렇지 않은 경우 값은 자동으로 `Future`에 래핑됩니다. 이 `Future` 객체는 객체를 반환하겠다는 약속을 나타냅니다. `await 표현식`의 값은 반환된 객체입니다. 표현식을 기다리면 해당 객체를 사용할 수 있을 때까지 실행이 일시 중지됩니다.
 
 **await을 사용할 때 컴파일 타임 오류가 발생하면 비동기 함수를 기다려야합니다.** 예를 들어 앱의 `main ()`함수에서`await`을 사용하려면 `main ()`의 본문을 `async`로 표시해야 합니다:
 
@@ -89,7 +89,7 @@ Future<String> lookUpVersion() async => '1.0.0';
 
 스트림에서 값을 가져와야 하는 경우 두 가지 옵션이 있습니다.
 
-- 루프에서 `async`와 asynchronous를 사용합니다. (`await for`).
+- 루프에서 `async`와 `await for`를 사용합니다.
 - 스트림 API를 사용합니다. 이것은 [in the library tour](https://dart.dev/guides/libraries/library-tour#stream)에 설명되어 있습니다.
 
 **Note:** `await for`를 사용하기 전에, 코드가 명확 해지고 실제로 모든 스트림 결과를 기다리고 싶는지 확인하십시오. 예를 들어 UI 프레임 워크는 무한한 이벤트 흐름을 보내기 때문에 일반적으로 UI 이벤트 리스너에 대해 `await for`를 사용하지 않아야 합니다.
@@ -108,7 +108,7 @@ await for (varOrType identifier in expression) {
 2. 해당 도출(emitted)된 값에 설정된 변수로 for 루프 본문을 실행하십시오.
 3. 스트림이 닫힐 때까지 1과 2를 반복합니다.
 
-스트림을 듣는 것을 멈추려면 for 루프와 unsubscribes를 스트림에서 분리하는`break` 또는`return` 문을 사용할 수 있습니다.
+스트림을 듣는 것을 멈추려면 for 루프와 unsubscribes를 스트림에서 분리하는 `break` 또는 `return` 문을 사용할 수 있습니다.
 
 **비동기 for 루프를 구현할 때 컴파일 타임 오류가 발생하면 기다리는 것이 비동기 함수인지 확인하십시오.** 예를 들어, 앱의`main()`함수에서 비동기 for 루프를 사용하려면 `main()`의 본문을 `async`로 표시해야 합니다 :
 
@@ -123,6 +123,12 @@ Future main() async {
 ```
 
 비동기 프로그래밍에 대한 자세한 내용은 일반적으로 라이브러리 둘러보기의 [dart:async](https://dart.dev/guides/libraries/library-tour#dartasync---asynchronous-programming) 섹션을 참조하십시오.
+
+---
+
+이전: [라이브러리와 가시성 (Libraries and visibility)](./libraries_and_visibility.md)
+
+다음: [제너레이터 (Generators)](./generators.md)
 
 ## 문서 변경 이력
 

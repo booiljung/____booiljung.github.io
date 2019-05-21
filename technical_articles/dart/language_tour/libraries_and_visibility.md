@@ -106,6 +106,12 @@ Future greet() async {
 - `part` 지시자를 사용하는 방법.
 - `librariy` 지시자를 사용하는 시기.
 
+---
+
+이전: [제네릭 (Generics)](./generics.md)
+
+다음: [비동기 지원 (Asynchorony support)](./asynchrony_support.md)
+
 ## 문서 변경 이력
 
 2019년 5월 15일: 첫 작성.

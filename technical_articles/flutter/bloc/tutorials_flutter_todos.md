@@ -1,3 +1,5 @@
+[Up](./index.md)
+
 # Flutter Todos Tutorials
 
 원문: [Bloc / Tutorial / Todos](https://felangel.github.io/bloc/#/fluttertodostutorial)
@@ -1963,3 +1965,9 @@ class TodosApp extends StatelessWidget {
 그게 전부입니다! 우리는 이제 [bloc](https://pub.dartlang.org/packages/bloc) 및 [flutter_bloc](https://pub.dartlang.org/packages/flutter_bloc)을 사용하여 Flutter 로 todos 앱을 성공적으로 구현했습니다. 우리는 프레젠테이션 레이어와 비지니스 로직 레이어를 성공적으로 분리했습니다.
 
 이 예제의 전체 소스는 [여기](https://github.com/felangel/Bloc/tree/master/examples/flutter_todos)에 있습니다.
+
+---
+
+이전:
+
+다음:

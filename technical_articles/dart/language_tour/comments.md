@@ -73,6 +73,10 @@ class Llama {
 
 다트 코드를 파싱하고 HTML 문서를 생성하려면 SDK의 [documentation generation tool](https://github.com/dart-lang/dartdoc#dartdoc)를 사용할 수 있습니다. 생성 된 문서의 예는 [Dart API documentation](https://api.dartlang.org/stable)을 보세요. 주석을 구조화 하는 방법에 대한 조언은 [Guidelines for Dart Doc Comments.](https://dart.dev/guides/language/effective-dart/documentation)를 보세요.
 
+---
+
+이전: [메타데이터 (Metadata)](./metadata.md)
+
 ## 문서 변경 이력
 
 2019년 5월 15일: 첫 작성.

@@ -23,7 +23,8 @@
 - [타입 정의 (Typedefs)](./typedefs.md)
 - [메타데이터 (Metadata)](./metadata.md)
 - [주석 (Comments)](./comments.md)
-- 이 페이지는 다트 언어에서 일반적으로 사용되는 기능을 요약 한 것입니다. 더 많은 기능이 구현되고 있지만 기존 코드를 손상시키지 않을 것으로 기대합니다. 자세한 내용은 [다트 언어 사양](https://dart.dev/guides/language/spec) 및 [이펙티브 다트](https://dart.dev/guides/language/effective-dart)를 참조하십시오. 다트의 핵심 라이브러리에 대한 자세한 내용은 [다트 라이브러리 둘러보기](https://dart.dev/guides/libraries/library-tour)를 참조하십시오.
+
+이 페이지는 다트 언어에서 일반적으로 사용되는 기능을 요약 한 것입니다. 더 많은 기능이 구현되고 있지만 기존 코드를 손상시키지 않을 것으로 기대합니다. 자세한 내용은 [다트 언어 사양](https://dart.dev/guides/language/spec) 및 [이펙티브 다트](https://dart.dev/guides/language/effective-dart)를 참조하십시오. 다트의 핵심 라이브러리에 대한 자세한 내용은 [다트 라이브러리 둘러보기](https://dart.dev/guides/libraries/library-tour)를 참조하십시오.
 
 ## 문서 변경 이력
 

@@ -50,8 +50,6 @@ enum CounterEvent { increment, decrement }
 
 사용자가 카운터 앱과 상호 작용할 때 카운터의 상태를 업데이트하는 `Increment` 및 `Decrement` 이벤트를 트리거합니다. 이러한 모든 상태 변화는 일련의 `Transitions`으로 설명 할 수 있습니다.
 
-For example, if a user opened our app and tapped the increment button once we would see the following `Transition`.
-
 예를 들어 사용자가 앱을 열고, 증분 버튼을 한번 탭하면, 우리는 다음과 같은 `Transition` 을 보게 됩니다.
 
 ```json
@@ -62,7 +60,7 @@ For example, if a user opened our app and tapped the increment button once we wo
 }
 ```
 
-모든 상태 변경이 기록되기 때문에, 우리는 앱을 매우 쉽게 측정하고, 모든 사용자 상호 작용 및 상태 변경을 한 곳에서 추적 할 수 있습니다. 또한, 이는 시간-이동 디버깅(time-travel debugging)과 같은 것을 가능하게 합니다.
+모든 상태 변경이 기록되기 때문에, 우리는 앱을 매우 쉽게 측정하고, 모든 사용자 상호 작용 및 상태 변경을 한 곳에서 추적 할 수 있습니다. 또한, 이는 시간-여행 디버깅(time-travel debugging)과 같은 것을 가능하게 합니다.
 
 <p id="stream"/>
 
@@ -123,10 +121,8 @@ void main() async {
 
 ## Blocs
 
-> Bloc (Business Logic Component)은 들어오는 `Events`의 `Stream`을 나가는 `States`의 `Stream`으로 변환 하는 컴포넌트 입니다. Bloc을 위에서 설명한 "두뇌"라고 생각하십시오.
+> Bloc (Business Logic Component)은 들어오는 이벤트의 `Stream`을 나가는 상태의 `Stream`으로 변환 하는 컴포넌트 입니다. Bloc을 위에서 설명한 "두뇌"라고 생각하십시오.
 
-> Every Bloc must extend the base `Bloc` class which is part of the core bloc package.
->
 > 모든 Bloc은 core bloc package의 일부인 기본 'bloc' 클래스를 확장해야 합니다.
 
 ```dart
@@ -137,7 +133,7 @@ class CounterBloc extends Bloc<CounterEvent, int> {
 }
 ```
 
-위의 코드 조각에서, 우리는 `CounterBloc`을 `CounterEvents`를 `ints`로 변환하는 Bloc으로 선언하고 있습니다.
+위의 코드 조각에서, 우리는 `CounterBloc`이 `CounterEvents`를 `int`로 변환하는 Bloc으로 선언하고 있습니다.
 
 > 모든 Bloc은 이벤트가 수신되기 전의 상태인 초기 상태(initial state)를 정의해야 합니다.
 
@@ -148,7 +144,7 @@ class CounterBloc extends Bloc<CounterEvent, int> {
 int get initialState => 0;
 ```
 
-모든 Bloc은 `mapEventToState`라는 함수를 구현해야 합니다. 이 함수는 들어오는 `event`를 인수로 취해서 프리젠테이션 레이어가 소비하는 새로운 `states`의 `Stream`을 반환해야 합니다. 우리는 `currentState` 속성을 사용하여 언제든지 현재 Bloc 상태에 접근 할 수 있습니다.
+모든 Bloc은 `mapEventToState`라는 함수를 구현해야 합니다. 이 함수는 들어오는 `event`를 인수로 취해서 프리젠테이션 레이어가 소비하는 새로운 상태의 `Stream`을 반환해야 합니다. 우리는 `currentState` 속성을 사용하여 언제든지 현재 Bloc 상태에 접근 할 수 있습니다.
 
 ```dart
 @override
@@ -164,7 +160,7 @@ Stream<int> mapEventToState(CounterEvent event) async* {
 }
 ```
 
-이 시점에서, 우리는 완전히 작동(fully functioning)하는 `CounterBloc`을 가지고 있습니다.
+이 시점에서, 우리는 완전히 동작하는 `CounterBloc`을 가지고 있습니다.
 
 ```dart
 import 'package:bloc/bloc.dart';
@@ -189,11 +185,11 @@ class CounterBloc extends Bloc<CounterEvent, int> {
 }
 ```
 
-Bloc은 중복된 상태를 무시합니다. Bloc이 `currentState == state` 인 `State state`를 산출하면, 전환은 일어나지 않고`Stream <State>`에 대한 변경은 일어나지 않을 것입니다.
+Bloc은 중복된 상태를 무시합니다. Bloc이 `currentState == state` 인 `state`를 산출하면, 전환은 일어나지 않고 `Stream<State>`에 대한 변경은 일어나지 않을 것입니다.
 
-이 시점에서 궁금한 점은 *"어떻게 이벤트 블록을 알릴 수 있습니까?"*.
+이 시점에서 궁금한 점은 *"*How do I notify a Bloc of an event?"
 
-> 모든 Bloc에는 `dispatch` 메소드가 있습니다. `Dispatch`는 `event`를 취해 `mapEventToState`를 트리거 합니다. `Dispatch`는 프리젠 테이션 계층에서 호출되거나 Bloc 내에서 호출 될 수 있으며 새로운 `event`가 Bloc에 통지됩니다.
+> 모든 Bloc에는 `dispatch` 메소드가 있습니다. `dispatch`는 `event`를 취해 `mapEventToState`를 트리거 합니다. `dispatch`는 프리젠테이션 계층에서 호출되거나, Bloc 내에서 호출 될 수 있으며 새로운 `event`가 Bloc에 통지 됩니다.
 
 우리는 0에서 3까지 세는 간단한 애플리케이션을 생성 할 수 있습니다.
 
@@ -227,6 +223,8 @@ void main() {
 }
 ```
 
+입니다.
+
 불행하게도, 현재 상태에서 우리는 `onTransition`을 재정의(override)하지 않는 한 이러한 트랜지션을 볼 수 없을 것입니다.
 
 > `onTransition`은 모든 로컬 Bloc `Transition`을 핸들링 하기 위해 재정의 될 수 있는 메소드 입니다. `onTransition`은 Bloc의 `state`가 업데이트 되기 전에 호출 됩니다.
@@ -246,7 +244,7 @@ void onTransition(Transition<CounterEvent, int> transition) {
 
 > `onError`는 모든 로컬 Bloc `Exception`을 처리하기 위해 재정의 될 수 있는 메소드 입니다. 기본적으로 모든 예외는 무시되고 ` `Bloc`기능은 영향을 받지 않습니다.
 
-**Note**: 상태 스트림이 `StackTrace`없이 에러를 수신하면 `stacktrace` 인수는 `null`이 될 수 있습니다.
+**Note**: 상태 스트림이 `StackTrace` 없이 에러를 수신하면  stacktrace 인수는 `null`이 될 수 있습니다.
 
 **Tip**: `onError` 은 bloc 전용 에러 핸들링을 넣을 수 있는 좋은 위치 입니다.
 
@@ -263,7 +261,7 @@ void onError(Object error, StackTrace stackTrace) {
 
 ## BlocDelegate
 
-Bloc을 사용하는데 하나의 추가 보너스는 우리가 한 곳에서 모든 `Transitions`에 액세스 할 수 있다는 것입니다. 이 애플리케이션에는 하나의 Bloc만 있지만 많은 응용 프로그램에서는 많은 Bloc이 애플리케이션 상태의 다른 부분을 관리하는 것이 공통적입니다.
+Bloc을 사용하는데 또 하나의 이익은 우리가 한 곳에서 모든 `Transitions`에 액세스 할 수 있다는 것입니다. 이 애플리케이션에는 하나의 Bloc만 있지만 많은 응용 프로그램에서는 많은 Bloc이 애플리케이션 상태의 다른 부분을 관리하는 것이 공통적입니다.
 
 우리가 모든 `Transition`에 대응하여 무언가를 할 수 있기를 원한다면 우리는 단순히 우리 자신의 `BlocDelegate`을 만들 수 있습니다.
 
@@ -310,7 +308,7 @@ class SimpleBlocDelegate extends BlocDelegate {
 }
 ```
 
-Bloc에 던져진 모든 `Exceptions`에 대한 응답으로 무언가를 할 수 있기를 원하면 `SimpleBlocDelegate`의 `onError` 메소드를 오버라이드 할 수 있습니다.
+Bloc에 던져진 모든 `Exceptions`에 대한 응답으로 무언가를 할 수 있기를 원하면 `SimpleBlocDelegate`의 `onError` 메소드를 재정의 할 수 있습니다.
 
 ```dart
 class SimpleBlocDelegate extends BlocDelegate {
@@ -334,4 +332,10 @@ class SimpleBlocDelegate extends BlocDelegate {
 }
 ```
 
-**Note**: `BlocSupervisor`는 모든 `Blocs`를 감독하고 `BlocDelegate`에 책임을 위임하는 싱글톤입니다.
+**Note**: `BlocSupervisor`는 모든 `Bloc`들을 감독하고 `BlocDelegate`에 책임을 위임하는 싱글톤입니다.
+
+---
+
+이전: [왜 Bloc인가? (Why Bloc?)](introduction_why_bloc.md)
+
+다음: [아키텍쳐 (Architecture)](introduction_architecture.md)

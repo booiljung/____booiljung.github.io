@@ -2,7 +2,7 @@
 
 ## 함수 (Functions)
 
-다트는 진정한 객체 지향 언어이므로 함수도 객체이며 타입이 `Function`입니다. 즉, 함수를 변수에 할당하거나 다른 함수에 인수로 전달할 수 있습니다. 다트 클래스의 인스턴스를 함수처럼 호출 할 수도 있습니다. 자세한 내용은 Callable 클래스를 참조하십시오.
+Dart는 진정한 객체 지향 언어이므로 함수도 객체이며 타입이 `Function`입니다. 즉, 함수를 변수에 할당하거나 다른 함수에 인수로 전달할 수 있습니다. Dart 클래스의 인스턴스를 함수처럼 호출 할 수도 있습니다. 자세한 내용은 Callable 클래스를 참조하십시오.
 
 다음은 함수 구현의 예입니다.
 
@@ -12,7 +12,7 @@ bool isNoble(int atomicNumber) {
 }
 ```
 
-**이펙티브 다트**는 [type annotations for public APIs](https://dart.dev/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious) 를 권장하지만이 타입을 생략하여도 함수가 계속 작동합니다.
+**Effective Dart**는 [type annotations for public APIs](https://dart.dev/guides/language/effective-dart/design#prefer-type-annotating-public-fields-and-top-level-variables-if-the-type-isnt-obvious) 를 권장하지만이 타입을 생략하여도 함수가 계속 작동합니다.
 
 ```dart
 isNoble(atomicNumber) {
@@ -26,7 +26,7 @@ isNoble(atomicNumber) {
 bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 ```
 
-`=> 표현식` 문법은`{ return 표현식; }`의 약식입니다. `=>`표기법은 때로 화살 구문이라고도 합니다.
+`=> 표현식` 문법은`{ return 표현식; }`의 약식입니다. `=>`표기법은 때로 화살 구문(arrow syntax)이라고도 합니다.
 
 ---
 
@@ -48,7 +48,7 @@ bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 enableFlags(bold: true, hidden: false);
 ```
 
-함수를 정의 할 때 `{param1, param2, ...}`를 사용하여 명명 된 매개 변수를 지정하세요. :
+함수를 정의 할 때 `{param1, param2, ...}`를 사용하여 명명된 매개 변수를 지정하세요. :
 
 ```dart
 /// Sets the [bold] and [hidden] flags ...
@@ -57,13 +57,13 @@ void enableFlags({bool bold, bool hidden}) {...}
 
 [Flutter](https://flutter.dev) 인스턴스 생성 표현식은 복잡해질 수 있으므로 위젯 생성자는 명명된 매개 변수를 독점적으로 사용합니다. 이렇게하면 인스턴스 작성 표현식을 읽기 쉽게 만듭니다.
 
-[`@required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)를 사용하여 임의의 다트 코드 (Flutter뿐 아니라)에서 명명 된 매개 변수에 주석을 달아 필수 매개 변수임을 나타낼 수 있습니다. 예 :
+[`@required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)를 사용하여 임의의 Dart 코드 (Flutter뿐 아니라)에서 명명 된 매개 변수에 주석을 달아 필수 매개 변수임을 나타낼 수 있습니다. 예 :
 
 ```dart
 const Scrollbar({Key key, @required Widget child})
 ```
 
-`Scrollbar`가 생성 될 때, 분석기는`child` 인자가 없을 때 이슈를 보고합니다.
+`Scrollbar`가 생성 될 때, 분석기는 `child` 인자가 없을 때 이슈를 보고합니다.
 
 [`Required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)는 [meta](https://pub.dev/packages/meta) 패키지에 정의되어 있습니다. `package:meta/meta.dart`를 직접 가져 오거나 Flutter의`package:flutter/material.dart`와 같이`meta`를 내보내는 또 다른 패키지를 가져 오십시오.
 
@@ -114,7 +114,7 @@ enableFlags(bold: true);
 
 > 지원 중단 노트 :
 >
-> 이전 코드는`=` 대신 콜론 (`:`)을 사용하여 명명 된 매개 변수의 기본값을 설정할 수 있습니다. 이유는 원래는 명명 된 매개 변수에 대해서만 `:`만이 지원 되었기 때문입니다. 이 지원은 더 이상 사용되지 않으므로 `=`를 사용하여 기본값을 지정하는 것이 좋습니다.
+> 이전 코드는 `=` 대신 콜론 (`:`)을 사용하여 명명 된 매개 변수의 기본값을 설정할 수 있습니다. 이유는 원래는 명명 된 매개 변수에 대해서만 `:`만이 지원 되었기 때문입니다. 이 지원은 더 이상 사용되지 않으므로 `=`를 사용하여 기본값을 지정하는 것이 좋습니다.
 
 다음 예제는 위치 매개 변수의 기본값을 설정하는 방법을 보여줍니다.
 
@@ -239,7 +239,7 @@ list.forEach((item) {
 
 <iframe src="https://dartpad.dartlang.org/embed-inline.html?id=5d70bc1889d055c7a18d35d77874af88&amp;verticalRatio=60" style="border: 1px solid #ccc;" width="100%" height="250px">
 </iframe>
-함수에 하나의 명령문만 있으면 화살 표기법 `=>`을 사용하여 명령문을 단축 할 수 있습니다. [다트 패드](https://dartpad.dartlang.org/)에 다음 줄을 붙여 넣고 실행을 클릭하여 기능상으로 동등한 지 확인하십시오.
+함수에 하나의 명령문만 있으면 화살 표기법 `=>`을 사용하여 명령문을 단축 할 수 있습니다. [DartPad](https://dartpad.dartlang.org/)에 다음 줄을 붙여 넣고 실행을 클릭하여 기능상으로 동등한 지 확인하십시오.
 
 ```dart
 list.forEach(
@@ -353,6 +353,12 @@ foo() {}
 
 assert(foo() == null);
 ```
+
+---
+
+이전: [내장 타입 (Built in types)](./built_in_types.md)
+
+다음: [연산자 (Operators)](./operators.md)
 
 ## 문서 변경 이력
 

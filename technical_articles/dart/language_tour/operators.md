@@ -20,7 +20,7 @@
 | 항등 equality                                | `==` `!=`                                                    |
 | 논리 곱 logical AND                          | `&&`                                                         |
 | 논리 합 logical OR                           | `||`                                                         |
-| 널인가 if null                               | `??`                                                         |
+| 널 테스트 if null                            | `??`                                                         |
 | 조건 condition                               | `표현식1 ? 표현식2 : 표현식3`                                |
 | 캐스케이드 cascade                           | `..`                                                         |
 | 대입 assignment                              | `=` `=` `/=` `+=` `-=` `&=` `^=` etc...                      |
@@ -112,14 +112,14 @@ assert(a != b); // -1 != 0
 
 다음 표는 항등 및 관계 연산자의 의미를 나열합니다.
 
-| Operator | Meaning                     |
-| -------- | --------------------------- |
-| `==`     | Equal; see discussion below |
-| `!=`     | Not equal                   |
-| `>`      | Greater than                |
-| `<`      | Less than                   |
-| `>=`     | Greater than or equal to    |
-| `<=`     | Less than or equal to       |
+| Operator | Meaning       |
+| -------- | ------------- |
+| `==`     | 같은가        |
+| `!=`     | 다른가        |
+| `>`      | 큰가          |
+| `<`      | 작은가        |
+| `>=`     | 크거나 같은가 |
+| `<=`     | 작거나 같은가 |
 
 두 객체 x와 y가 같은 것을 나타내는지 테스트하려면 `==` 연산자를 사용하세요. 두 개의 객체가 정확히 동일한 객체인지 여부를 알아야하는 경우는 [`identical()`](https://api.dartlang.org/stable/dart-core/identical.html) 함수를 대신 사용하세요. 다음은 `==` 연산자가 작동하는 방식입니다 :
 
@@ -149,7 +149,7 @@ assert(2 <= 3);
 | `is`     | 객체가 지정된 타입을 갖는 경우 참                            |
 | `is!`    | 객체에 지정된 타입이 있는 경우 거짓                          |
 
-`obj is T`의 결과는`obj`가`T`에 의해 지정된 인터페이스를 구현하면 `true`입니다. 예를 들어 `obj is Object`는 항상 `true`입니다.
+`obj is T`의 결과는 `obj`가 `T`에 의해 지정된 인터페이스를 구현하면 `true`입니다. 예를 들어 `obj is Object`는 항상 `true`입니다.
 
 `as` 연산자를 사용하여 객체를 특정 타입으로 변환하세요. 일반적으로, 그 객체를 사용하는 표현식 다음에 오는 객체에 대한 `is` 테스트의 단축으로 사용해야합니다. 예를 들어 다음 코드를 보겠습니다.
 
@@ -263,9 +263,9 @@ assert((value >> 4) == 0x02); // Shift right
 
 - `표현식1 ?? 표현식2`
 
-  expr1 가 `null`가 아닌 경우는, 그 값을 돌려 줍니다. 그렇지 않으면 `표현식2 ` 값을 평가하여 리턴합니다.
+  `표현식1` 가 `null`가 아닌 경우는, 그 값을 돌려 줍니다. 그렇지 않으면 `표현식2 ` 값을 평가하여 리턴합니다.
 
-부울 식을 기반으로 값을 지정해야하는 경우`?:`를 사용합니다.
+부울 식을 기반으로 값을 지정해야하는 경우 `?:`를 사용합니다.
 
 ```dart
 var visibility = isPublic ? 'public' : 'private';
@@ -358,6 +358,12 @@ sb.write('foo')
 | `[]`     | List access               | 리스트의 지정된 색인에 있는 값을 참조합니다.                 |
 | `.`      | Member access             | 표현식의 속성을 참조합니다. 예 :`foo.bar`는 표현식`foo`에서 속성`bar`을 선택합니다. |
 | `?.`     | Conditional member access | `.`과 비슷하지만 맨 왼쪽 피연산자는 null 일 수 있습니다. 예 :`foo?.bar`는`foo`가 null이 아닌 한 표현식`foo`에서 속성`bar`를 선택합니다 (이 경우`foo?.bar`의 값은 null입니다) |
+
+---
+
+이전: [함수 (Functions)](./functions.md)
+
+다음: [흐름 제어문 (Control flow statements)](./control_flow_statements.md)
 
 ## 문서 변경 이력
 

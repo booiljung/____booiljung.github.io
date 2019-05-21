@@ -1,3 +1,5 @@
+[Up](./index.md)
+
 # Flutter 무한 리스트 튜터리얼 (Flutter Infinite List Tutorial)
 
 원문: [Bloc / Tutorials / Flutter / Infinite List](https://felangel.github.io/bloc/#/flutterinfinitelisttutorial)
@@ -12,7 +14,7 @@
 
 ## 준비 (Setup)
 
-우리는 새로운 Flutter 프로젝트를 만드는 것으로 시작합니다.
+우리는 새 이름으로 Flutter 프로젝트를 만드는 것으로 시작합니다.
 
 ```bash
 flutter create flutter_infinite_list
@@ -58,7 +60,7 @@ flutter packages get
 
 jsonplaceholder는 가짜 데이터를 제공하는 온라인 REST API입니다. 프로토 타입 제작에 매우 유용합니다.
 
-브라우저에서 새 탭을 열고 <https://jsonplaceholder.typicode.com/posts?_start=0&_limit=2>를 방문하여 API가 반환하는 내용을 확인하십시오.
+브라우저에서 새 탭을 열고 <https://jsonplaceholder.typicode.com/posts?_start=0&_limit=2>를 방문하여 API가 반환하는 내용을 확인하세요.
 
 ```json
 [
@@ -106,21 +108,19 @@ class Post extends Equatable {
 
 우리는 `toString` 함수를 재정의하여 나중에 `Post`를 사용자 정의 문자열로 표현합니다.
 
-우리는 [`Equatable`](https://pub.dartlang.org/packages/equatable)을 확장하여 `Posts`를 비교할 수 있습니다; 항등 연산자(equality operator)는 기본적으로 `this`와 `other`가 같은 인스턴스 인 경우에만 `true`를 반환합니다.
+우리는 [`Equatable`](https://pub.dartlang.org/packages/equatable)을 확장하여 `Post`를 비교할 수 있습니다; 항등 연산자(equality operator)는 기본적으로 `this`와 `other`가 같은 인스턴스 인 경우에만 `true`를 반환합니다.
 
-Now that we have our `Post` object model, let’s start working on the Business Logic Component (bloc).
-
-이제 우리는 `Post` 객체 모델을 가지므로, Business Logic Component (bloc)에 대한 작업을 시작합시다.
+이제 우리는 `Post` 객체 모델을 가지므로, Business Logic Component (bloc)에 대한 작업을 시작 합니다.
 
 <p id="post-event"/>
 
-## Post Event
+## PostEvent
 
 구현에 들어가기 전에, 우리는 `PostBloc`이 무엇을 할 것인지를 정의 할 필요가 있습니다.
 
 상위 레벨에서는 사용자 입력 (스크롤링)에 응답하고 더 많은 `Post`을 가져 와서 프리젠테이션 레이어가 표시하도록합니다. 우리의 `Event`를 만들어 보겠습니다.
 
-우리의 `PostBloc`은 표시할 `Post`가 더 필요할 때마다 프리젠테이션 레이어에 의해 디스패치 될 `Fetch` 한 이벤트에만 응답 할 것입니다. 우리의 `Fetch` 이벤트는 `PostEvent`의 한 타입이기 때문에 `bloc/post_event.dart`를 만들고 이벤트를 구현할 수 있습니다.
+우리의 `PostBloc`은 표시할 `Post`가 더 필요할 때마다 프리젠테이션 레이어에 의해 보낼  `Fetch` 한 이벤트에만 응답 할 것입니다. 우리의 `Fetch` 이벤트는 `PostEvent`의 한 타입이기 때문에 `bloc/post_event.dart`를 만들고 이벤트를 구현할 수 있습니다.
 
 ```dart
 import 'package:equatable/equatable.dart';
@@ -133,23 +133,23 @@ class Fetch extends PostEvent {
 }
 ```
 
-다시 말하지만, 우리는 우리 이벤트의 문자열 표현을 읽기 쉽게하기 위해 `toString`을 오버라이드하고 있습니다. 다시, 인스턴스를 비교할 수 있도록 [`Equatable`](https://pub.dartlang.org/packages/equatable)을 확장합니다.
+다시 말하지만, 우리는 우리 이벤트의 문자열 표현을 읽기 쉽게 하기 위해 `toString`을 재정의하고 있습니다. 다시, 인스턴스를 비교할 수 있도록 [`Equatable`](https://pub.dartlang.org/packages/equatable)을 확장합니다.
 
 요약하자면, 우리의 `PostBloc`은 `PostEvents`를 받고 `PostStates`로 변환 할 것입니다. 우리는 `PostEvents` (Fetch)를 모두 정의 했으므로 다음으로 `PostState`를 정의 하겠습니다.
 
-<p id="post-state"/>
+<p id="poststate"/>
 
-## Post States
+## PostState (Post States)
 
 우리의 프리젠테이션 레이어는 스스로를 적절히 배치하기 위해 여러 가지 정보가 필요합니다.
 
-- `PostUninitialized`-  `Post`의 첫 배치(batch)가 로드되는 동안 로드 표시기를 렌더링하는 데 필요한 프리젠테이션 계층에 알립니다.
-- `PostLoaded`- 프리젠테이션 레이어에 렌더링 할 내용이 있음을 알립니다.
-  - `posts`- 표시 될 `List <Post>`가 될 것입니다.
-  - `hasReachedMax`- 프리젠테이션 레이어에 최대 개수의 `Post`에 도달했는지 여부를 알립니다.
-- `PostError`- `Post`를 가져 오는 동안 오류가 발생했다고 프리젠테이션 레이어에 알립니다.
+- `PostUninitialized`-  게시물의 초기 배치가 로드 되는 동안 로딩 인디케이터를 렌더링할 수 있도록 프리젠테이션 레이어에 알림.
+- `PostLoaded`- 프리젠테이션 레이어에 렌더링 할 내용이 있음을 알림
+  - `posts`- 표시 될 `List<Post>`
+  - `hasReachedMax`- 프리젠테이션 레이어에 최대 개수의 `Post`에 도달했는지 여부를 알림
+- `PostError`- `Post`를 가져 오는 동안 오류가 발생했다고 프리젠테이션 레이어에 알림
 
-이제 우리는`bloc/post_state.dart` 파일을 만들고 그렇게 구현할 수 있습니다.
+이제 우리는 `bloc/post_state.dart` 파일을 만들고 아래와 같이 구현할 수 있습니다.
 
 ```dart
 import 'package:equatable/equatable.dart';
@@ -199,18 +199,18 @@ class PostLoaded extends PostState {
 
 이제 `Events`와 `States`가 구현되었으므로 `PostBloc`을 만들 수 있습니다.
 
-하나의 import로 상태와 이벤트를 import 할 수있게 하기 위해서 우리는 `bloc/bloc.dart`를 생성 할 수 있습니다 (다음 절에서 `post_bloc.dart` export를 추가 할 것입니다).
+하나의 import로 상태와 이벤트를 import 할 수있게 하기 위해서 우리는 배럴 파일 `bloc/bloc.dart`를 생성 할 수 있습니다 (다음 절에서 `post_bloc.dart` 를 추가 할 것입니다).
 
 ```dart
 export './post_event.dart';
 export './post_state.dart';
 ```
 
-<p id="post-block"/>
+<p id="postbloc"/>
 
-## Post Bloc
+## PostBloc
 
-편의를 위해 `PostBloc`은 `http 클라이언트`에 직접 의존합니다. 그러나 프로덕션 애플리케이션에서 대신 api 클라이언트를 삽입하고 [docs](https://felangel.github.io/bloc/#/./architecture) 저장소 패턴을 사용할 수 있습니다.
+편의를 위해 `PostBloc`은 `http.Cliet`에 직접 의존합니다. 그러나 프로덕션 애플리케이션에서 대신 api 클라이언트를 삽입하고 저장소 패턴을 사용할 수 있습니다 [아키텍쳐](./introduction_architecture.md).
 
 `post_bloc.dart`를 만들고 빈 `PostBloc`을 만듭니다.
 
@@ -297,7 +297,7 @@ Future<List<Post>> _fetchPosts(int startIndex, int limit) async {
 }
 ```
 
-우리의 `PostBloc`은 `Stream<PostState>`를 반환하기 때문에 새로운 상태가 될 때마다 `yield`됩니다. `Streams`과 다른 핵심 개념에 대한 더 자세한 정보는 [핵심 개념](introduction_core_concepts.md?id=streams)을 확인 하세요.
+우리의 `PostBloc`은 `Stream<PostState>`를 반환하기 때문에 새로운 상태가 될 때마다 `yield` 됩니다. `Streams`과 다른 핵심 개념에 대한 더 자세한 정보는 [핵심 개념](introduction_core_concepts.md?id=streams)을 확인 하세요.
 
 이제 `PostEvent`가 전달 될 때마다, `Fetch` 이벤트이고 현재 상태가 max에 도달하지 않았다면, 우리의 `PostBloc`은 다음 20 개의 `Post`을 가져올 것입니다.
 
