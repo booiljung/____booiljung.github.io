@@ -25,11 +25,11 @@
 - 레시피 (Recipes)
   - Flutter
     - [Show SnackBar](recipes_flutter_snackbar.md) (번역중...)
-    - [Navigation](recipes_flutter_navigation.md)
+    - [Navigation](recipes_flutter_navigation.md) (번역중...)
 - 툴 (Tools)
   - 확장 (Extensions) (번역중...)
     - [IntelliJ](tools_extensions_intellij.md) (번역중...)
     - [VSCode](tools_extensions_vscode.md)
-- [API Reference](api_reference.md) (번역중...)
+- API Reference (번역중...)
 
 

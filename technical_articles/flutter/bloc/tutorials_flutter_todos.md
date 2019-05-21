@@ -1968,6 +1968,6 @@ class TodosApp extends StatelessWidget {
 
 ---
 
-이전:
+이전: [날씨 (Weather)](tutorials_flutter_weather.md)
 
-다음:
+다음: [파이어 베이스 로그인 (Firebase Login)](tutorials_flutter_firebase_login.md)

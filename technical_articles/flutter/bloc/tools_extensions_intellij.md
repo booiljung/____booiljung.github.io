@@ -26,6 +26,6 @@ Using [Plugin Repository](http://www.jetbrains.org/intellij/sdk/docs/plugin_repo
 
 ---
 
-이전: 
+이전: [Navigation](recipes_flutter_navigation.md)
 
-다음:
+다음: [VSCode](tools_extensions_vscode.md)
