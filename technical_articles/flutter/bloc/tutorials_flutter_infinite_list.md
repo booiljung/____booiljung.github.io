@@ -609,3 +609,9 @@ void main() {
 우리의 `HomePage`는 `Posts`가 어디서 왔는지, 어떻게 검색되는지 알지 못합니다. 반대로, 우리의 `PostBloc`은`State`가 어떻게 렌더링되고 있는지 전혀 알지 못하며 단순히 이벤트를 상태로 변환합니다.
 
 이 예제에 대한 전체 소스코드는 [이곳](https://github.com/felangel/Bloc/tree/master/examples/flutter_infinite_list)에서 볼 수 있습니다.
+
+---
+
+이전: [카운터 (Counter)](tutorials_flutter_counter.md)
+
+다음: [로그인 (Login)](tutorials_flutter_login.md)
