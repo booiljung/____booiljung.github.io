@@ -34,4 +34,4 @@ Bloc은 상태 변경이 발생할 수 있는 시기를 규제하고 전체 애�
 
 이전: [시작 하기 (Getting Started)](introduction_getting_started.md)
 
-다음: [왜 Bloc인가? (Why Bloc?)](introduction_why_bloc.md)
+다음: [핵심 개념 (Core Concepts)](introduction_core_concepts.md)
