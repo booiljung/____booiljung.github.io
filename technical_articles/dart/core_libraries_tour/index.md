@@ -1,14 +1,14 @@
 # A tour of the core libraries
 
-This page shows you how to use the major features in Dart’s core libraries. It’s just an overview, and by no means comprehensive. Whenever you need more details about a class, consult the [Dart API reference.](https://api.dartlang.org/stable)
+원문: [A tour of the core libraries](https://dart.dev/guides/libraries/library-tour)
 
-이 페이지는 다트의 코어 라이브러리에서 주요 기능을 사용하는 방법을 보여 줍니다. 이것은 단지 개요이며 포괄적인 것은 아닙니다. 수업에 대한 자세한 내용이 필요하면 [Dart API reference] (https://api.dartlang.org/stable)를 참조하십시오.
+이 페이지는 다트의 코어 라이브러리에서 주요 기능을 사용하는 방법을 보여 줍니다. 이것은 단지 개요이며 포괄적인 것은 아닙니다. 수업에 대한 자세한 내용이 필요하면 [Dart API reference](https://api.dartlang.org/stable)를 참조하십시오.
 
 - [dart:core](./dart_core.md)
 
   내장 타입, 컬렉션 및 기타 코어 기능. 이 라이브러리는 모든 다트 프로그램에 자동으로 임포트 됩니다.
 
-- [dart:async](./dart_acync.md)
+- [dart:async](./dart_async.md)
 
   퓨처 및 스트림과 같은 클래스를 사용한 비동기 프로그래밍 지원.
 
@@ -38,4 +38,4 @@ This page shows you how to use the major features in Dart’s core libraries. It
 
 [pub package manager](https://dart.dev/guides/packages) 를 사용하여 더 많은 라이브러리를 얻을 수 있습니다. [collection,](https://pub.dev/packages/collection) [crypto,](https://pub.dev/packages/crypto) [http,](https://pub.dev/packages/http) [intl,](https://pub.dev/packages/intl) 및 [test](https://pub.dev/packages/test) 라이브러리들은 pub를 사용하여 얻을 수 있는 샘플일 뿐입니다.
 
-다트 언어에 대해 알고 싶으면 [language tour](../language_tour/index.md) 참고하세요.
+다트 언어에 대해 알고 싶으면 [language tour](../language_tour/index.md) 참고하세요.`

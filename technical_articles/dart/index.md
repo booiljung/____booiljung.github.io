@@ -18,13 +18,20 @@
 
 - [Installation of Dart](installation_of_dart.md)
 - [다트 언어 빨리 보기](dart_language_quick_reference.md)
+- [번역: Dart2에서 조건부 임포트 변경점](dart2_conditional_import_update.md)
 
-### 번역
+### 공식 문서 번역
 
 - [번역 기준](rules_of_translation.md)
 - [공식문서 번역: 다트 플랫폼](./dart_platforms/index.md)
 - [공식문서 번역: 다트 언어로의 여행 (A tour to the Dart language)](./language_tour/index.md)
-- 코어 라이브러리로의 여행 (A tour to the core libraries)
+- [공식문서 번역: 코어 라이브러리로의 여행 (A tour to the core libraries)](core_libraries_tour/index.md)
+- [공식문서 번역: API Reference](api_reference.md)
+
+### Dart 라이브러리
+
+- [번역: Bloc](https://felangel.github.io/bloc/#/gettingstarted): Dart 및 Flutter 용 BLoC 아키텍쳐 패턴, [felangel/bloc](https://github.com/felangel/bloc/)
+- [MobX.dart](https://mobx.pub/): Dart용 MobX 아키텍쳐 패턴, [mobxjs/mobx.dart](https://github.com/mobxjs/mobx.dart)
 
 ---
 

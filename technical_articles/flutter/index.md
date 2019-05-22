@@ -17,6 +17,11 @@
 - [Flutter: 웹을 위한 Flutter: 웹사이트를 밑바닥부터 만들고 배포하기](flutter_for_web_create_and_deploy_a_website_from_scratch.md)
 - [Flutter: 상태 관리하기](state_management/index.md)
 
+## Library
+
+- [번역: Bloc](./bloc/index.md): Dart 및 Flutter용 BLoC 아키텍쳐 패턴
+- [Flutter Redux package](https://pub.dev/packages/flutter_redux): Flutter 위젯을 만들기 위해 Redux 저장소를 쉽게 사용할 수 있게 해주는 유틸리티 세트.
+
 ## Demo
 
 - [Widget Demo](widget_demo.md)
