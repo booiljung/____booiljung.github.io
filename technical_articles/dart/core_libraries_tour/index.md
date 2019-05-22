@@ -2,7 +2,7 @@
 
 원문: [A tour of the core libraries](https://dart.dev/guides/libraries/library-tour)
 
-이 페이지는 다트의 코어 라이브러리에서 주요 기능을 사용하는 방법을 보여 줍니다. 이것은 단지 개요이며 포괄적인 것은 아닙니다. 수업에 대한 자세한 내용이 필요하면 [Dart API reference](https://api.dartlang.org/stable)를 참조하십시오.
+이 페이지는 다트의 코어 라이브러리에서 주요 기능을 사용하는 방법을 보여 줍니다. 이것은 단지 개요이며 포괄적인 것은 아닙니다. 클래스에 대한 자세한 내용이 필요하면 [Dart API reference](https://api.dartlang.org/stable)를 참조하십시오.
 
 - [dart:core](./dart_core.md)
 
