@@ -160,7 +160,7 @@ Flutter 웹 앱은 Dart의 JS-interop 패키지 인 `package:js`와 `dart:js`를
 
 #### Embedding non-Flutter components in Flutter
 
-Flutter 웹 앱에서 Custom Elements, React component, Angular component와 같은 Flutter가 아닌 elment를 포함하는 기능에 대한 지원은 아직 추가하지 않았지만 앞으로이 기능을 탐구 할 계획입니다. 한 가지 가능한 방법은 외부 콘텐츠를 Flutter 웹 앱에 드롭하기 위해 [flatform view](https://master-docs-flutter-io.firebaseapp.com/flutter/dart-ui/SceneBuilder/addPlatformView.html)를 사용하는 것입니다. 고려해야 할 한 가지 중요한 점은 외국 콘텐츠가 앱의 성능과 정확성에 어떤 영향을 미칠 수 있는지입니다. 위에서 언급했듯이 비 Flutter 구성 요소에는 임의의 CSS가 포함될 가능성이 있으므로 문제가 될 수 있습니다. 더 많은 연구가 필요합니다.
+Flutter 웹 앱에서 Custom Elements, React component, Angular component와 같은 Flutter가 아닌 elment를 포함하는 기능에 대한 지원은 아직 추가하지 않았지만 앞으로이 기능을 탐구 할 계획입니다. 한 가지 가능한 방법은 외부 콘텐츠를 Flutter 웹 앱에 드롭하기 위해 [flatform view](https://master-docs-flutter-io.firebaseapp.com/flutter/dart-ui/SceneBuilder/addPlatformView.html)를 사용하는 것입니다. 고려해야 할 한 가지 중요한 점은 외래 콘텐츠가 앱의 성능과 정확성에 어떤 영향을 미칠 수 있는지입니다. 위에서 언급했듯이 비 Flutter 구성 요소에는 임의의 CSS가 포함될 가능성이 있으므로 문제가 될 수 있습니다. 더 많은 연구가 필요합니다.
 
 ### Portability
 
