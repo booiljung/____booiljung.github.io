@@ -3,6 +3,7 @@
 #### 최신 글
 
 - Flutter for Web: [번역: 허밍버드: Flutter for the Web를 개발하기 까지](technical_articles/flutter/hummingboard_building_flutter_for_the_web.md)
+- Dart: 번역: [pubspec 파일 사용법](technical_articles/dart/pubspec_yaml.md)
 - Dart: [번역: Dart2에서 조건부 임포트 변경점](technical_articles/dart/dart2_conditional_import_update.md)
 - Dart: [번역: API Reference](technical_articles/dart/api_reference/index.md)
 - Dart: [번역: A tour of the core libraries](technical_articles/dart/core_libraries_tour/index.md)

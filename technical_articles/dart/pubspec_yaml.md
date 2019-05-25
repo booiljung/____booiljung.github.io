@@ -1,4 +1,6 @@
-# The pubspec file
+# pubspec 파일 사용법
+
+원문: [The pubspec file](https://dart.dev/tools/pub/pubspec)
 
 ## Contents                                
 
@@ -266,3 +268,9 @@ environment:
 Flutter SDK 제약 조건은 pub가 `flutter` 실행 파일의 컨텍스트에서 실행되고 Flutter SDK의 `version` 파일이 주어진 버전 제약 조건과 일치 할 때만 충족됩니다. 그렇지 않으면 패키지가 선택되지 않습니다.
 
 Flutter SDK constraint이 있는 패키지를 게시하려면 이전 버전의 pub에서 Flutter가 필요한 패키지를 실수로 설치하지 않도록 최소 버전이 1.19.0 이상인 Dart SDK constraint을 지정해야합니다.
+
+---
+
+## 참조
+
+- [The pubspec file](https://dart.dev/tools/pub/pubspec)
