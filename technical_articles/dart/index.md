@@ -4,21 +4,22 @@
 
 #### 이 문서에 대해
 
-공부하는 방법중 가장 좋은 방법은 누군가를 가르치는 것이고, 두번째로 좋은 방법은 정리하여 공유하는 것입니다. 이 문서는 다트 프로그래밍 언어를 학습하는 과정에서 작성되었고 공유합니다.
+공부하는 방법중 가장 좋은 방법은 누군가를 가르치는 것이고, 두번째로 좋은 방법은 정리하여 공유하는 것입니다. 이 문서는 Dart 프로그래밍 언어를 학습하는 과정에서 작성되었고 공유합니다.
 
 #### The Dart language
 
-[다트](https://dart.dev/)는 2011년에 공개 되었습니다. 자바스트립트처럼 웹 프로그래밍을 목적으로 [Google](https://google.com)이 개발 하였으며, 현재 다양한 클라이언트용 소프트웨어를 개발하는 목적으로 발전하고 있습니다. 구글이 만든 서버용 언어로는 [golang](https://golang.org/)이 있습니다. 다트 VM 위에서 돌아가며 다양한 종류의 기기에서 동작하도록 하였습니다.
+[Dart](https://dart.dev/)는 2011년에 공개 되었습니다. 자바스트립트처럼 웹 프로그래밍을 목적으로 [Google](https://google.com)이 개발 하였으며, 현재 다양한 클라이언트용 소프트웨어를 개발하는 목적으로 발전하고 있습니다. 구글이 만든 서버용 언어로는 [golang](https://golang.org/)이 있습니다. Dart VM 위에서 돌아가며 다양한 종류의 기기에서 동작하도록 하였습니다.
 
 #### 다트패드 (DartPad)
 
-다트는 웹상에서 바로 다트 코드를 작성하고 실험해 볼 수 있는 [DartPad](https://dartpad.dartlang.org)를 제공합니다.
+Dart는 웹상에서 바로 Dart 코드를 작성하고 실험해 볼 수 있는 [DartPad](https://dartpad.dartlang.org)를 제공합니다.
 
 ## 목차
 
 - [Installation of Dart](installation_of_dart.md)
-- [다트 언어 빨리 보기](dart_language_quick_reference.md)
+- [Dart 언어 빨리 보기](dart_language_quick_reference.md)
 - [번역: Dart2에서 조건부 임포트 변경점](dart2_conditional_import_update.md)
+- [번역: `pubspec.yaml` 사용법](pubspec_yaml.md)
 
 ### 공식 문서 번역
 

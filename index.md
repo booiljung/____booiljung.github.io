@@ -2,13 +2,14 @@
 
 #### 최신 글
 
+- Flutter for Web: [번역: 허밍버드: Flutter for the Web를 개발하기 까지](technical_articles/flutter/hummingboard_building_flutter_for_the_web.md)
 - Dart: [번역: Dart2에서 조건부 임포트 변경점](technical_articles/dart/dart2_conditional_import_update.md)
 - Dart: [번역: API Reference](technical_articles/dart/api_reference/index.md)
 - Dart: [번역: A tour of the core libraries](technical_articles/dart/core_libraries_tour/index.md)
 - Flutter: [번역: Flutter Bloc](technical_articles/flutter/bloc/index.md)
 - Flutter: [번역: Flutter Pub: BLOC 패턴을 사용한 Flutter 프로젝트 아키텍쳐 설계](technical_articles/flutter/state_management/architecture_your_flutter_project_using_bloc_pattern.md)
 - Flutter: [번역: 상태 관리](technical_articles/flutter/state_management/index.md)
-- Flutter: [번역: 웹을 위한 플러터: 웹사이트를 밑바닥부터 만들고 배포하기](technical_articles/flutter/flutter_for_web_create_and_deploy_a_website_from_scratch.md)
+- Flutter for Web: [번역: 웹을 위한 플러터: 웹사이트를 밑바닥부터 만들고 배포하기](technical_articles/flutter/flutter_for_web_create_and_deploy_a_website_from_scratch.md)
 - Flutter: [번역: 우분투에 플러터 설치하기](technical_articles/flutter/installation_of_flutter_on_ubuntu.md)
 - Dart: [번역: A tour to the Dart language](./technical_articles/dart/index.md)
 - Image processing: [Convert photos to Sketches](./technical_articles/image_processing/convert_photos_to_sketches.md)
