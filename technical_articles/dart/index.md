@@ -33,6 +33,7 @@ Dart는 웹상에서 바로 Dart 코드를 작성하고 실험해 볼 수 있는
 
 - [번역: Bloc](https://felangel.github.io/bloc/#/gettingstarted): Dart 및 Flutter 용 BLoC 아키텍쳐 패턴, [felangel/bloc](https://github.com/felangel/bloc/)
 - [MobX.dart](https://mobx.pub/): Dart용 MobX 아키텍쳐 패턴, [mobxjs/mobx.dart](https://github.com/mobxjs/mobx.dart)
+- [AngularDart](angular_dart/index.md)
 
 ---
 

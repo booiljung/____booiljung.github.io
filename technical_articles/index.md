@@ -5,7 +5,7 @@
 ### 알고리즘
 
 - [수학](mathematics/index.md)
-- [Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+- [USFCA: Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 - 데이터 구조와 알고리즘
 - 정보이론
 - 결정이론
@@ -16,7 +16,7 @@
 
 ### 아키텍쳐, 디자인, 네트워크
 
-- 컴퓨터 아키텍처 (Computer Architecture)
+- [컴퓨터 아키텍처 (Computer Architecture)](computer_architecture/index.md)
 - [Software Architecture](software_architecture/index.md)
 - 객체지향 프로그래밍 및 디자인 패턴 (Object Oriented Programming and Design Patterns)
 - 병렬처리 (Parallel Processing)
@@ -53,11 +53,6 @@
 - 데이터 시각화 (Data Visualization)
 - [아파치 스파크 (Apache Spark)](apache_spark/index.md)
 
-## 툴
-
-- [Google Colaboratory](colaboratory/index.md)
-- [IDEs](ides/index.md)
-
 ### 신호처리 머신러닝 인공지능
 
 - [신호처리 (Signal Processing)](signal_processing/index.md)
@@ -88,11 +83,13 @@
 - Objective-C
 - [Dart](./dart/index.md)
 - [Swift](./swfit/index.md)
-- JavaScript
+- [JavaScript](./javascript/index.md)
 - 루아 (Lua)
 - [웹 개발](web/index.md)
 
 ### 프레임워크 라이브러리
+
+- [소프트웨어 개발 도구](software_development_environments/index.md)
 
 - iOS 프로그래밍 (iOS Programming)
 - [Flutter 프로그래밍 (Flutter Programming)](./flutter/index.md)

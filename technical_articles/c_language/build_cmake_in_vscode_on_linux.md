@@ -103,7 +103,7 @@ add_executable(${PROJECT_NAME} ${SOURCE})
 
 ![1551597408442](build_cmake_in_vscode_on_linux.assets/1551597408442.png)
 
-`Shift+Ctrl+P`를 눌러 명령 팔레트(Comand Palette)를 호출합니다.
+Extensions들이 설치가 되면 `Shift+Ctrl+P`를 눌러 명령 팔레트(Comand Palette)를 호출합니다.
 
 ![1551597896012](build_cmake_in_vscode_on_linux.assets/1551597896012.png)
 
@@ -217,7 +217,7 @@ VSCode에서 윈도우용을 빌드할때는 `.vscode/settings.json`에 다음�
 
 *2019년 3월 6일 추가*
 
-`cmake.configureSettings" 항목을 추가하여 cmake 변수의 값을 설정 할 수 있습니다. 다음은 `librealsense2`cmake를 설정하는 예제입니다.
+`"cmake.configureSettings"` 항목을 추가하여 cmake 변수의 값을 설정 할 수 있습니다. 다음은 `librealsense2` cmake를 설정하는 예제입니다.
 
 ```json
 {
