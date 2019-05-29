@@ -36,7 +36,7 @@ assert(lineCount == null);
 
 <p id="final-and-const"/>
 
-#### Final과 const
+#### final과 const
 
 변수의 값을 변경하지 않으려면 `var` 대신 또는 타입에 `final` 또는 `const`를 사용합니다. `final` 변수는 한 번만 설정할 수 있습니다. `const` 변수는 컴파일 타임 상수입니다. (`const` 변수는 암시적으로 `final` 변수입니다.) `final` 최상위 또는 클래스 변수는 처음 사용될 때 초기화됩니다.
 
@@ -66,7 +66,7 @@ final bar = const [];
 const baz = []; // Equivalent to `const []`
 ```
 
-위의 `baz`처럼 `const` 선언의 초기화 표현식에서 `const`를 생략 할 수 있습니다. 자세한 내용은 `const` 중복 사용 안 함을 참조하십시오.
+위의 `baz`처럼 `const` 선언의 초기화 표현식에서 `const`를 생략 할 수 있습니다. 자세한 내용은 `const` 중복 사용 안함을 참조하십시오.
 
 `const`가 아닌 다른 변수의 값을 변경할 수 있습니다 :
 
