@@ -1275,7 +1275,7 @@ export './home_screen.dart';
 
 <p id="filter-button"/>
 
-### Filter Butto
+### Filter Button
 
 > `FilterButton` 위젯은 필터 옵션 목록을 사용자에게 제공 할 책임이 있으며, 새로운 필터가 선택되었을 때`FilteredTodosBloc`을 통지 할 것입니다.
 
@@ -1614,7 +1614,7 @@ class FilteredTodos extends StatelessWidget {
 
 <p id="todoitem"/>
 
-### TodoIte
+### TodoItem
 
 > `TodoItem`은 하나의 todo를 렌더링하고 사용자 상호 작용 (탭 / 스 와이프)을 처리하는 책임이 있는 `StatelessWidget` 입니다.
 

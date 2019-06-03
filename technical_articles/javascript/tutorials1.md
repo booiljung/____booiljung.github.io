@@ -452,6 +452,8 @@ f();
 console.log(a); // undefined (not error)
 ```
 
+다음 두번째 `a`는 첫번째 `a`입니다. 블록 안에서 두번째 `a`를 변경하면  첫번째 `a`가 변경됩니다.
+
 ```javascript
 function f() {
     var a = 'Alice';
@@ -464,10 +466,14 @@ function f() {
 f();
 ```
 
+다음 예제에서 변수가 선언되기 전에 사용하면 `undefined`가 됩니다.
+
 ```javascript
 console.log(a); // undefined (not error)
 var a = 'Alice';
 ```
+
+다음 예제에서 변수가 선언되고 초기화 되지 않으면 `undefined`가 됩니다.
 
 ```javascript
 var a;
@@ -482,6 +488,8 @@ a = 2;
 - 블록 스코프를 가집니다.
 - 할당하기 전에 액세스 할 수 없슴니다.
 - 동일 스코프에서 재선언을 할 수 없습니다.
+
+
 
 ```javascript
 function f() {

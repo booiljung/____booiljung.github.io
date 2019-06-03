@@ -4,7 +4,7 @@
 
 원문: [A tour of the core libraries](https://dart.dev/guides/libraries/library-tour)
 
-dart:convert 라이브러리 ([API reference](https://api.dartlang.org/stable/dart-convert/dart-convert-library.html))는 JSON 및 UTF-8 용 컨버터와 추가 컨버터를 생성합니다. [JSON](https://www.json.org/)은 구조화 된 객체 및 컬렉션을 나타내는 간단한 텍스트 형식입니다. [UTF-8](https://en.wikipedia.org/wiki/UTF-8)은 유니코드 문자 집합의 모든 문자를 나타낼 수있는 일반적인 가변 길이(variable-width) 인코딩입니다.
+dart:convert 라이브러리 ([API reference](https://api.dartlang.org/stable/dart-convert/dart-convert-library.html))는 JSON 및 UTF-8 용 컨버터와 추가 컨버터를 생성합니다. [JSON](https://www.json.org/)은 구조화 된 객체 및 컬렉션을 나타내는 간단한 텍스트 형식입니다. [UTF-8](https://en.wikipedia.org/wiki/UTF-8)은 유니코드 문자 집합의 모든 문자를 나타낼 수 있는 일반적인 가변 길이(variable-width) 인코딩입니다.
 
 dart:convert 라이브러리는 웹 앱과 명령 줄 앱 모두에서 작동합니다. 그것을 사용하려면, `import dart:convert`를 하세요
 
@@ -16,7 +16,7 @@ import 'dart:convert';
 
 ###  JSON 디코딩과 인코등 (Decoding and encoding JSON)
 
-`jsonDecode()`를 사용하여 JSON 인코딩 문자열을 Dart 객체로 디코딩 :
+`jsonDecode()`를 사용하여 JSON 인코딩 문자열을 Dart 객체로 디코딩:
 
 ```dart
 // NOTE: JSON 문자열 안에는

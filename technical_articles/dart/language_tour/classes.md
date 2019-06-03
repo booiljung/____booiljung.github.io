@@ -8,9 +8,7 @@ Dart는 클래스 및 믹스인 기반 상속을 사용하는 객체 지향 언�
 
 ###  클래스 멤버를 사용하기 (Using class members)
 
-객체는 함수와 데이터로 구성된 멤버를가집니다 (각각 메소드와 인스턴스 변수). 메소드를 호출하면 객체에서 호출 합니다. 메소드는 해당 객체의 함수 및 데이터에 액세스 할 수 있습니다.
-
-도트(`.`)를 사용하여 인스턴스 변수 또는 메소드를 참조하십시오.
+객체는 함수와 데이터로 구성된 멤버를 가집니다 (각각 메소드와 인스턴스 변수). 메소드를 호출하면 객체에서 호출 합니다. 메소드는 해당 객체의 함수 및 데이터에 액세스 할 수 있습니다. 도트(`.`)를 사용하여 인스턴스 변수 또는 메소드를 참조 합니다.
 
 ```dart
 var p = Point(2, 2);
@@ -25,7 +23,7 @@ assert(p.y == 3);
 num distance = p.distanceTo(Point(4, 4));
 ```
 
-최좌측 피연산자가 `null` 일 때 예외를 피하려면 `.` 대신 `?.`를 사용하십시오 :
+최좌측 피연산자가 `null` 일 때 예외를 피하려면 `.` 대신 `?.`를 사용하세요:
 
 ```dart
 // p가 null가 아닌 경우, y 값을 4로 설정.
@@ -36,14 +34,14 @@ p?.y = 4;
 
 ###  생성자 사용하기 (Using constructors)
 
-생성자를 사용하여 객체를 만들 수 있습니다. 생성자 이름은`ClassName` 또는`ClassName.identifier` 일 수 있습니다. 예를 들어, 다음 코드는 `Point()`와 `Point.fromJson()` 생성자를 사용하여 `Point` 객체를 생성합니다 :
+생성자를 사용하여 객체를 만들 수 있습니다. 생성자 이름은 `ClassName` 또는`ClassName.identifier` 일 수 있습니다. 예를 들어, 다음 코드는 `Point()`와 `Point.fromJson()` 생성자를 사용하여 `Point` 객체를 생성합니다 :
 
 ```dart
 var p1 = Point(2, 2);
 var p2 = Point.fromJson({'x': 1, 'y': 2});
 ```
 
-다음 코드는 동일한 효과를 갖지만 생성자 이름 앞에 선택적인 `new` 키워드를 사용합니다 :
+다음 코드는 동일한 효과를 갖지만 생성자 이름 앞에 선택적인 `new` 키워드를 사용합니다:
 
 ```dart
 var p1 = new Point(2, 2);
@@ -52,7 +50,7 @@ var p2 = new Point.fromJson({'x': 1, 'y': 2});
 
 > **Version note:** Dart 2에서는`new` 키워드가 선택 사항이되었습니다.
 
-일부 클래스는 [상수 생성자(constant constructors)](classes.md#constant-constructors)를 제공합니다. 상수 생성자를 사용하여 컴파일 타임 상수를 생성하려면 생성자 이름 앞에 `const` 키워드를 넣으십시오 :
+일부 클래스는 [상수 생성자(constant constructors)](classes.md#constant-constructors)를 제공합니다. 상수 생성자를 사용하여 컴파일 타임 상수를 생성하려면 생성자 이름 앞에 `const` 키워드를 넣으세요:
 
 ```dart
 var p = const ImmutablePoint(2, 2);
@@ -77,7 +75,7 @@ const pointAndLine = const {
 };
 ```
 
-`const` 키워드의 첫 번째 사용을 제외하고 모두 생략 할 수 있습니다 :
+`const` 키워드의 첫 번째 사용을 제외하고 모두 생략 할 수 있습니다:
 
 ```dart
 // Only one const, which establishes the constant context.
@@ -87,7 +85,7 @@ const pointAndLine = {
 };
 ```
 
-상수 생성자가 상수 컨텍스트 외부에 있고 `const`없이 호출되는 경우 상수 생성자가 생성됩니다:
+상수 생성자가 상수 컨텍스트 외부에 있고 `const` 없이 호출되는 경우 상수 생성자가 생성됩니다:
 
 ```dart
 var a = const ImmutablePoint(1, 1); // Creates a constant
@@ -168,7 +166,7 @@ class Point {
 
 > **Note:** 이름 충돌이있는 경우에만 `this`를 사용하십시오. 그렇지 않으면 Dart 스타일은 `this`를 생략합니다.
 
-인스턴스 변수에 생성자 인수를 할당하는 패턴은 매우 일반적이므로 Dart는 쉽게 만들 수있는 syntactic sugar을 가지고 있습니다:
+인스턴스 변수에 생성자 인수를 할당하는 패턴은 매우 일반적이므로 Dart는 쉽게 만들 수있는 구문적 설탕(syntactic sugar)을 가지고 있습니다:
 
 ```dart
 class Point {
@@ -190,7 +188,7 @@ class Point {
 
 #### 생성자는 상속되지 않음. (Constructors aren’t inherited)
 
-서브 클래스는 슈퍼 클래스에서 생성자를 상속받지 않습니다. constructor을 선언하지 않는 서브 클래스는, 디폴트 (인수 없음, 이름 없음)의 constructor만을 가집니다.
+서브 클래스는 슈퍼 클래스에서 생성자를 상속받지 않습니다. 생성자를 선언하지 않는 서브 클래스는, 디폴트 (인수 없음, 이름 없음)의 생성자만을 가집니다.
 
 <p id="named-constructors"/>
 
@@ -216,13 +214,13 @@ class Point {
 
 <p id="invoking-a-non-default-superclass-constructor"/>
 
-#### 디폴트가 아닌 슈퍼 클래스 생성자 호출하기 (Invoking a non-default superclass constructor)
+#### 디폴트가 아닌 수퍼 클래스 생성자 호출하기 (Invoking a non-default superclass constructor)
 
-디폴트에서는, 서브 클래스의 constructor은, 슈퍼 클래스의 이름이 없는 인수 없는 생성자을 호출합니다. 수퍼 클래스의 생성자는 생성자 본문의 처음에 호출됩니다. [초기자 목록](classes.md#initializer-list)도 사용중인 경우 수퍼 클래스가 호출되기 전에 실행됩니다. 요약하면 실행 순서는 다음과 같습니다.
+디폴트에서는, 서브 클래스의 생성자는, 슈퍼 클래스의 이름이 없는 인수 없는 생성자을 호출합니다. 수퍼 클래스의 생성자는 생성자 본문의 처음에 호출됩니다. [초기자 목록](classes.md#initializer-list)도 사용중인 경우 수퍼 클래스가 호출되기 전에 실행됩니다. 요약하면 실행 순서는 다음과 같습니다.
 
-1. 초기자 리스트
+1. 초기자 목록
 2. 수퍼 클래스의 인자 없는 생성자.
-3. 메인 클랙스의 인자 없는 생성자.
+3. 메인 클래스의 인자 없는 생성자.
 
 수퍼 클래스에 이름 없는 인수가 없는 생성자가 없으면 수퍼 클래스에서 생성자 중 하나를 수동으로 호출해야합니다. 슈퍼 클래스 생성자를 콜론 (`:`) 다음에 생성자 본문 (있는 경우) 바로 앞에 지정하십시오. 다음 예제에서 `Employee` 클래스의 생성자는 수퍼 클래스 `Person`의 명명 된 생성자를 호출합니다. 코드를 실행 하려면 실행 버튼 ![img](index.assets/red-run-50a66e01c7e7a877dbc06e799d5bc4b73c4dace2926ec17b4493d8c3e939c59a-1557833292775.png) 를 누르세요.
 
@@ -246,8 +244,8 @@ class Employee extends Person {
 수퍼 클래스 생성자를 호출하는 것 외에도 생성자 본문이 실행되기 전에 인스턴스 변수를 초기화 할 수 있습니다. 쉼표로 초기자를 구분하십시오.
 
 ```dart
-// Initializer list sets instance variables before
-// the constructor body runs.
+// 초기자 목록은 본문이 실행되기 전에
+// 인스턴스 변수를 설정합니다.
 Point.fromJson(Map<String, num> json)
     : x = json['x'],
       y = json['y'] {
@@ -293,7 +291,7 @@ class Point {
 
 #### 상수 생성자 (Constant constructors)
 
-클래스가 변경되지 않는 객체를 생성하면 이러한 객체를 컴파일 타임 상수로 만들 수 있습니다. 이렇게 하려면 `const` 생성자를 정의하고 모든 인스턴스 변수가 `final`인지 확인하십시오.
+클래스가 변경되지 않는 객체를 생성하면 이러한 객체를 컴파일 타임 상수로 만들 수 있습니다. 이렇게 하려면 `const` 생성자를 정의하고 모든 인스턴스 변수가 `final`인지 확인하세요.
 
 ```dart
 class ImmutablePoint {
@@ -312,7 +310,7 @@ class ImmutablePoint {
 
 #### 팩토리 생성자 (Factory constructors)
 
-항상 클래스의 새 인스턴스를 생성하지는 않는 생성자를 구현할 때는 `factory` 키워드를 사용하십시오. 예를 들어 팩토리 생성자는 캐시에서 인스턴스를 반환하거나 하위 유형의 인스턴스를 반환 할 수 있습니다.
+항상 클래스의 새 인스턴스를 생성하지는 않는 생성자를 구현할 때는 `factory` 키워드를 사용하세요. 예를 들어 팩토리 생성자는 캐시에서 인스턴스를 반환하거나 하위 유형의 인스턴스를 반환 할 수 있습니다.
 
 다음 예제는 캐시에서 객체를 반환하는 팩토리 생성자를 보여줍니다.
 
@@ -346,7 +344,7 @@ class Logger {
 
 **Note:** 팩토리 생성자는 `this`에 접근 할 수 없습니다.
 
-다른 생성자와 마찬가지로 `factory` 생성자를 호출하십시오.
+다른 생성자와 마찬가지로 `factory` 생성자를 호출하세요.
 
 ```dart
 var logger = Logger('UI');
@@ -497,7 +495,7 @@ class Point implements Comparable, Location {...}
 
 ###  클래스를 확장하기 (Extending a class)
 
-서브 클래스를 생성하기 위해서 `extends`를 사용하고 수퍼 클래스를 참조하기 위해 `super`를 사용하십시오 :
+서브 클래스를 생성하기 위해서 `extends`를 사용하고 수퍼 클래스를 참조하기 위해 `super`를 사용하세요:
 
 ```dart
 class Television {
@@ -661,11 +659,11 @@ switch (aColor) {
 
 ###  클래스에 피처 추가하기 : 믹스인 (Adding features to a class: mixins)
 
-믹스인(Mixin)은 여러 클래스 계층에서 클래스의 코드를 재사용하는 방법입니다.
+믹스인(mixin)은 여러 클래스 계층에서 클래스의 코드를 재사용하는 방법입니다.
 
 믹스인을 사용하려면, 하나 이상의 믹스인 이름 뒤에 `with` 예약어를 사용하십시오. 다음 예제는 믹스인을 사용하는 두 개의 클래스를 보여줍니다 :
 
-mixin을 사용하려면, 하나 이상의 mixin 이름 뒤에 `with` 키워드를 사용하십시오. 다음 예제는 mixins 사용하는 두 개의 클래스를 보여줍니다 :
+믹스인을 사용하려면, 하나 이상의 믹스인 이름 뒤에 `with` 키워드를 사용하십시오. 다음 예제는 믹스인를 사용하는 두 개의 클래스를 보여줍니다 :
 
 ```dart
 class Musician extends Performer with Musical {
@@ -742,7 +740,7 @@ void main() {
 
 #### 정적 메소드 (Static methods)
 
-정적 메서드 (클래스 메서드)는 인스턴스에서 작동하지 않으므로 `this`에 액세스 할 수 없습니다. 예 :
+정적 메서드 (클래스 메서드)는 인스턴스에서 작동하지 않으므로 `this`에 액세스 할 수 없습니다. 예:
 
 ```dart
 import 'dart:math';
@@ -767,9 +765,9 @@ void main() {
 }
 ```
 
-**Note:**  자주 사용되거나 널리 사용되는 유틸리티와 기능에 대해서는 정적 메서드 대신 최상위 함수를 사용하는 것이 좋습니다.
+**Note:**  자주 사용되거나 널리 사용되는 유틸리티와 기능에 대해서는 정적 메소드 대신 최상위 함수를 사용하는 것이 좋습니다.
 
-정적 메서드를 컴파일 타임 상수로 사용할 수 있습니다. 예를 들어, 정적 메소드를 매개 변수로 상수 생성자에 전달할 수 있습니다.
+정적 메서드를 컴파일 타임 상수로 사용할 수 있습니다. 예를 들어, 정적 메소드를 매개변수로 상수 생성자에 전달할 수 있습니다.
 
 ---
 

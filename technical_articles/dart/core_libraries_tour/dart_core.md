@@ -4,7 +4,7 @@
 
 원문: [A tour of the core libraries](https://dart.dev/guides/libraries/library-tour)
 
-dart:core 라이브러리 (API reference](https://api.dartlang.org/stable/dart-core/dart-core-library.html))는 작지만 중요한 내장 기능들을 제공합니다. 이 라이브러리는 모든 Dart 프로그램에 자동으로 임포트 됩니다.
+dart:core 라이브러리 [API reference](https://api.dartlang.org/stable/dart-core/dart-core-library.html))는 작지만 중요한 내장 기능들을 제공합니다. 이 라이브러리는 모든 Dart 프로그램에 자동으로 임포트 됩니다.
 
 <p id = "printing-to-the-console"/>
 
@@ -33,7 +33,7 @@ assert(int.parse('0x42') == 66);
 assert(double.parse('0.50') == 0.5);
 ```
 
-또는 가능하다면 정수를 생성하는 num의 `parse()` 메서드를 사용하고 그렇지 않으면 double을 사용합니다.
+또는 가능하다면 정수를 생성하는 `num`의 `parse()` 메서드를 사용하고 그렇지 않으면 double을 사용합니다.
 
 ```dart
 assert(num.parse('42') is int);
@@ -47,9 +47,7 @@ assert(num.parse('0.50') is double);
 assert(int.parse('42', radix: 16) == 66);
 ```
 
-Use the `toString()` method to convert an int or double to a string. To specify the number of digits to the right of the decimal, use [toStringAsFixed().](https://api.dartlang.org/stable/dart-core/num/toStringAsFixed.html) To specify the number of significant digits in the string, use [toStringAsPrecision():](https://api.dartlang.org/stable/dart-core/num/toStringAsPrecision.html)
-
-`toString()`메서드를 사용하여 `int` 또는 `double`을 문자열로 변환합니다. 10진수 오른쪽의 자릿수를 지정하려면 [toStringAsFixed()`](https://api.dartlang.org/stable/dart-core/num/toStringAsFixed.html)를 사용하십시오. 유효 자릿수를 지정하려면 문자열에서 [toStringAsPrecision()](https://api.dartlang.org/stable/dart-core/num/toStringAsPrecision.html)을 사용하세요.
+`toString()`메서드를 사용하여 `int` 또는 `double`을 문자열로 변환합니다. 10진수 오른쪽의 자릿수를 지정하려면 [toStringAsFixed()`](https://api.dartlang.org/stable/dart-core/num/toStringAsFixed.html)를 사용하세요. 유효 자릿수를 지정하려면 문자열에서 [toStringAsPrecision()](https://api.dartlang.org/stable/dart-core/num/toStringAsPrecision.html)을 사용하세요.
 
 ```dart
 // int를 String으로 변환 합니다.
@@ -157,9 +155,7 @@ assert('  '.isNotEmpty);
 
 #### 일부 문자열을 대치 (Replacing part of a string)
 
-Strings are immutable objects, which means you can create them but you can’t change them. If you look closely at the [String API reference,](https://api.dartlang.org/stable/dart-core/String-class.html) you’ll notice that none of the methods actually changes the state of a String. For example, the method `replaceAll()` returns a new String without changing the original String:
-
-`String`은 변경 할 수 없는(immutable) 개체이므로 만들 수는 있지만 변경할 수는 없습니다. [String API reference](https://api.dartlang.org/stable/dart-core/String-class.html)를 면밀히 살펴보면 메소드가 실제로 `String`의 상태를 변경하지 않음을 알 수 있습니다. 예를 들어, replaceAll() 메소드는 원래 `String`을 변경하지 않고 새로운 `String`을 반환 합니다.
+`String`은 변경 할 수 없는(immutable) 개체이므로 만들 수는 있지만 변경할 수는 없습니다. [String API reference](https://api.dartlang.org/stable/dart-core/String-class.html)를 면밀히 살펴보면 메소드가 실제로 `String`의 상태를 변경하지 않음을 알 수 있습니다. 예를 들어, `replaceAll()` 메소드는 원래 `String`을 변경하지 않고 새로운 `String`을 반환 합니다.
 
 ```dart
 var greetingTemplate = 'Hello, NAME!';
@@ -190,8 +186,6 @@ assert(fullString ==
 ```
 
 #### 정규식 (Regular expressions)
-
-The RegExp class provides the same capabilities as JavaScript regular expressions. Use regular expressions for efficient searching and pattern matching of strings.
 
 `RegExp` 클래스는 `JavaScript` 정규식과 동일한 기능을 제공합니다. 문자열의 효율적인 검색 및 패턴 일치를 위해 정규식을 사용하세요.
 

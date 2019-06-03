@@ -31,7 +31,7 @@ Bloc을 사용하면 애플리케이션을 세 개의 레이어로 분리 할 �
 
 <p id="data-provider"/>
 
-### 데이터 제공자 (Data Provide)
+### 데이터 제공자 (Data Provider)
 
 > 데이터 제공자의 책임은 원시 데이터를 제공하는 것입니다. 데이터 제공자는 포괄적이고 다재다능 해야 합니다.
 
@@ -88,7 +88,7 @@ class BusinessLogicComponent extends Bloc {
 }
 ```
 
-### Bloc에서 Bloc을 커뮤니케이션 (Bloc-to-Bloc Communication)
+### Bloc에서 Bloc으로 커뮤니케이션 (Bloc-to-Bloc Communication)
 
 > 모든 Bloc은 Bloc 내에 있는 변화에 대응하기 위해 다른 Bloc이 구독(subscribe) 할 수 있는 상태 스트림(state stream)을 가지고 있습니다.
 

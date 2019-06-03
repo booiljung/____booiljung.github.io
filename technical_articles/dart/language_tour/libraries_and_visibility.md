@@ -2,7 +2,7 @@
 
 ##  라이브러리와 가시성 (Libraries and visibility)
 
-`import`와 `library` 지시어는 모듈화 되고 공유 가능한 코드 기반을 만드는 데 도움이 될 수 있습니다. 라이브러리는 API를 제공 할뿐만 아니라 프라이버시 단위이기도 합니다. 밑줄 (`_`)로 시작하는 식별자는 라이브러리 내부에서만 볼 수 있습니다. 모든 다트 응용 프로그램은 라이브러리가 아니며 `library` 지시문을 사용하지 않습니다.
+`import`와 `library` 지시어는 모듈화 되고 공유 가능한 코드 기반을 만드는 데 도움이 될 수 있습니다. 라이브러리는 API를 제공 할뿐만 아니라 프라이버시 단위이기도 합니다. 밑줄 (`_`)로 시작하는 식별자는 라이브러리 내부에서만 볼 수 있습니다. 모든 Dart 응용 프로그램은 라이브러리가 아니며 `library` 지시문을 사용하지 않습니다.
 
 라이브러리는 [packages](https://dart.dev/guides/packages)를 사용하여 배포 할 수 있습니다.
 
@@ -10,7 +10,7 @@
 
 ###  라이브러리 사용법 (Using libraries)
 
-한 라이브러리의 네임스페이스를 다른 라이브러리의 스코프에서 사용하는 방법을 지정하려면 `import`를 사용하십시오.
+한 라이브러리의 네임스페이스를 다른 라이브러리의 스코프에서 사용하는 방법을 지정하려면 `import`를 사용하세요.
 
 예를 들어 다트 웹 앱은 일반적으로 [dart:html](https://api.dartlang.org/stable/dart-html) 라이브러리를 사용하며 다음과 같이 가져올 수 있습니다.
 
@@ -30,7 +30,7 @@ import 'package:test/test.dart';
 
 #### 라이브러리 전위자 지정 (Specifying a library prefix)
 
-충돌하는 식별자가있는 두 라이브러리를 가져 오는 경우 하나 또는 두 라이브러리의 전위자를 지정할 수 있습니다. 예를 들어, library1과 library2에 모두 `Element` 클래스가 있는 경우 다음과 같은 코드가 있을 수 있습니다.
+충돌하는 식별자가 있는 두 라이브러리를 가져 오는 경우 하나 또는 두 라이브러리의 전위자(prefix)를 지정할 수 있습니다. 예를 들어, library1과 library2에 모두 `Element` 클래스가 있는 경우 다음과 같은 코드가 있을 수 있습니다.
 
 ```dart
 import 'package:lib1/lib1.dart';
@@ -67,7 +67,7 @@ Deferred loading (lazy loading 이라고도 함)을 사용하면 필요할 때 �
 - A/B 테스트를 위해 다른 알고리즘을 구현하고 시도 할때.
 - 옵션 화면 및 대화 상자와 같이 거의 사용하지 않는 기능을 로드 할때.
 
-라이브러리를 지연 로드하려면 먼저`deferred as` 를 사용하여 라이브러리를 가져와야 합니다.
+라이브러리를 지연 로드하려면 먼저 `deferred as` 를 사용하여 라이브러리를 가져와야 합니다.
 
 ```dart
 import 'package:greetings/hello.dart' deferred as hello;
@@ -93,7 +93,6 @@ Future greet() async {
 - 다트는 `loadLibrary()`를 `named as namespace `를 사용하여 정의한 네임 스페이스에 암묵적으로 삽입합니다. `loadLibrary()`함수는 [Future](asynchrony_support.md#handling-future)를 반환합니다.
 
 > **Dart VM difference:** 다트VM은 `loadLibrary()`를 호출하기 전에 지연된 라이브러리의 멤버들에게 접근을 허용 합니다. 이 동작은 변경 될 수 있으므로 **현재 VM 동작에 종속되지 않습니다.** 자세한 내용은 [issue # 33118.]을 참조하십시오.
->
 
 <p id="implementing-libraries"/>
 
@@ -104,7 +103,7 @@ Future greet() async {
 - 라이브러리 소스 코드를 조직화 하는 방법.
 - `export` 지시자를 사용하는 방법.
 - `part` 지시자를 사용하는 방법.
-- `librariy` 지시자를 사용하는 시기.
+- `library` 지시자를 사용하는 시기.
 
 ---
 

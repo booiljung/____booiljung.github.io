@@ -30,18 +30,18 @@ DOM은 [Nodes](https://api.dartlang.org/stable/dart-html/Node-class.html)의 트
 
 element 를 조작하려면 먼저 element 를 나타내는 객체가 필요합니다. 쿼리를 사용하여이 개체를 가져올 수 있습니다.
 
-최상위 함수 `querySelector()`와 `querySelectorAll()`을 사용하여 하나 이상의 element를 찾으세요. id, class, tag, name 또는 이들의 조합으로 쿼리 할 수 있습니다. [CSS Selector Specification guide](http://www.w3.org/TR/css3-selectors/)는 id를 지정하기 위해 # 접두사를 사용하고 class에 마침표 (.)를 사용하는 것과 같이 selector의 형식을 정의 합니다.
+최상위 함수 `querySelector()`와 `querySelectorAll()`을 사용하여 하나 이상의 요소를 찾으세요. id, class, tag, name 또는 이들의 조합으로 쿼리 할 수 있습니다. [CSS Selector Specification guide](http://www.w3.org/TR/css3-selectors/)는 id를 지정하기 위해 # 접두사를 사용하고 class에 마침표 (.)를 사용하는 것과 같이 selector의 형식을 정의 합니다.
 
-`querySelector()`함수는 selector와 일치하는 첫 번째 element를 반환하고, `querySelectorAll()`은 selector와 일치하는 elements의 집합을 반환합니다.
+`querySelector()`함수는 selector와 일치하는 첫 번째 요소를 반환하고, `querySelectorAll()`은 selector와 일치하는 요소의 집합을 반환합니다.
 
 ```dart
-  // id로 element 찾기
+  // id로 요소 찾기
   Element elem1 = querySelector('#an-id');
 
-  // class로 element 찾기
+  // class로 요소 찾기
   Element elem2 = querySelector('.a-class');
 
-  // tag로 element 찾기
+  // tag로 요소 찾기
   List<Element> elems1 = querySelectorAll('div');
 
   // Find all text inputs.
@@ -49,14 +49,14 @@ element 를 조작하려면 먼저 element 를 나타내는 객체가 필요합�
     'input[type="text"]',
   );
 
-  // ID가 'id'인 element 안에 있는 <p> 안에 CSS 클래스
-  // 'class'가 있는 모든 element를 찾습니다.
+  // ID가 'id'인 요소 안에 있는 <p> 안에 CSS 클래스
+  // 'class'가 있는 모든 요소를 찾습니다.
   List<Element> elems3 = querySelectorAll('#id p.class');
 ```
 
-#### elment  다루기 (Manipulating elements)
+#### 요소  다루기 (Manipulating elements)
 
-property을 사용하여 element의 상태를 변경할 수 있습니다. node와 하위 타입(subtype) `Element`는 모든 element에 있는 property을 정의 합니다. 예를 들어, 모든 element에는 상태를 설정하는 데 사용할 수있는`class`, `hidden`, `id`, `style` 및 `title` 속성이 있습니다. Element의 서브 클래스는 [AnchorElement](https://api.dartlang.org/stable/dart-html/AnchorElement-class.html)의 `href` 속성과 같은 추가 속성을 정의합니다.
+property을 사용하여 요소의 상태를 변경할 수 있습니다. node와 하위 타입(subtype) 요소는 모든 요소에 있는 property을 정의 합니다. 예를 들어, 모든 요소에는 상태를 설정하는 데 사용할 수 있는`class`, `hidden`, `id`, `style` 및 `title` 속성이 있습니다. `Element`의 서브 클래스는 [AnchorElement](https://api.dartlang.org/stable/dart-html/AnchorElement-class.html)의 `href` 속성과 같은 추가 속성을 정의합니다.
 
 HTML에서 `AnchorElement`를 지정하는 다음 예제를 살피세요:
 
@@ -64,16 +64,16 @@ HTML에서 `AnchorElement`를 지정하는 다음 예제를 살피세요:
 <a id="example" href="http://example.com">link text</a>
 ```
 
-이 `<a>` 태그는 `href` 속성을 가진 element와 `"link text"` 문자열을 포함하는 text node (`text` 속성을 통해 접근 가능)를 지정합니다. 링크 가기 (link goes)의 URL을 변경하려면 `AnchorElement`의`href` 속성을 사용할 수 있습니다:
+이 `<a>` 태그는 `href` 속성을 가진 요소와 `"link text"` 문자열을 포함하는 text node (`text` 속성을 통해 접근 가능)를 지정합니다. 링크 가기 (link goes)의 URL을 변경하려면 `AnchorElement`의 `href` 속성을 사용할 수 있습니다:
 
 ```
 var anchor = querySelector('#example') as AnchorElement;
 anchor.href = 'http://dartlang.org';
 ```
 
-종종 여러 element에 property를 설정해야 합니다. 예를 들어, 다음 코드는 `"mac"`, `"win"`또는 `"linux"` 클래스를 갖는 모든 요소의 `hidden` 속성을 설정합니다. `hidden` 속성을 `true`로 설정하는 것은 CSS에 `display:none`을 추가 하는 것과 같은 효과가 있습니다.
+종종 여러 요소에 property를 설정해야 합니다. 예를 들어, 다음 코드는 `"mac"`, `"win"`또는 `"linux"` 클래스를 갖는 모든 요소의 `hidden` 속성을 설정합니다. `hidden` 속성을 `true`로 설정하는 것은 CSS에 `display:none`을 추가 하는 것과 같은 효과가 있습니다.
 
-```javascript
+```html
   <!-- In HTML: -->
   <p>
     <span class="linux">Words for Linux</span>
@@ -99,9 +99,7 @@ anchor.href = 'http://dartlang.org';
   }
 ```
 
-When the right property isn’t available or convenient, you can use Element’s `attributes` property. This property is a `Map<String, String>`, where the keys are attribute names. For a list of attribute names and their meanings, see the [MDN Attributes page.](https://developer.mozilla.org/en/HTML/Attributes) Here’s an example of setting an attribute’s value:
-
-올바른 property을 사용할 수 없거나 편리하지 않으면 `Element`의`attributes` 속성을 사용할 수 있습니다. 이 property은 키가 attribute name 인 `Map<String, String>`입니다. attribute name과 그 의미의 목록을 보려면 [MDN Attributes page](https://developer.mozilla.org/en/HTML/Attributes)를 참조하세요. attribute value를 설정하는 예는 다음과 같습니다.
+올바른 property을 사용할 수 없거나 편리하지 않으면 `Element`의`attributes` 속성을 사용할 수 있습니다. 이 property은 키가 attribute name 인 `Map<String, String>`입니다. attribute name과 그 의미의 목록을 보려면 [MDN Attributes page](https://developer.mozilla.org/en/HTML/Attributes)를 참조하세요. attribute value를 설정하는 예는 다음과 같습니다:
 
 ```dart
   elem.attributes['someAttribute'] = 'someValue';
@@ -126,7 +124,7 @@ HTML 텍스트를 구문 분석하여 `Element`를 만들 수도 있습니다. �
 
 `elem2`는 앞의 예제에서 `ParagraphElement`입니다.
 
-element에 부모를 지정하여 새로 만든 element를 document에 첨부합니다. 기존 element의 하위 element에 element를 추가 할 수 있습니다. 다음 예제에서 `body`는 element이고, 그 자식 요소는 `children` property으로부터 접근 가능합니다 (`List<Element>`처럼).
+요소에 부모를 지정하여 새로 만든 요소를 document에 첨부합니다. 기존 요소의 하위 요소에 요소를 추가 할 수 있습니다. 다음 예제에서 `body`는 요소이고, 그 자식 요소는 `children` property으로부터 접근 가능합니다 (`List<Element>`처럼).
 
 ```dart
   document.body.children.add(elem2);
@@ -157,16 +155,16 @@ Node를 제거하려면 `Node`의 `remove()`메소드를 사용하십시오 :
 
 #### Manipulating CSS styles
 
-CSS 또는 *cascading style sheet*는 DOM element의 presentation style을 정의합니다. ID 및 class attribute을 요소에 연결하여 요소의 모양을 변경할 수 있습니다.
+CSS 또는 *cascading style sheet*는 DOM 요소의 presentation style을 정의합니다. ID 및 class attribute을 요소에 연결하여 요소의 모양을 변경할 수 있습니다.
 
-각 요소는 `class` 필드를 가지고 있습니다. 이 컬렉션에서 문자열을 추가 및 제거하기만하면 CSS class를 추가 및 제거 할 수 있습니다. 예를 들어, 다음 예제는 element에 `warning` class를 추가합니다 :
+각 요소는 `class` 필드를 가지고 있습니다. 이 컬렉션에서 문자열을 추가 및 제거하기만하면 CSS class를 추가 및 제거 할 수 있습니다. 예를 들어, 다음 예제는 요소에 `warning` class를 추가합니다 :
 
 ```dart
   var elem = querySelector('#message');
   elem.classes.add('warning');
 ```
 
-ID로 element를 찾는 것이 종종 매우 효율적입니다. `id` property으로 element ID를 동적으로 설정할 수 있습니다 :
+ID로 요소를 찾는 것이 종종 매우 효율적입니다. `id` property으로 요소 ID를 동적으로 설정할 수 있습니다 :
 
 ```dart
   var message = DivElement();
@@ -176,45 +174,39 @@ ID로 element를 찾는 것이 종종 매우 효율적입니다. `id` property�
 
 이 예제에서 중복된 텍스트를 줄이려면 cascades 메소드를 사용할 수 있습니다.
 
-```
+```javascript
   var message = DivElement()
     ..id = 'message2'
     ..text = 'Please subscribe to the Dart mailing list.';
 ```
 
-element를 style set와 연결하는데 ID와 class를 사용하는 것이 가장 좋지만 때로는 특정 style을 element에 직접 첨부하려고 합니다.
+요소를 style set와 연결하는데 ID와 class를 사용하는 것이 가장 좋지만 때로는 특정 style을 요소에 직접 첨부하려고 합니다.
 
-```
+```javascript
   message.style
     ..fontWeight = 'bold'
     ..fontSize = '3em';
 ```
 
-#### Handling events
+#### 이벤트 다루기 (Handling events)
 
-To respond to external events such as clicks, changes of focus, and selections, add an event listener. You can add an event listener to any element on the page. Event dispatch and propagation is a complicated subject; [research the details](http://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture) if you’re new to web programming.
-
-Add an event handler using `*element*.on*Event*.listen(*function*)`, where `*Event*` is the event name and `*function*` is the event handler.
-
-For example, here’s how you can handle clicks on a button:
-
-클릭, 포커스 변경 및 선택과 같은 외부 이벤트에 응답하려면 이벤트 리스너를 추가하세요. 페이지의 모든 요소에 이벤트 리스너를 추가 할 수 있습니다. 이벤트 파견 및 전파는 복잡한 주제입니다. 웹 프로그래밍을 처음 접한다면 [research the details](http://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture).
+클릭, 포커스 변경 및 선택과 같은 외부 이벤트에 응답하려면 이벤트 리스너를 추가하세요. 페이지의 모든 요소에 이벤트 리스너를 추가 할 수 있습니다. 이벤트 보내기 및 전파는 복잡한 주제입니다. 웹 프로그래밍을 처음 접한다면 [research the details](http://www.w3.org/TR/DOM-Level-3-Events/#dom-event-architecture)르 보세요.
 
 `*element*.on*Event*.listen(*function*)`을 사용하여 이벤트 핸들러를 추가하세요. `*Event*`는 이벤트 이름이고`*function*`은 이벤트 핸들러입니다.
 
 예를 들어 버튼 클릭 수를 처리하는 방법은 다음과 같습니다.
 
-```
-  // Find a button by ID and add an event handler.
+```javascript
+  // ID로 버튼을 찾고 이벤트 핸들러를 추가 합니다.
   querySelector('#submitInfo').onClick.listen((e) {
-    // When the button is clicked, it runs this code.
+    // 버튼이 클릭되면 코드가 실행 됩니다.
     submitData();
   });
 ```
 
 이벤트는 DOM 트리를 통해 위아래로 전파 될 수 있습니다. 어떤 요소가 원래 이벤트를 시작했는지 알아 내려면`e.target`을 사용하십시오 :
 
-```
+```javascript
   document.body.onClick.listen((e) {
     final clickedElem = e.target;
     // ...
@@ -232,27 +224,27 @@ For example, here’s how you can handle clicks on a button:
 
 ###  HttpRequest로 HTTP 리소스 사용하기 (Using HTTP resources with HttpRequest)
 
-이전의 `XMLHttpRequest`로 알려진 [HttpRequest](https://api.dartlang.org/stable/dart-html/HttpRequest-class.html) 클래스를 사용하면 브라우저 기반 앱에서 HTTP 리소스에 액세스 할 수 있습니다. 전통적으로 AJAX 스타일 앱은 `HttpRequest`를 많이 사용합니다. `HttpRequest`를 사용하여 웹 서버에서 JSON 데이터나 다른 리소스를 동적으로로드하세요. 웹 서버에 동적으로 데이터를 보낼 수도 있습니다.
+이전의 `XMLHttpRequest`로 알려진 [HttpRequest](https://api.dartlang.org/stable/dart-html/HttpRequest-class.html) 클래스를 사용하면 브라우저 기반 앱에서 HTTP 리소스에 액세스 할 수 있습니다. 전통적으로 AJAX 스타일 앱은 `HttpRequest`를 많이 사용합니다. `HttpRequest`를 사용하여 웹 서버에서 JSON 데이터나 다른 리소스를 동적으로 로드하세요. 웹 서버에 동적으로 데이터를 보낼 수도 있습니다.
 
-#### Getting data from the server
+#### 서버에서 데이터 받기 (Getting data from the server)
 
 `HttpRequest` 정적 메소드 `getString()` 은 웹 서버로부터 데이터를 얻는 쉬운 방법 입니다. `getString()`호출과 함께 `await`을 사용하여 실행을 계속하기 전에 데이터를 가지고 있는지 확인하세요.
 
 ```dart
   Future main() async {
     String pageHtml = [!await HttpRequest.getString(url);!]
-    // Do something with pageHtml...
+    // pageHtml로 무언가 합니다...
   }
 ```
 
 try-catch를 사용하여 에러 핸들러를 지정합니다.
 
-```
+```javascript
   try {
     var data = await HttpRequest.getString(jsonUri);
-    // Process data...
+    // 데이터 처리...
   } catch (e) {
-    // Handle exception...
+    // 예외 처리...
   }
 ```
 
@@ -265,7 +257,7 @@ try-catch를 사용하여 에러 핸들러를 지정합니다.
       method: 'HEAD',
     );
     if (req.status == 200) {
-      // Successful URL access...
+      // ULR 액세스 성공...
     }
     // ···
   }
@@ -282,7 +274,7 @@ try-catch를 사용하여 에러 핸들러를 지정합니다.
 
 예 :
 
-```
+```javascript
   var request = HttpRequest();
   request
     ..open('POST', url)
@@ -290,11 +282,11 @@ try-catch를 사용하여 에러 핸들러를 지정합니다.
     ..send(encodedData);
 ```
 
-#### Sending data to the server
+#### 서버로 데이터 전송 (Sending data to the server)
 
 `HttpRequest`는 HTTP 메소드 POST를 사용하여 서버에 데이터를 보낼 수 있습니다. 예를 들어, 폼(form) 핸들러에 데이터를 동적으로 제출(submit)하고자 할 수 있습니다. RESTful 웹 서비스에 JSON 데이터를 보내는 것도 또 다른 일반적인 사례 입니다.
 
-양식 처리기에 데이터를 제출하려면 name-value pair쌍을 URI로 인코딩 된 문자열로 제공해야 합니다. (URI 클래스에 대한 정보는 [Dart librarary tour](https://dart.dev/guides / libraries / library-tour)의 [URIs selection](https://dart.dev/guides/libraries/library-tour#uris)에 있습니다. 폼 핸들러에 데이터를 보내려면`Content-type` 헤더를 `application/x-www-form-urlencode`로 설정해야 합니다.
+폼 핸드러에 데이터를 제출하려면 name-value pair쌍을 URI로 인코딩 된 문자열로 제공해야 합니다. (URI 클래스에 대한 정보는 [Dart librarary tour](https://dart.dev/guides / libraries / library-tour)의 [URIs selection](https://dart.dev/guides/libraries/library-tour#uris)에 있습니다. 폼 핸들러에 데이터를 보내려면`Content-type` 헤더를 `application/x-www-form-urlencode`로 설정해야 합니다.
 
 ```dart
   String encodeMap(Map data) => data.keys
@@ -322,9 +314,9 @@ try-catch를 사용하여 에러 핸들러를 지정합니다.
   }
 ```
 
-###  Sending and receiving real-time data with WebSockets
+###  웹소켓으로 실시간으로 데이터를 보내고 받기 (Sending and receiving real-time data with WebSockets)
 
-To use a WebSocket in your web app, first create a [WebSocket](https://api.dartlang.org/stable/dart-io/WebSocket-class.html) object, passing the WebSocket URL as an argument:
+앱에서 웹소켓을 사용하려면, 먼저 [WebSocket](https://api.dartlang.org/stable/dart-io/WebSocket-class.html) 개체를 생성하고, 웹소캣을 통해 URL을 인자로 보내야 합니다.:
 
 `WebSocket`을 사용하면 웹 애플리케이션이 서버와 대화식으로 데이터를 교환 할 수 있으므로 폴링이 필요하지 않습니다. 서버는 `WebSocket`을 생성하고 `ws://`로 시작하는 URL에서 요청을 수신합니다 (예: `ws://127.0.0.1:1337/ws`). `WebSocket`을 통해 전송되는 데이터는 문자열 또는 BLOB 일 수 있습니다. 종종 데이터는 JSON 형식의 문자열입니다.
 
@@ -334,7 +326,7 @@ To use a WebSocket in your web app, first create a [WebSocket](https://api.dartl
   var ws = WebSocket('ws://echo.websocket.org');
 ```
 
-#### Sending data
+#### 데이터 보내기 (Sending data)
 
 `WebSocket`에서 문자열 데이터를 보내려면, `send()`메소드를 사용하세요:
 
@@ -342,7 +334,7 @@ To use a WebSocket in your web app, first create a [WebSocket](https://api.dartl
   ws.send('Hello from Dart!');
 ```
 
-#### Receiving data
+#### 데이터 받기 (Receiving data)
 
 `WebSocket`에서 데이터를 수신하려면 메시지 이벤트에 대한 수신기를 등록하세요.
 
@@ -354,7 +346,7 @@ To use a WebSocket in your web app, first create a [WebSocket](https://api.dartl
 
 메시지 이벤트 핸들러는 [MessageEvent](https://api.dartlang.org/stable/dart-html/MessageEvent-class.html) 오브젝트를 수신합니다. 이 객체의 `data` 필드는 서버의 데이터를 가지고 있습니다.
 
-#### Handling WebSocket events
+#### 웹소켓 이벤트 다루기 (Handling WebSocket events)
 
 앱은 다음과 같은 `WebSocket` 이벤트를 처리 할 수 있습니다: open, close, error 및 (앞에서 설명한 것처럼) message. 다음은 `WebSocket` 객체를 만들고 open, close, error 및 message 이벤트에 대한 핸들러를 등록하는 메서드의 예입니다.
 
@@ -393,7 +385,7 @@ To use a WebSocket in your web app, first create a [WebSocket](https://api.dartl
   }
 ```
 
-###  More informationhttps://dart.dev/web/libraries)
+###  [더 많은 정보 (More information)](https://dart.dev/web/libraries)
 
 이 섹션에서는 dart:html 라이브러리 사용의 겉을 간신히 봤습니다. 자세한 내용은 [dart:html](https://api.dartlang.org/stable/dart-html/dart-html-library.html) 문서를 참조하세요. Dart에는 보다 전문화 된 웹 API를 위한 추가 라이브러리 [web audio](https://api.dartlang.org/stable/dart-web_audio/dart-web_audio-library.html), [IndexedDB](https://api.dartlang.org/stable/dart- indexed_db / dart-indexed_db-library.html), 및 [WebGL](https://api.dartlang.org/stable/dart-web_gl/dart-web_gl-library.html)가 있습니다.
 

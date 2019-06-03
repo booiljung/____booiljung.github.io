@@ -72,7 +72,7 @@ var pages = <String, String>{
 
 ###  생성자에서 매개 변수화 된 타입 사용 (Using parameterized types with constructors)
 
-생성자를 사용할 때 하나 이상의 타입을 지정하려면 클래스 이름 바로 뒤에 꺽쇠 괄호 (`<...> `)로 유형을 넣으십시오. 예 :
+생성자를 사용할 때 하나 이상의 타입을 지정하려면 클래스 이름 바로 뒤에 꺽쇠 괄호 (`<...> `)로 유형을 넣으세요. 예 :
 
 ```dart
 var nameSet = Set<String>.from(names);
@@ -96,7 +96,7 @@ names.addAll(['Seth', 'Kathy', 'Lars']);
 print(names is List<String>); // true
 ```
 
-**Note:** 반대로 자바의 제네릭은 erasure를 사용합니다. 즉, 일반 타입 매개 변수는 런타임에 제거됩니다. 자바에서는 객체가 List인지 여부를 테스트 할 수 있지만 `List<String>`인지 테스트 할 수는 없습니다.
+**Note:** 반대로 자바의 제네릭은 erasure를 사용합니다. 즉, 일반 타입 매개 변수는 런타임에 제거됩니다. 자바에서는 객체가 `List`인지 여부를 테스트 할 수 있지만 `List<String>`인지 테스트 할 수는 없습니다.
 
 <p id="restricting-the-parameterized-type"/>
 
@@ -137,7 +137,7 @@ var foo = Foo<Object>();
 
 ###  제네릭 타입 메소드 사용법 (Using generic methods)
 
-처음에는 다트의 제네릭 지원이 클래스에만 제한되었습니다. 제네릭 메소드라고 하는 새로운 구문을 사용하면 메서드 및 함수에 타입 인수를 사용할 수 있습니다.
+처음에는 Dart의 제네릭 지원이 클래스에만 제한되었습니다. 제네릭 메소드라고 하는 새로운 구문을 사용하면 메서드 및 함수에 타입 인수를 사용할 수 있습니다.
 
 ```dart
 T first<T>(List<T> ts) {

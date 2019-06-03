@@ -52,7 +52,7 @@ await flushThenExit(exitCode);
 
 `await 표현식`에서 `표현식`의 값은 대개 `Future`입니다; 그렇지 않은 경우 값은 자동으로 `Future`에 래핑됩니다. 이 `Future` 객체는 객체를 반환하겠다는 약속을 나타냅니다. `await 표현식`의 값은 반환된 객체입니다. 표현식을 기다리면 해당 객체를 사용할 수 있을 때까지 실행이 일시 중지됩니다.
 
-**await을 사용할 때 컴파일 타임 오류가 발생하면 비동기 함수를 기다려야합니다.** 예를 들어 앱의 `main ()`함수에서`await`을 사용하려면 `main ()`의 본문을 `async`로 표시해야 합니다:
+**await을 사용할 때 컴파일 타임 오류가 발생하면 비동기 함수를 기다려야합니다.** 예를 들어 앱의 `main()`함수에서`await`을 사용하려면 `main()`의 본문을 `async`로 표시해야 합니다:
 
 ```dart
 Future main() async {
@@ -79,9 +79,9 @@ String lookUpVersion() => '1.0.0';
 Future<String> lookUpVersion() async => '1.0.0';
 ```
 
-함수의 본문에는 퓨처 API를 사용할 필요가 없습니다. 다트는 필요한 경우 `Future` 개체를 만듭니다.
+함수의 본문에는 퓨처 API를 사용할 필요가 없습니다. Dart는 필요한 경우 `Future` 개체를 만듭니다.
 
-함수가 유용한 값을 반환하지 않으면 반환 형식을 `Future<void>`로 만드십시오.
+함수가 유용한 값을 반환하지 않으면 반환 형식을 `Future<void>`로 만드세요.
 
 <p id="handling-streams"/>
 

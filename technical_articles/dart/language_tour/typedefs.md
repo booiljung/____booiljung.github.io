@@ -2,7 +2,7 @@
 
 ##  Typedefs
 
-다트에서 문자열과 숫자가 객체인것처럼 함수도 객체 입니다. typedef 또는 function-type alias는 함수 타입에 필드 및 반환 타입을 선언 할 때 사용할 수 있는 이름을 제공합니다. typedef는 함수 타입이 변수에 지정 될 때 타입 정보를 보유합니다.
+Dart에서 문자열과 숫자가 객체인것처럼 함수도 객체 입니다. typedef 또는 function-type alias는 함수 타입에 필드 및 반환 타입을 선언 할 때 사용할 수 있는 이름을 제공합니다. typedef는 함수 타입이 변수에 지정 될 때 타입 정보를 보유합니다.
 
 typedef를 사용하지 않는 다음 코드를 먼저 생각해 보겠습니다.
 
@@ -27,7 +27,7 @@ void main() {
 }
 ```
 
-`compare` 에 `f`를 대입하면 타입 정보가 유실됩니다. `f`의 타입은 `(Object, Object)`→`int` (여기서 →는 반환을 의미)이지만, compare의 타입은 Function입니다. 명시적 이름을 사용하고 타입 정보를 유지하도록 코드를 변경하면 개발자와 도구 모두가 해당 정보를 사용할 수 있습니다.
+`compare` 에 `f`를 대입하면 타입 정보가 유실됩니다. `f`의 타입은 `(Object, Object)`→`int` (여기서 →는 반환을 의미)이지만, `compare`의 타입은 `Function`입니다. 명시적 이름을 사용하고 타입 정보를 유지하도록 코드를 변경하면 개발자와 도구 모두가 해당 정보를 사용할 수 있습니다.
 
 ```dart
 typedef Compare = int Function(Object a, Object b);
@@ -50,7 +50,7 @@ void main() {
 
 > **Note:** 현재 typedef는 함수 타입으로 제한됩니다. 우리는 이것이 변하기를 기대합니다.
 
-typedef는 단순히 별칭이기 때문에 어떤 함수의 타입을 검사 할 수있는 방법을 제공합니다. 예:
+typedef는 단순히 별칭이기 때문에 어떤 함수의 타입을 검사 할 수 있는 방법을 제공합니다. 예:
 
 ```dart
 typedef Compare<T> = int Function(T a, T b);

@@ -490,8 +490,6 @@ Future<int> getLocationId(String city) async {
 }
 ```
 
-Here we are just making a simple HTTP request and then decoding the response as a list. Speaking of decoding, you'll see `jsonDecode`  is a function from a dependency we need to import. So let's go ahead  nad do that now. At the top of the file by the other imports go ahead  and add:
-
 여기서는 간단한 HTTP 요청을 작성한 다음 응답을 리스트로 디코딩하는 것입니다. 디코딩에 관해서는`jsonDecode`가 우리가 `import` 해야 할 의존성 함수라는 것을 알 수 있습니다. 파일의 상단에 있는 다른 `import` 위치 쯤에 추가하세요:
 
 ```dart
@@ -503,8 +501,6 @@ import 'dart:convert';
 <p id="add-fetchweather-methd"/>
 
 #### fetchWeather 메소드 추가하기 (Add fetchWeather Method)
-
-Next  up let's add our other method to hit the metaweather API. This one will  get the weather for a city given it's locationId. Below the `getLocationId` method we just implemented, let's go ahead and add this:
 
 다음으로 metaweather API를 액세스하기 위한 다른 방법을 추가해 보겠습니다. 도시는 주어진 `locationId`에 따라 날씨를 얻을 것입니다. 방금 구현한 `getLocationId` 메소드 아래에 다음을 추가해 보겠습니다.
 
@@ -550,9 +546,7 @@ export 'weather_api_client.dart';
 
 ## 저장소 (Repository)
 
-> The `WeatherRepository` serves as an abstraction between  the client code and the data provider so that as a developer working on  features, you don't have to know where the data is coming from. Our `WeatherRepository` will have a dependency on our `WeatherApiClient` that we just created and it will expose a single public method called, you guessed it, `getWeather(String city)`.  No one needs to know that under the hood we need to make two API calls  (one for locationId and one for weather) because no one really cares.  All we care about is getting the `Weather` for a given city.
-
-`WeatherRepository`는 클라이언트 코드와 데이터 제공자(data provider) 사이의 추상화 역할을 하기 때문에 피쳐를 구현해야 하는 개발자가 데이터의 출처를 알 필요가 없습니다. 우리의 `WeatherRepository`는 방금 생성한 `WeatherApiClient`에 의존 할 것이고 `getWeather(String city)`라고 하는 하나의 공개 메소드를 노출시킬 것입니다. 누구도 후드 아래에서 두개의 API 호출(`locationId`와 `Weather`)을 알아야 할 필요가 없습니다. 어느 누구도 관심을 가져야 할 피요가 없습니다. 우리가 관심을 갖는 것은 주어진 도시에 대한 'Weather'를 얻는 것입니다.
+> `WeatherRepository`는 클라이언트 코드와 데이터 제공자(data provider) 사이의 추상화 역할을 하기 때문에 피쳐를 구현해야 하는 개발자가 데이터의 출처를 알 필요가 없습니다. 우리의 `WeatherRepository`는 방금 생성한 `WeatherApiClient`에 의존 할 것이고 `getWeather(String city)`라고 하는 하나의 공개 메소드를 노출시킬 것입니다. 누구도 후드 아래에서 두개의 API 호출(`locationId`와 `Weather`)을 알아야 할 필요가 없습니다. 어느 누구도 관심을 가져야 할 피요가 없습니다. 우리가 관심을 갖는 것은 주어진 도시에 대한 'Weather'를 얻는 것입니다.
 
 <p id = "creating-out-weatherrepository"/>
 

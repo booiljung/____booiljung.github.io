@@ -2,7 +2,7 @@
 
 ## 함수 (Functions)
 
-Dart는 진정한 객체 지향 언어이므로 함수도 객체이며 타입이 `Function`입니다. 즉, 함수를 변수에 할당하거나 다른 함수에 인수로 전달할 수 있습니다. Dart 클래스의 인스턴스를 함수처럼 호출 할 수도 있습니다. 자세한 내용은 Callable 클래스를 참조하십시오.
+Dart는 진정한 객체 지향 언어이므로 함수도 객체이며 타입이 `Function`입니다. 즉, 함수를 변수에 할당하거나 다른 함수에 인수로 전달할 수 있습니다. Dart 클래스의 인스턴스를 함수처럼 호출 할 수도 있습니다. 자세한 내용은 Callable 클래스를 참조하세요.
 
 다음은 함수 구현의 예입니다.
 
@@ -42,22 +42,22 @@ bool isNoble(int atomicNumber) => _nobleGases[atomicNumber] != null;
 
 ##### 선택적 명명 된 매개 변수 (Optional named parameters)
 
-함수를 호출 할 때 `paramName:value`를 사용하여 명명 된 매개 변수를 지정할 수 있습니다. 예를 들면:
+함수를 호출 할 때 `paramName:value`를 사용하여 명명된 매개변수를 지정할 수 있습니다. 예를 들면:
 
 ```dart
 enableFlags(bold: true, hidden: false);
 ```
 
-함수를 정의 할 때 `{param1, param2, ...}`를 사용하여 명명된 매개 변수를 지정하세요. :
+함수를 정의 할 때 `{param1, param2, ...}`를 사용하여 명명된 매개 변수를 지정하세요 :
 
 ```dart
 /// Sets the [bold] and [hidden] flags ...
 void enableFlags({bool bold, bool hidden}) {...}
 ```
 
-[Flutter](https://flutter.dev) 인스턴스 생성 표현식은 복잡해질 수 있으므로 위젯 생성자는 명명된 매개 변수를 독점적으로 사용합니다. 이렇게하면 인스턴스 작성 표현식을 읽기 쉽게 만듭니다.
+[Flutter](https://flutter.dev) 인스턴스 생성 표현식은 복잡해질 수 있으므로 위젯 생성자는 명명된 매개변수를 독점적으로 사용합니다. 이렇게하면 인스턴스 작성 표현식을 읽기 쉽게 만듭니다.
 
-[`@required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)를 사용하여 임의의 Dart 코드 (Flutter뿐 아니라)에서 명명 된 매개 변수에 주석을 달아 필수 매개 변수임을 나타낼 수 있습니다. 예 :
+[`@required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)를 사용하여 임의의 Dart 코드 (Flutter뿐 아니라)에서 명명 된 매개변수에 주석을 달아 필수 매개 변수임을 나타낼 수 있습니다. 예 :
 
 ```dart
 const Scrollbar({Key key, @required Widget child})
@@ -65,13 +65,13 @@ const Scrollbar({Key key, @required Widget child})
 
 `Scrollbar`가 생성 될 때, 분석기는 `child` 인자가 없을 때 이슈를 보고합니다.
 
-[`Required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)는 [meta](https://pub.dev/packages/meta) 패키지에 정의되어 있습니다. `package:meta/meta.dart`를 직접 가져 오거나 Flutter의`package:flutter/material.dart`와 같이`meta`를 내보내는 또 다른 패키지를 가져 오십시오.
+[`Required`](https://pub.dev/documentation/meta/latest/meta/required-constant.html)는 [meta](https://pub.dev/packages/meta) 패키지에 정의되어 있습니다. `package:meta/meta.dart`를 직접 가져 오거나 Flutter의`package:flutter/material.dart`와 같이 `meta`를 `export` 하는 또 다른 패키지를 `import` 하세요.
 
 <p id="optional-positional-parameters"/>
 
 ##### 선택적 위치 매개 변수 (Optional positional parameters)
 
-`[]`에 함수 매개 변수 세트를 래핑하면 선택적 위치 매개 변수로 표시됩니다.
+`[]`에 함수 매개변수 세트를 래핑하면 선택적 위치 매개변수로 표시됩니다.
 
 ```dart
 String say(String from, String msg, [String device]) {
@@ -83,7 +83,7 @@ String say(String from, String msg, [String device]) {
 }
 ```
 
-다음은 선택적 매개 변수없이 이 함수를 호출하는 예제입니다.
+다음은 선택적 매개변수 없이 이 함수를 호출하는 예제입니다.
 
 ```dart
 assert(say('Bob', 'Howdy') == 'Bob says Howdy');
@@ -100,9 +100,9 @@ assert(say('Bob', 'Howdy', 'smoke signal') ==
 
 #### 매개 변수 기본 값 (Default parameter value)
 
-함수는 `= `을 사용하여 명명 된 매개 변수와 위치 매개 변수에 대한 기본값을 정의 할 수 있습니다. 기본값은 컴파일 타임 상수 여야 합니다. 기본값이 제공되지 않으면 기본값은 `null`입니다.
+함수는 `= `을 사용하여 명명된 매개변수와 위치 매개변수에 대한 기본값을 정의 할 수 있습니다. 기본값은 컴파일타임 상수이어야 합니다. 기본값이 제공되지 않으면 기본값은 `null`입니다.
 
-다음은 명명 된 매개 변수의 기본값을 설정하는 예제입니다.
+다음은 명명된 매개변수의 기본값을 설정하는 예제입니다.
 
 ```dart
 /// Sets the [bold] and [hidden] flags ...
@@ -116,7 +116,7 @@ enableFlags(bold: true);
 >
 > 이전 코드는 `=` 대신 콜론 (`:`)을 사용하여 명명 된 매개 변수의 기본값을 설정할 수 있습니다. 이유는 원래는 명명 된 매개 변수에 대해서만 `:`만이 지원 되었기 때문입니다. 이 지원은 더 이상 사용되지 않으므로 `=`를 사용하여 기본값을 지정하는 것이 좋습니다.
 
-다음 예제는 위치 매개 변수의 기본값을 설정하는 방법을 보여줍니다.
+다음 예제는 위치 매개변수의 기본값을 설정하는 방법을 보여줍니다.
 
 ```dart
 String say(String from, String msg,
@@ -135,16 +135,16 @@ assert(say('Bob', 'Howdy') ==
     'Bob says Howdy with a carrier pigeon');
 ```
 
-리스트나 맵을 기본 매개 변수로 전달 할 수 있습니다. 다음 예제는  `doStuff()` 함수를 정의 하는데, 기본 리스트를 `list`파라미터로, 기본 맵을 `gifts` 파리미터로 지정합니다. 
+리스트나 맵을 기본 매개변수로 전달 할 수 있습니다. 다음 예제는  `doStuff()` 함수를 정의 하는데, 기본 리스트를 `list` 매개변수로, 기본 맵을 `gifts` 매개변수로 지정합니다. 
 
 ```dart
-void doStuff(
-    {List<int> list = const [1, 2, 3],
-    Map<String, String> gifts = const {
-      'first': 'paper',
-      'second': 'cotton',
-      'third': 'leather'
-    }}) {
+void doStuff({
+  List<int> list = const [1, 2, 3],
+  Map<String, String> gifts = const {
+    'first': 'paper',
+    'second': 'cotton',
+    'third': 'leather'
+  }}) {
   print('list:  $list');
   print('gifts: $gifts');
 }
@@ -154,9 +154,9 @@ void doStuff(
 
 ### `main()` 함수
 
-모든 앱은 app의 진입점 역할을하는 최상위 `main()`함수를 가져야 합니다.  `main()`함수는 `void`를 리턴하고 인수를 위한 선택적 `List<String>` 매개 변수를 갖습니다.
+모든 앱은 app의 진입점 역할을 하는 최상위 `main()` 함수를 가져야 합니다.  `main()` 함수는 `void`를 리턴하고 인수를 위한 선택적 `List<String>` 매개변수를 갖습니다.
 
-다음은 웹 앱을 위한 `main ()`함수의 예입니다 :
+다음은 웹 앱을 위한 `main()` 함수의 예입니다:
 
 ```dart
 void main() {
@@ -169,7 +169,7 @@ void main() {
 > 노트 :
 > 위의 코드에서 `..`구문은 [캐스케이드](operators.md#cascade-notation)이라고합니다. 캐스케이드를 사용하면 단일 객체의 멤버에 대해 여러 작업을 수행 할 수 있습니다.
 
-다음은 인수를 취하는 명령 행 응용 프로그램을 위한 `main ()`함수의 예입니다 :
+다음은 인수를 취하는 명령 행 응용 프로그램을 위한 `main()` 함수의 예입니다 :
 
 ```dart
 // Run the app like this: dart args.dart 1 test
@@ -250,7 +250,7 @@ list.forEach(
 
 ### 어휘 범위 (Lexical scope)
 
-다트는 어휘 범위가 지정된 언어입니다. 즉, 변수의 범위는 코드의 레이아웃에 의해 정적으로 결정됩니다. 변수가 범위 내에 있는지 보려면 "중괄호를 바깥으로 따라가면 알 수 있습니다".
+다트는 어휘 범위가 지정된 언어입니다. 즉, 변수의 범위는 코드의 레이아웃에 의해 정적으로 결정됩니다. 변수가 범위 내에 있는지 보려면 "중괄호 밖으로 따라가면 알 수 있습니다".
 
 다음은 각 범위 수준에서 변수가 있는 중첩 함수의 예입니다.
 
@@ -346,7 +346,7 @@ void main() {
 
 ### 반환값 (Return values)
 
-모든 함수는 값을 반환합니다. 리턴 값이 지정되지 않으면`return null;`문이 암시적으로 함수 본문에 추가됩니다.
+모든 함수는 값을 반환합니다. 리턴 값이 지정되지 않으면 `return null;`문이 암시적으로 함수 본문에 추가됩니다.
 
 ```dart
 foo() {}

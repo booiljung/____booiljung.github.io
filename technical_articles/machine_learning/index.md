@@ -2,6 +2,9 @@
 
 # 머신러닝 (Machine Learning)
 
+- [음성처리 (Audio Processing)](audio_processing/index.md)
+- [딥러닝 (Deep Learning)](deep_learning/index.md)
+
 ## 테크니컬 콘텐츠
 
 - [기초 확률론](probability_basic.md)

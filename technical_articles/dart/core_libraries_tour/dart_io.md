@@ -22,7 +22,7 @@ import 'dart:io';
 
 ###  파일과 디렉토리 (Files and directories)
 
-I/O 라이브러리를 사용하면 명령 줄 프로그램에서 파일을 읽고 쓰고 디렉터리를 탐색 할 수 있습니다. 파일 내용을 읽는 방법은 한꺼번에 읽거나 또는 스트리밍하거나 중 두 가지가 있습니다. 한 번에 파일을 읽으려면 파일의 모든 내용을 저장하기에 충분한 메모리가 필요합니다. 파일이 매우 크거나 읽는 동안 파일을 처리하려면 [Streaming file contents](https://dart.dev/guides/libraries/library-tour#streaming-file-contents)에 설명 된대로 Stream을 사용해야합니다.).
+I/O 라이브러리를 사용하면 명령 줄 프로그램에서 파일을 읽고 쓰고 디렉토리를 탐색 할 수 있습니다. 파일 내용을 읽는 방법은 한꺼번에 읽거나 또는 스트리밍하거나 중 두 가지가 있습니다. 한 번에 파일을 읽으려면 파일의 모든 내용을 저장하기에 충분한 메모리가 필요합니다. 파일이 매우 크거나 읽는 동안 파일을 처리하려면 [Streaming file contents](https://dart.dev/guides/libraries/library-tour#streaming-file-contents)에 설명 된대로 Stream을 사용해야합니다.).
 
 <p id = "reading-a-fil-as-text"/>
 
@@ -49,7 +49,7 @@ Future main() async {
 
 #### 파일을 바이너리로 읽기 (Reading a file as binary)
 
-다음 코드는 전체 파일을 바이트로 int 목록으로 읽습니다. `readAsBytes()`를 호출하면 `Future`가 반환되어 사용 가능할 때 결과를 제공합니다.
+다음 코드는 전체 파일을 바이트로 `int` 목록으로 읽습니다. `readAsBytes()`를 호출하면 `Future`가 반환되어 사용 가능할 때 결과를 제공합니다.
 
 ```dart
 Future main() async {
@@ -110,7 +110,7 @@ Future main() async {
 
 #### 파일 내용 쓰기 (Writing file contents)
 
-[IOSink](https://api.dartlang.org/stable/dart-io/IOSink-class.html)를 사용하여 데이터를 파일에 쓸 수 있습니다. `File` 개체의 `openWrite()` 메소드를 사용하여 쓸 수있는 IOSink를 얻습니다. 기본 모드인 `FileMode.write`는 파일의 기존 데이터를 완전히 덮어 씁니다.
+[IOSink](https://api.dartlang.org/stable/dart-io/IOSink-class.html)를 사용하여 데이터를 파일에 쓸 수 있습니다. `File` 개체의 `openWrite()` 메소드를 사용하여 쓸 수 있는 IOSink를 얻습니다. 기본 모드인 `FileMode.write`는 파일의 기존 데이터를 완전히 덮어 씁니다.
 
 ```dart
 var logFile = File('log.txt');

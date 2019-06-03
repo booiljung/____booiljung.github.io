@@ -2,25 +2,26 @@
 
 # 기술 블로그
 
-### 알고리즘
+입문자들을 위해 제목 뿐인 항목을 나열 했습니다. 기회가 잡히는대로 채워 나가겠습니다.
+
+## 기초 지식
 
 - [수학](mathematics/index.md)
-- [USFCA: Data Structure Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-- 데이터 구조와 알고리즘
-- 정보이론
-- 결정이론
-- 동적계획법
-- 컴파일러 이론
-- 암호학
 - 수치해석
+- 암호학
+
+### 알고리즘
+
+- [데이터 구조와 알고리즘](algorithm/index.md)
+- 컴파일러 이론
 
 ### 아키텍쳐, 디자인, 네트워크
 
 - [컴퓨터 아키텍처 (Computer Architecture)](computer_architecture/index.md)
 - [Software Architecture](software_architecture/index.md)
 - 객체지향 프로그래밍 및 디자인 패턴 (Object Oriented Programming and Design Patterns)
-- 병렬처리 (Parallel Processing)
-- 분산 컴퓨팅 (Distributed Computing)
+- 병렬컴퓨팅 (Parallel Computing)
+- 분산컴퓨팅 (Distributed Computing)
 - [네트워크 프로그래밍 (Network Programming)](./networks/index.md)
 
 ## 병렬컴퓨팅
@@ -46,9 +47,8 @@
 
 ### 데이터
 
-- [SQL](sql/index.md)
-- [MySQL](mysql/index.md)
-- [Oracle Database](oracle_database/index.md)
+- [DBMS](./dbms/index.md)
+
 - [데이터 분석 (Data Analytics)](data_analytics/index.md)
 - 데이터 시각화 (Data Visualization)
 - [아파치 스파크 (Apache Spark)](apache_spark/index.md)
@@ -57,11 +57,9 @@
 
 - [신호처리 (Signal Processing)](signal_processing/index.md)
 - [영상처리 (Image Processing)](image_processing/index.md)
-- [음성처리(Audio Processing)](audio_processing/index.md)
 - [컴퓨터 비전 (Computer Vision)](computer_vision/index.md)
 - [3D 비전 (3D Vision)](3d_vision/index.md)
 - [머신러닝 (Machine Learning)](machine_learning/index.md)
-- [딥러닝 (Deep Learning)](deep_learning/index.md)
 - [텐서플로우 (Tensorflow)](tensorflow/index.md)
 - [토치 (Torch)](torch/index.md)
 - [파이토치 (PyTorch)](pytorch/index.md)
@@ -90,7 +88,6 @@
 ### 프레임워크 라이브러리
 
 - [소프트웨어 개발 도구](software_development_environments/index.md)
-
 - iOS 프로그래밍 (iOS Programming)
 - [Flutter 프로그래밍 (Flutter Programming)](./flutter/index.md)
 - [Android 프로그래밍 (Android Programming)](./android/index.md)
@@ -100,6 +97,7 @@
 - [Vue.js](vuejs/index.md)
 - [Node.js](./nodejs/index.md)
 - [React Native](./react_native/index.md)
+- [skia.org: Skia Graphics Library](https://skia.org/)
 
 ## 자동화
 

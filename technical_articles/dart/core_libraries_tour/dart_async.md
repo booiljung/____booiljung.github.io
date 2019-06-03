@@ -4,7 +4,7 @@
 
 원문: [A tour of the core libraries](https://dart.dev/guides/libraries/library-tour)
 
-비동기 프로그래밍은 종종 콜백 함수를 사용하지만 Dart는 [`Future`](https://api.dartlang.org/stable/dart-async/Future-class.html)와 [`Stream`](https://api.dartlang .org/stable/dart-async/Stream-class.html) 객체를 사용합니다. Future란 결과가 미래에 언젠가 제공 될 것이라는 약속과 같습니다. `Stream`은 이벤트와 같은 일련의 값을 가져 오는 방법입니다. `Future`, `Stream` 등은 dart:async 라이브러리 ([API Reference](https://api.dartlang.org/stable/dart-async/dart-async-library.html))에 있습니다.
+비동기 프로그래밍은 종종 콜백 함수를 사용하지만 Dart는 [`Future`](https://api.dartlang.org/stable/dart-async/Future-class.html)와 [`Stream`](https://api.dartlang .org/stable/dart-async/Stream-class.html) 객체를 사용합니다. `Future`란 결과가 미래에 언젠가 제공 될 것이라는 약속과 같습니다. `Stream`은 이벤트와 같은 일련의 값을 가져 오는 방법입니다. `Future`, `Stream` 등은 dart:async 라이브러리 ([API Reference](https://api.dartlang.org/stable/dart-async/dart-async-library.html))에 있습니다.
 
 **Note:** `Future` 또는 `Stream` API를 직접 사용할 필요는 없습니다. Dart 언어는 `async` 및 `await`와 같은 키워드를 사용하여 비동기 코딩을 지원합니다. 자세한 내용은 language tour 에서 [asynchrony support](https://dart.dev/guides/language/language-tour#asynchrony-support)을 참조하십시오.
 
@@ -124,8 +124,6 @@ try {
 
 #### 다수의 퓨처를 기다리는 방법 (Waiting for multiple futures)
 
-Sometimes your algorithm needs to invoke many asynchronous functions and wait for them all to complete before continuing. Use the [Future.wait()](https://api.dartlang.org/stable/dart-async/Future/wait.html) static method to manage multiple Futures and wait for them to complete:
-
 때때로 알고리즘은 많은 비동기 함수를 호출하고, 계속 진행하기 전에 모두 완료 될 때까지 기다려야합니다. [`Future.wait()`](https://api.dartlang.org/stable/dart-async/Future/wait.html) static 메소드를 사용하여 여러 퓨처를 관리하고 완료 될 때까지 기다리세요.
 
 ```dart
@@ -146,10 +144,6 @@ print('Done with all the long steps!');
 `Stream` 객체는 Dart API 전체에 나타나며 데이터 시퀀스를 나타냅니다. 예를 들어 버튼 클릭과 같은 HTML 이벤트는 `Stream`을 사용하여 전달됩니다. 파일을 `Stream`으로 읽을 수도 있습니다.
 
 #### 루프에서 비동기 사용하기 (Using an asynchronous for loop)
-
-Sometimes you can use an asynchronous for loop (`await for`) instead of using the Stream API.
-
-Consider the following function. It uses Stream’s `listen()` method to subscribe to a list of files, passing in a function literal that searches each file or directory.
 
 때로는 스트림 API를 사용하는 대신 비동기 `for` 루프 ( `await for`)를 사용할 수 있습니다.
 
@@ -229,15 +223,13 @@ var lines = inputStream
     .transform(LineSplitter());
 ```
 
-This example uses two transformers. First it uses utf8.decoder to transform the stream of integers into a stream of strings. Then it uses a LineSplitter to transform the stream of strings into a stream of separate lines. These transformers are from the dart:convert library (see the [dart:convert section](https://dart.dev/guides/libraries/library-tour#dartconvert---decoding-and-encoding-json-utf-8-and-more)).
-
 이 예제에서는 두 개의 변환기(transformer)를 사용합니다. 먼저 `utf8.decoder`를 사용하여 정수 스트림을 문자열 스트림으로 변환합니다. 그런 다음 `LineSplitter`를 사용하여 문자열 스트림을 별도의 줄로 변환합니다. 이 변환기는 dart:convert에서 가져온 것입니다 ([dart:convert section](https://dart.dev/guides/libraries/library-tour#dartconvert---decoding-and-encoding-json-utf-8-and-more)를 보세요.)
 
 #### 에러 및 완료 다루기 (Handling errors and completion)
 
 오류 및 완료 처리 코드를 지정하는 방법은 비동기 for 루프 (`await for`)를 사용하는지 Stream API를 사용하는지에 따라 다릅니다.
 
-비동기 for 루프를 사용하는 경우 try-catch를 사용하여 오류를 처리하세요.스트림이 닫힌 후에 실행되는 코드는 비동기 for 루프 후에 진행 됩니다.
+비동기 for 루프를 사용하는 경우 try-catch를 사용하여 오류를 처리하세요. 스트림이 닫힌 후에 실행되는 코드는 비동기 for 루프 후에 진행 됩니다.
 
 ```dart
 Future readFileAwaitFor() async {
@@ -276,7 +268,7 @@ inputStream
 });
 ```
 
-###  떠 많은 정보 (More information)
+###  추가 정보 (More information)
 
 명령 줄 앱에서 Future와 Stream을 사용하는 몇 가지 예를 보려면 [dart:io tour](https://dart.dev/guides/libraries/library-tour#dartio)를 참조하십시오. 또한 다음 글 및 자습서를 참조하십시오.
 

@@ -1,6 +1,13 @@
 # Natural Language Processing
 
-## Toolkits
+## Automatic Speech Recognition
+
+### Toolkits
+
+- [kaldi-asr.org: Kaldi](https://kaldi-asr.org/doc/about.html)
+- [htk.eng.cam.ac.uk: HTK](http://htk.eng.cam.ac.uk/prot-docs/htk_book.shtml)
+
+## Documents
 
 - [Slide: Toolkits for Robust Speech Processing R&D Core 문창기](https://www.slideshare.net/ChangGiMoon/toolkits-for-robust-speech-processing)
 

@@ -10,7 +10,7 @@ Dart는 [Exception](https://api.dartlang.org/stable/dart-core/Exception-class.ht
 
 <p id="throw"/>
 
-###  Throw
+###  throw
 
 다음은 예외를 throw하거나 raise 하는 예제입니다.
 
@@ -24,7 +24,7 @@ throw FormatException('Expected at least 1 section');
 throw 'Out of llamas!';
 ```
 
-**Note:** 프로덕션 수준의 코드는 일반적으로 [Error](https://api.dartlang.org/stable/dart-core/Error-class.html) 또는 [Exception](https://api.dartlang.org/stable/dart-core/Exception-class.html))를 구현하는 타입을 throw합니다.
+**Note:** 프로덕션 수준의 코드는 일반적으로 [Error](https://api.dartlang.org/stable/dart-core/Error-class.html) 또는 [Exception](https://api.dartlang.org/stable/dart-core/Exception-class.html)를 구현하는 타입을 throw합니다.
 
 예외를 던지기 (throwing)는 표현식이므로, `=>` 명령문에서 뿐만 아니라 표현식을 허용하는 다른 곳에서도 예외를 던질 수 있습니다 :
 
@@ -34,9 +34,9 @@ void distanceTo(Point other) => throw UnimplementedError();
 
 <p id="catch"/>
 
-###  Catch
+###  catch
 
-예외를 catch하나 캡처하면 예외를 다시 발생시키지 않는 한 전파되는 것을 중지합니다. 예외를 catch하면 다룰 수 있습니다.
+예외를 catch 하거나 캡처하면 예외를 다시 발생시키지 않는 한 전파되는 것을 중지합니다. 예외를 catch하면 다룰 수 있습니다.
 
 ```dart
 try {
@@ -63,7 +63,7 @@ try {
 }
 ```
 
-역자주: 모든 예외를 코드는 위험하며, 처리 후 반드시 다시 던질 것을 권합니다.
+역자주: 위 예제에서 9번째 라인처럼 모든 예외를 잡는 코드는 위험하며, 처리되지 않은 예외는 반드시 다시 던질 것을 권합니다.
 
 앞의 코드에서 볼 수 있듯이 `on` 또는 `catch` 또는 둘 다 사용할 수 있습니다. 예외 타입을 지정할 필요가 있을 때 `on`을 사용하십시오. 예외 처리기가 예외 객체를 필요로 할 때 `catch`를 사용하십시오.
 
@@ -106,7 +106,7 @@ void main() {
 
 ###  Finally
 
-예외가 발생했는지 여부에 관계없이 일부 코드가 실행되도록하려면 `finally` 절을 사용하십시오. 예외와 일치하는`catch` 절이 없으면 `finally` 절이 실행 된 후에 예외가 전파됩니다.
+예외가 발생했는지 여부에 관계없이 일부 코드가 실행되도록하려면 `finally` 절을 사용하십시오. 예외와 일치하는 `catch` 절이 없으면 `finally` 절이 실행 된 후에 예외가 전파됩니다.
 
 ```dart
 try {
@@ -129,7 +129,7 @@ try {
 }
 ```
 
-라이브러리 둘러보기의 [Exception](exceptions.md) 섹션을 읽어보십시오.
+라이브러리 둘러보기의 [Exception](exceptions.md) 섹션을 읽어보세요.
 
 ---
 

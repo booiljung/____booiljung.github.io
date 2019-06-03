@@ -4,7 +4,7 @@
 
 메타데이터를 사용하여 코드에 대한 추가 정보를 제공하십시오. 메타데이터 주석은 `@`문자로 시작하고, 컴파일 타임 상수 (`deprecated`와 같은) 또는 상수 생성자에 대한 호출이 따라옵니다.
 
-두 개의 주석은 모든 다트 코드에서 사용할 수 있습니다: `@deprecated`와 `@override`.  `@override`의 사용 예는 [Extending a class](classes.md#extending-a-class)를 보십시오. 다음은 `@ deprecated` 주석 사용의 예입니다 :
+두 개의 주석은 모든 다트 코드에서 사용할 수 있습니다: `@deprecated`와 `@override`.  `@override`의 사용 예는 [Extending a class](classes.md#extending-a-class)를 보십시오. 다음은 `@deprecated` 주석 사용의 예입니다 :
 
 ```dart
 class Television {
