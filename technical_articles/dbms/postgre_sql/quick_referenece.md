@@ -10,6 +10,125 @@
 
 `<>`: 필수 옵션
 
+### 설치
+
+#### 설치 여부 확인
+
+```
+$ aptitude show postgresql | grep State
+State: not installed
+```
+
+#### 설치
+
+```
+$ sudo apt-get install postgresql
+```
+
+##### 설치 확인
+
+```
+$ dpkg -l | grep postgres
+```
+
+```
+ii  postgresql                                 10+190                                       all          object-relational SQL database (supported version)
+ii  postgresql-10                              10.8-0ubuntu0.18.04.1                        amd64        object-relational SQL database, version 10 server
+ii  postgresql-client-10                       10.8-0ubuntu0.18.04.1                        amd64        front-end programs for PostgreSQL 10
+ii  postgresql-client-common                   190                                          all          manager for multiple PostgreSQL client versions
+ii  postgresql-common                          190                                          all          PostgreSQL database-cluster manager
+```
+
+##### 계정 확인
+
+```
+$ cat /etc/passwd | grep postgres
+```
+
+```
+postgres:x:127:135:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash
+```
+
+##### 상태 확인
+
+```
+$ /etc/init.d/postgresql status
+```
+
+```
+● postgresql.service - PostgreSQL RDBMS
+   Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+   Active: active (exited) since Thu 2019-06-06 20:42:21 KST; 1min 38s ago
+ Main PID: 9441 (code=exited, status=0/SUCCESS)
+    Tasks: 0 (limit: 4915)
+   CGroup: /system.slice/postgresql.service
+
+ 6월 06 20:42:21 booil1804 systemd[1]: Starting PostgreSQL RDBMS...
+ 6월 06 20:42:21 booil1804 systemd[1]: Started PostgreSQL RDBMS.
+```
+
+##### 네트워크 확인
+
+```
+$ sudo netstat -tnlp | grep postgres
+```
+
+```
+tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      11354/postgres
+```
+
+#### 패스워드 설정
+
+`postgre` 계정의 패스워드 변경
+
+```
+sudo -u postgres psql
+```
+
+패스워드 변경
+
+```
+alter user postgres with password '새패스워드'
+```
+
+#### 접속 IP 설정
+
+```
+$ ps -ef | grep postgresql.conf | grep -v grep
+```
+
+```
+$ postgres 11354     1  0 20:42 ?        00:00:00 /usr/lib/postgresql/10/bin/postgres -D /var/lib/postgresql/10/main -c config_file=/etc/postgresql/10/main/postgresql.conf
+```
+
+설정파일 변경
+
+```
+$ sudo vi /etc/postgresql/10/main/postgresql.conf
+```
+
+```
+listen_addresses = 포트번호 지정
+```
+
+재시작
+
+```
+$ sudo /etc/init.d/postgresql restart
+```
+
+#### 테스트
+
+원격지에서 접속 여부 확인
+
+```
+psql -h 아이피주소 -U postgres template1
+```
+
+
+
+
+
 ### DBMS
 
 ##### 시작

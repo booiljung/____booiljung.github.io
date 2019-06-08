@@ -163,6 +163,20 @@ rabbitmqctl list_user_permissions <username>
 rabbitmqctl clear_permissions -p /<vhost> <username>
 ```
 
+서비스 시작
+
+```
+$ sudo  service rabbitmq-server start
+```
+
+서비스 정지
+
+```
+$ sudo  service rabbitmq-server stop
+```
+
+
+
 ## 참조
 
 - [How to install Latest RabbitMQ Server on Ubuntu 18.04 LTS](https://computingforgeeks.com/how-to-install-latest-rabbitmq-server-on-ubuntu-18-04-lts/)
