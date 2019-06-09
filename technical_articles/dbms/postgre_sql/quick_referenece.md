@@ -125,10 +125,6 @@ $ sudo /etc/init.d/postgresql restart
 psql -h 아이피주소 -U postgres template1
 ```
 
-
-
-
-
 ### DBMS
 
 ##### 시작
@@ -168,6 +164,22 @@ SELECT expression
 ```sql
 SELECT * FROM PG_SHADOW;
 ```
+
+또는
+
+```
+\du
+```
+
+또는 추가 정보를 보려면
+
+```
+\du+
+```
+
+
+
+#### 유저 ROLE
 
 | roles         | 설명                   |
 | ------------- | ---------------------- |
@@ -220,7 +232,7 @@ CREATEDB database_name [[options] ...]
 
 | options                                   | 설명                                                         |
 | ----------------------------------------- | ------------------------------------------------------------ |
-| `[[WITH] [OWNER [=] owner_user_name]`     | 데이터베이스를 소유할 유저이름 지정                          |
+| `[[WITH] [OWNER [=] 새오너이름]`          | 데이터베이스를 소유할 유저이름 지정                          |
 | `[TEMPLATE [=] template]`                 | 템플리트 지정                                                |
 | `[LC_COLLATE [=] lc_collate`              | 컬럼과 인덱스, `ORDER BY`절의 문자열에 적용되는 정렬 순서 설정 |
 | `[LC_CTYPE [=] lc_ctype]`                 | 문자 분류로 대소문자 숫자 분류를 설정                        |
@@ -230,14 +242,61 @@ CREATEDB database_name [[options] ...]
 #### 데이터베이스 변경
 
 ```
-ALTER DATABASE database_name
+ALTER DATABASE 데이터베이스이름
 ```
 
 #### 데이터베이스 삭제
 
 ```
-DROPDB database_name
+DROP DATABASE 데이터베이스이름
 ```
+
+#### 데이터베이스 목록
+
+```
+\l
+```
+
+또는
+
+```
+\list
+```
+
+```
+                                  List of databases
+   Name    |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-----------+----------+----------+-------------+-------------+-----------------------
+ postgres  | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | 
+ template0 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+ template1 | postgres | UTF8     | en_US.UTF-8 | en_US.UTF-8 | =c/postgres          +
+           |          |          |             |             | postgres=CTc/postgres
+```
+
+또는
+
+```
+SELECT * FROM pg_database;
+```
+
+```
+  datname  | datdba | encoding | datcollate  |  datctype   | datistemplate | datallowconn | datconnlimit | datlastsysoid | datfrozenxid | datminmxid | dattablespace |               datacl                
+-----------+--------+----------+-------------+-------------+---------------+--------------+--------------+---------------+--------------+------------+---------------+-------------------------------------
+ postgres  |     10 |        6 | en_US.UTF-8 | en_US.UTF-8 | f             | t            |           -1 |         13054 |          548 |          1 |          1663 | 
+ template1 |     10 |        6 | en_US.UTF-8 | en_US.UTF-8 | t             | t            |           -1 |         13054 |          548 |          1 |          1663 | {=c/postgres,postgres=CTc/postgres}
+ template0 |     10 |        6 | en_US.UTF-8 | en_US.UTF-8 | t             | f            |           -1 |         13054 |          548 |          1 |          1663 | {=c/postgres,postgres=CTc/postgres}
+(3 rows)
+
+```
+
+#### 데이터베이스 오너 변경
+
+```
+ALTER DATABASE OWNER TO 새오너이름
+```
+
+
 
 ### 스키마
 
