@@ -77,15 +77,23 @@ $ sudo netstat -tnlp | grep postgres
 tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      11354/postgres
 ```
 
+#### psql 접속
+
+psql로  `postgre`계정에 접속: 
+
+```
+$ sudo -u postgres psql
+```
+
+#### psql 로그 아웃
+
+```
+\q
+```
+
 #### 패스워드 설정
 
-`postgre` 계정의 패스워드 변경
-
-```
-sudo -u postgres psql
-```
-
-패스워드 변경
+DB관리자 패스워드 변경:
 
 ```
 alter user postgres with password '새패스워드'
@@ -122,7 +130,7 @@ $ sudo /etc/init.d/postgresql restart
 원격지에서 접속 여부 확인
 
 ```
-psql -h 아이피주소 -U postgres template1
+$ psql -h 아이피주소 -U postgres template1
 ```
 
 ### DBMS
@@ -130,7 +138,7 @@ psql -h 아이피주소 -U postgres template1
 ##### 시작
 
 ```
-psql database_name
+$ psql database_name
 ```
 
 ##### 버전 확인
@@ -191,10 +199,10 @@ SELECT * FROM PG_SHADOW;
 #### 유저 생성
 
 ```sql
-CREATE USER <usename> [[WITH] <options> ...]
+CREATE USER 유저이름 [[WITH] 옵션들 ...]
 ```
 
-| options                                        | 설명                                   |
+| 옵션                                           | 설명                                   |
 | ---------------------------------------------- | -------------------------------------- |
 | `[SUPERUSER | NOSUPERUSER(기본값)]`            | superuser role 부여                    |
 | `[CREATEDB | NOCREATEDB(기본값)]`              | DB 생성 role 부여                      |
@@ -207,27 +215,35 @@ CREATE USER <usename> [[WITH] <options> ...]
 #### 유저 변경
 
 ```
-ALTER USER user_name [[WITH] <옵션> [...]]
+ALTER USER 유저이름 [[WITH] 옵션 [...]]
 ```
 
 ##### 유저 이름 변경
 
 ```
-ALTER USER user_name RENAME TO new_user_name
+ALTER USER 유저이름 RENAME TO 새유저이름
 ```
 
 #### 유저 삭제
 
 ```
-DROP USER user_name
+DROP USER 유저이름
 ```
 
 ### 데이터베이스
 
 #### 데이터베이스 생성
 
+셸에서
+
 ```
-CREATEDB database_name [[options] ...]
+$ sudo -u postgres createdb 데이터베이스이름
+```
+
+또는 psql에서
+
+```
+CREATE DATABASE 데이터베이스이름 [옵션들 ...]
 ```
 
 | options                                   | 설명                                                         |
@@ -241,17 +257,23 @@ CREATEDB database_name [[options] ...]
 
 #### 데이터베이스 변경
 
+psql에서:
+
 ```
 ALTER DATABASE 데이터베이스이름
 ```
 
 #### 데이터베이스 삭제
 
+psql에서:
+
 ```
 DROP DATABASE 데이터베이스이름
 ```
 
 #### 데이터베이스 목록
+
+psql에서:
 
 ```
 \l
@@ -292,6 +314,8 @@ SELECT * FROM pg_database;
 
 #### 데이터베이스 오너 변경
 
+psql에서:
+
 ```
 ALTER DATABASE OWNER TO 새오너이름
 ```
@@ -303,35 +327,35 @@ ALTER DATABASE OWNER TO 새오너이름
 #### 스키마 생성
 
 ```
-CREATE SCHEMA schema_name [AUTHORIZATION user_name]
+CREATE SCHEMA 스키마이름 [AUTHORIZATION 유저이름]
 ```
 
 ```
-CREATE SCHEMA AUTHORIZATION user_name [3. schema_element [ ... ] ]
+CREATE SCHEMA AUTHORIZATION 유저이름 [3. 스키마원소 [ ... ] ]
 ```
 
 ```
-CREATE SCHEMA IF NOT EXISTS schema_name [ AUTHORIZATION user_name ]
+CREATE SCHEMA IF NOT EXISTS 스키마이름 [ AUTHORIZATION 유저이름 ]
 ```
 
 ```
-CREATE SCHEMA IF NOT EXISTS AUTHORIZATION user_name
+CREATE SCHEMA IF NOT EXISTS AUTHORIZATION 유저이름
 ```
 
 #### 스키마 변경
 
 ```
-ALTER SCHEMA schema_name RENAME TO new_schema_name
+ALTER SCHEMA 스키마이름 RENAME TO 새스키마이름
 ```
 
 ```
-ALTER SCHEMA owner_user_name OWNER TO new_ower_user_name
+ALTER SCHEMA 오너유저이름 OWNER TO 새유저이름
 ```
 
 #### 스키마 삭제
 
 ```
-DROP SCHEMA schema_name
+DROP SCHEMA 스키마이름
 ```
 
 #### 스키마 경로 검색
@@ -345,29 +369,29 @@ SHOW SEARCH_PATH
 #### 테이블스페이스 생성
 
 ```
-CREATE TABLESPACE tablespace_name options
+CREATE TABLESPACE 테이블스페이스이름 옵션들...
 ```
 
-| options               |                |
-| --------------------- | -------------- |
-| OWNER owner_user_name | 소유 유저 이름 |
-| LOCATION 'directory'  | 디렉토리       |
+| 옵션                | 설명           |
+| ------------------- | -------------- |
+| OWNER 소유유저이름  | 소유 유저 이름 |
+| LOCATION '디렉토리' | 디렉토리       |
 
 #### 테이블스페이스 변경
 
 ```
-ALTER TABLESPACE tablespace_name
+ALTER TABLESPACE 테이블스페이스이름
 ```
 
 | options                          | 설명           |
 | -------------------------------- | -------------- |
-| `RENAME TO new_table_space_name` | 이름 변경      |
-| `OWNER TO new_owner_user_name`   | 소유 유저 변경 |
+| `RENAME TO 새테이블스페이스이름` | 이름 변경      |
+| `OWNER TO 새오너유저이름`        | 소유 유저 변경 |
 
 #### 테이블스페이스 삭제
 
 ```
-DROP TABLESPACE table_space_name
+DROP TABLESPACE 테이블스페이스이름
 ```
 
 ## 데이터 타입 (type)
@@ -422,25 +446,25 @@ DROP TABLESPACE table_space_name
 #### 테이블 생성
 
 ```
-CREATE TABLE table_name (columns, ...)
+CREATE TABLE 테이블이름 (컬럼들, ...)
 ```
 
-`column`:
+`컬럼`들은:
 
 ```
-column_name		type
+컬럼이름		자료형
 ```
 
 #### 테이블 변경
 
 ```
-ALTER TABLE table_name [options]
+ALTER TABLE 테이블이름 [options]
 ```
 
 ##### 테이블 컬럼 추가
 
 ```
-ALTER TABLE ADD COLUMN column_options
+ALTER TABLE ADD COLUMN 컬럼옵션
 ```
 
 ##### 테이블 컬럼 삭제#################
@@ -458,13 +482,13 @@ ALTER TABLE
 ##### 테이블 컬럼 이름 변경
 
 ```
-ALTER TABLE table_name RENAME COLUMN column_name TO new_column_name
+ALTER TABLE 테이블이름 RENAME COLUMN 컬럼이름 TO 새컬럼이름
 ```
 
 ##### 테이블 컬럼을 다른 테이블스페이스로 이동
 
 ```
-ALTER TABLE table_name SET TABLESPACE other_table_space_name
+ALTER TABLE 테이블이름 SET TABLESPACE 다른테이블스페이스이름
 ```
 
 #### 테이블 삭제
@@ -472,38 +496,38 @@ ALTER TABLE table_name SET TABLESPACE other_table_space_name
 소유자나 수퍼유저만 삭제 가능.
 
 ```
-DROP TABLE table_name
+DROP TABLE 테이블이름
 ```
 
 테이블이 존재하면 삭제
 
 ```
-DROP TABLE IF EXIST table_name
+DROP TABLE IF EXIST 테이블이름
 ```
 
 ### 제약 조건
 
-| 이름                       | 설명                          |
-| -------------------------- | ----------------------------- |
-| `CHECK(logical_condition)` | 비교                          |
-| `NOT NULL`                 | 유효해야 함                   |
-| `UNIQUE`                   | 열에서 모든 행에 유일해야 함. |
-| `PRIMARY KEY`              | `NOT NULL` AND `UNIQUE`       |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
-|                            |                               |
+| 이름                | 설명                          |
+| ------------------- | ----------------------------- |
+| `CHECK(논리적조건)` | 비교                          |
+| `NOT NULL`          | 유효해야 함                   |
+| `UNIQUE`            | 열에서 모든 행에 유일해야 함. |
+| `PRIMARY KEY`       | `NOT NULL` AND `UNIQUE`       |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
+|                     |                               |
 
 #### 외래키
 
@@ -511,7 +535,7 @@ DROP TABLE IF EXIST table_name
 
 ```
 ...
-	FOREIGN KEY (컬럼, ...) REFERENCES table_name (컬럼, ...)
+	FOREIGN KEY (컬럼, ...) REFERENCES 테이블이름 (컬럼, ...)
 ```
 
 테이블 조작
@@ -552,21 +576,21 @@ SELECT [ ALL | DISTINCT [ ON (expression, ...) ] ]
 
 ```
 SELECT *
-	FROM table_name
+	FROM 테이블이름
 ```
 
 테이블의 모든 열의 지정한 행 조회
 
 ```
 SELECT column_names, ...
-	FROM table_name
+	FROM 테이블이름
 ```
 
 테이블의 지정한 조건의 모든 열의 행 조회
 
 ```
 SELECT *
-	FROM table_name
+	FROM 테이블이름
 	WHERE conditions
 ```
 
@@ -574,7 +598,7 @@ SELECT *
 
 ```
 SELECT *
-	FROM table_name
+	FROM 테이블이름
 	ORDER BY column_name
 ```
 
@@ -582,14 +606,14 @@ SELECT *
 
 ```
 SELECT DISTINCT column_names
-	FROM table_name
+	FROM 테이블이름
 ```
 
 지정한 컬럼의 중복을 제거하고 정렬하여 조회
 
 ```
 SELECT DISTINCT column_names
-	FROM table_name
+	FROM 테이블이름
 	ORDER BY column_names
 ```
 
@@ -598,19 +622,19 @@ SELECT DISTINCT column_names
 열의 좌측 컬럼부터 순차적으로 값 지정.
 
 ```
-INSERT INTO table_name VALUES (value, ...)
+INSERT INTO 테이블이름 VALUES (value, ...)
 ```
 
 지정한 컬럼만 값을 지정.
 
 ```
-INSERT INTO table_name (column_names,...) VALUES (values, ...)
+INSERT INTO 테이블이름 (column_names,...) VALUES (values, ...)
 ```
 
 텍스트 파일에서 가져 오기
 
 ```
-COPY table_name FROM `file_path`
+COPY 테이블이름 FROM `file_path`
 ```
 
 #### 테이블의 열 변경
@@ -618,7 +642,7 @@ COPY table_name FROM `file_path`
 열 변경
 
 ```
-UPDATE table_name
+UPDATE 테이블이름
 	SET column_name = value, ...
 	WHERE conditions
 ```
@@ -626,7 +650,7 @@ UPDATE table_name
 #### 테이블의 열 삭제
 
 ```
-DELETE FROM table_name WHERE condition
+DELETE FROM 테이블이름 WHERE condition
 ```
 
 #### 조인
