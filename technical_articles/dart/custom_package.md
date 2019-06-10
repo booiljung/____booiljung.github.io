@@ -10,8 +10,8 @@
 
 ``` yaml
 dependencies:
-	패키지이름
-		path: 패키지의경로이름(로컬경로도가능) 예를들어 ../plugin1/
+  패키지이름:
+    path: 패키지의경로이름(로컬경로도가능) 예를들어 ../plugin1/
 ```
 
 #### Git 저장소에서 참조
@@ -20,7 +20,7 @@ dependencies:
 
 ```yaml
 dependencies:
-  plugin1:
+  패키지이름:
     git:
       url: git://github.com/booilung/plugin1.git
 ```
