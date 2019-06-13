@@ -34,7 +34,7 @@ p?.y = 4;
 
 ###  생성자 사용하기 (Using constructors)
 
-생성자를 사용하여 객체를 만들 수 있습니다. 생성자 이름은 `ClassName` 또는`ClassName.identifier` 일 수 있습니다. 예를 들어, 다음 코드는 `Point()`와 `Point.fromJson()` 생성자를 사용하여 `Point` 객체를 생성합니다 :
+생성자를 사용하여 객체를 만들 수 있습니다. 생성자 이름은 `클래스이름` 또는`클래스이름.식별자` 일 수 있습니다. 예를 들어, 다음 코드는 `Point()`와 `Point.fromJson()` 생성자를 사용하여 `Point` 객체를 생성합니다 :
 
 ```dart
 var p1 = Point(2, 2);

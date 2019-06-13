@@ -1,3 +1,5 @@
+[Up](index.md)
+
 원문: [A Brief History of Scaling LinkedIn](https://engineering.linkedin.com/architecture/brief-history-scaling-linkedin)
 
 # LinkedIn 확장의 간략한 역사
@@ -133,3 +135,11 @@ Leo에서 서비스 지향 아키텍처로 전환했을때 우리가 가정한 J
 LinkedIn은 계속해서 빠르게 성장하고 있으며 개선하기 위해 할 수있는 일이 아직도 많이 있습니다. 우리는 극미의 문제를 해결하기 위해 노력하고 있습니다. [우리와 함께하십시오!](https://www.linkedin.com/company/linkedin/careers?trk=eng-blog)
 
  *Thanks to Steve, Swee, Venkat, Eran, Ram, Brandon, Mammad, and Nick for the help in reviewing.*
+
+---
+
+## 참조
+
+이 글은 저자에게 번역물 게시 허가를 요청하였고, 저자의 허가를 받고 게시를 계속 합니다.
+
+- LinkedIn: [A Brief History of Scaling LinkedIn](https://engineering.linkedin.com/architecture/brief-history-scaling-linkedin)
