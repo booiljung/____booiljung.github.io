@@ -1,5 +1,7 @@
 # PostgreSQL 11 Quick Reference
 
+![PostgreSQL Elephant Logo](https://www.postgresql.org/media/img/about/press/elephant.png)
+
 ### Notation
 
 대문자: 키워드
@@ -12,20 +14,29 @@
 
 ### 설치
 
-#### 설치 여부 확인
+##### 서버 설치 확인
 
 ```
 $ aptitude show postgresql | grep State
+```
+
+```
 State: not installed
 ```
 
-#### 설치
+##### 모두 설치
 
 ```
-$ sudo apt-get install postgresql
+$ sudo apt install postgresql postgresql-contrib
 ```
 
-##### 설치 확인
+##### 클라이언트만 설치
+
+```
+$ sudo apt install postgresql-client
+```
+
+##### 서버 설치 확인
 
 ```
 $ dpkg -l | grep postgres
@@ -56,7 +67,7 @@ $ /etc/init.d/postgresql status
 ```
 
 ```
-● postgresql.service - PostgreSQL RDBMS
+- postgresql.service - PostgreSQL RDBMS
    Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
    Active: active (exited) since Thu 2019-06-06 20:42:21 KST; 1min 38s ago
  Main PID: 9441 (code=exited, status=0/SUCCESS)
@@ -77,26 +88,62 @@ $ sudo netstat -tnlp | grep postgres
 tcp        0      0 127.0.0.1:5432          0.0.0.0:*               LISTEN      11354/postgres
 ```
 
+##### 서버가 사용하는 디렉토리 확인
+
+```
+$ ps auxw |  grep postgres | grep -- -D
+```
+
+```
+postgres   925  0.0  0.2 327968 27428 ?        S    09:12   0:00 /usr/lib/postgresql/10/bin/postgres -D /var/lib/postgresql/10/main -c config_file=/etc/postgresql/10/main/postgresql.conf
+```
+
+#### psql
+
+버전확인
+
+```
+$ psql -V
+```
+
+```
+psql (PostgreSQL) 10.8 (Ubuntu 10.8-0ubuntu0.18.04.1)
+```
+
 #### psql 접속
 
-psql로  `postgre`계정에 접속: 
+postgresql을 설치하면, 최고 관리 계정인 postgres 계정이 생성 됩니다.
+
+##### postres 계정에 로그인
+
+```
+$ sudo -i -u postgres
+```
+
+이어서 psql에 접속
+
+```
+$ psql
+```
+
+##### postgres 계정으로 psql 접속
 
 ```
 $ sudo -u postgres psql
 ```
 
-#### psql 로그 아웃
-
-```
-\q
-```
-
-#### 패스워드 설정
+##### 패스워드 설정
 
 DB관리자 패스워드 변경:
 
 ```
-alter user postgres with password '새패스워드'
+postgres=# alter user postgres with password '새패스워드'
+```
+
+##### psql 로그 아웃
+
+```
+postgres=# \q
 ```
 
 #### 접속 IP 설정
@@ -109,7 +156,7 @@ $ ps -ef | grep postgresql.conf | grep -v grep
 $ postgres 11354     1  0 20:42 ?        00:00:00 /usr/lib/postgresql/10/bin/postgres -D /var/lib/postgresql/10/main -c config_file=/etc/postgresql/10/main/postgresql.conf
 ```
 
-설정파일 변경
+#### 설정파일 변경
 
 ```
 $ sudo vi /etc/postgresql/10/main/postgresql.conf
@@ -119,19 +166,27 @@ $ sudo vi /etc/postgresql/10/main/postgresql.conf
 listen_addresses = 포트번호 지정
 ```
 
-재시작
+#### 서버 재시작
 
 ```
 $ sudo /etc/init.d/postgresql restart
 ```
+
+
+
+
 
 #### 테스트
 
 원격지에서 접속 여부 확인
 
 ```
-$ psql -h 아이피주소 -U postgres template1
+$ psql -h IP주소 -U postgres template1
 ```
+
+
+
+
 
 ### DBMS
 
@@ -165,41 +220,49 @@ SELECT expression
 \q
 ```
 
-## 유저
+#### 셸에서 유저 관리
 
-#### 유저 조회
+postgres 계정으로 로그인
+
+```
+sudo -i -u postgres
+```
+
+대화형 모드로 유저 생성
+
+```
+createuser --interactive
+```
+
+```
+Enter name of role to add: 새유저이름
+Shall the new role be a superuser? (y/n) 선택
+```
+
+#### psql로 유저 관리
+
+##### psql에서 유저 조회
 
 ```sql
-SELECT * FROM PG_SHADOW;
+postgres=# SELECT * FROM PG_SHADOW;
 ```
 
 또는
 
 ```
-\du
+postgres=# \du
 ```
 
 또는 추가 정보를 보려면
 
 ```
-\du+
+postgres=# \du+
 ```
 
-
-
-#### 유저 ROLE
-
-| roles         | 설명                   |
-| ------------- | ---------------------- |
-| `SUPERUSER`   | 유저 생성 및 권한 부여 |
-| `CREATE ROLE` | role을 생성            |
-| `CREATE DB`   | DB 생성                |
-| `REPLICATION` | DB 복사                |
-
-#### 유저 생성
+##### psql에서 유저 생성
 
 ```sql
-CREATE USER 유저이름 [[WITH] 옵션들 ...]
+postgres=# CREATE USER 유저이름 [[WITH] 옵션들 ...]
 ```
 
 | 옵션                                           | 설명                                   |
@@ -212,38 +275,179 @@ CREATE USER 유저이름 [[WITH] 옵션들 ...]
 | `[CONNECTION LIMIT collection_limit]`          | 동시연결세션수, 기본값은 무제한으로 -1 |
 | `[ENCRYPED | UNENCRYPED] PASSWORD '패스워드']` | 패스워드 지정, 생략 가능               |
 
-#### 유저 변경
+##### psql에서 유저 변경
 
 ```
-ALTER USER 유저이름 [[WITH] 옵션 [...]]
+postgres=# ALTER USER 유저이름 [[WITH] 옵션 [...]]
 ```
 
-##### 유저 이름 변경
+###### 유저 이름 변경
 
 ```
-ALTER USER 유저이름 RENAME TO 새유저이름
+postgres=# ALTER USER 유저이름 RENAME TO 새유저이름
 ```
 
-#### 유저 삭제
+##### psql에서 유저 패스워드 변경
 
 ```
-DROP USER 유저이름
+postgres=# \password 유저이름
 ```
+
+```
+Enter new passworkd: ********
+Enter it again: ********
+```
+
+
+
+##### psql에서 유저 삭제
+
+```
+postgres=# DROP USER 유저이름
+```
+
+
+
+### 테이블스페이스
+
+postgresql의 테이블스페이스는 파일들을 저장할 경로와 소유자를 지정합니다.
+
+##### 테이블스페이스 목록 조회
+
+```
+postgres=# \db
+```
+
+##### 기본 경로
+
+postgresql의 기본 테이블스페이스의 경로는 `/var/lib/postgres/버전/main` 입니다.
+
+##### 경로 생성
+
+테이블스페이스의 경로에 postgresql 가 만든 파일 외에 다른 파일이 존재해서는 안됩니다. 만일 다른 파일이 존재한다면 가용성을 저해하게 됩니다. 가능한 한 테이블스페이스에 인덱스나 테이블등을 넣는 것이 효율적입니다.
+
+경로를 만듭니다.
+
+```
+$ sudo mkdir /var/lib/폴더이름/
+```
+
+폴더 권한을 확인합니다.
+
+```sh
+$ sudo ls -al /var/lib/폴더이름
+```
+
+```
+drwxr-xr-x  3 root     root     4096  6월 13 14:25 .
+drwxr-xr-x 70 root     root     4096  6월 13 14:24 ..
+```
+
+소유권을 `postgres`로 넘깁니다.
+
+```
+$ sudo chown -R postgres /var/lib/폴더이름/
+```
+
+폴더 권한을 확인합니다.
+
+```
+$ sudo ls -al /var/lib/폴더이름
+```
+
+```
+drwxr-xr-x  3 postgres postgres 4096  6월 13 14:25 .
+drwxr-xr-x 70 root     root     4096  6월 13 14:24 ..
+```
+
+##### 테이블스페이스 생성
+
+```
+CREATE TABLESPACE 테이블스페이스이름 [OWNER 오너유저이름] LOCATION '/경로'
+```
+
+옵션
+
+```
+CREATE DATABASE 테이블스페이스이름
+[ [ WITH ] [ OWNER [=] user_name ]
+        [ TEMPLATE [=] template ]
+        [ ENCODING [=] encoding ]
+        [ LC_COLLATE [=] lc_collate ]
+        [ LC_CTYPE [=] lc_ctype ]
+        [ TABLESPACE [=] tablespace_name ]
+        [ ALLOW_CONNECTIONS [=] allowconn ]
+        [ CONNECTION LIMIT [=] connlimit ] ]
+        [ IS_TEMPLATE [=] istemplate ]
+```
+
+오라클과 달리 크기 설정이 없습니다. 
+
+##### 기본 테이블 스페이스 지정
+
+```
+SET default_tablespace = 테이블스페이스이름
+```
+
+##### 특정 테이블스페이스 조회
+
+```
+SELECT 테이블스페이스이름 FROM pg_tablespace
+```
+
+##### 테이블스페이스 이름 변경
+
+```
+ALTER TABLESPACE 테이블스페이스기존이름 RENAME TO ALT 새이름
+```
+
+##### 테이블스페이스 오너 변경
+
+```
+ALTER TABLESPACE 테이블스페이스이름 OWNER TO 새유저이름
+```
+
+##### 테이블스페이스 삭제
+
+```
+DROP TABLESPACE 테이블스페이스이름
+```
+
+
 
 ### 데이터베이스
 
 #### 데이터베이스 생성
 
-셸에서
+셸에서 로그인 상태로
 
 ```
-$ sudo -u postgres createdb 데이터베이스이름
+$ sudo -i -u postgres
 ```
+
+그리고 데이터베이스 생성
+
+```
+$ createdb 데이터베이스이름 옵션
+```
+
+| 짧은 옵션 | 긴 옵션                     | 설명                                      |
+| --------- | --------------------------- | ----------------------------------------- |
+| -D        | --tablespace=테이블스페이스 | 데이터베이스를 위한 디폴트 테이블스페이스 |
+| -e        | --echo                      | 서버에 보내는 커맨드를 에코               |
+| -E        | --encoding=인코딩           | 데이터베이스 인코딩                       |
+| -l        | --locale=로케일             | 데이터베이스에 로케일 설정                |
+|           | --lc-collate=로케일         | 데이터베이스에 LC_COLLATE 설정            |
+|           | --lc-ctype=로케일           | 데이터베이스에 LC_CTYPE 설정              |
+| -O        | --owner=오너                | 새 데이터베이스를 소유할 유저 지정        |
+| -T        | --template=템플릿           | 복사해 올 템플릿 데이터베이스             |
+| -V        | --version                   | 버전 정보 표시                            |
+| -?        | --help                      | 도움말 표시                               |
 
 또는 psql에서
 
 ```
-CREATE DATABASE 데이터베이스이름 [옵션들 ...]
+postgres=# CREATE DATABASE 데이터베이스이름 [옵션들 ...]
 ```
 
 | options                                   | 설명                                                         |
@@ -255,12 +459,20 @@ CREATE DATABASE 데이터베이스이름 [옵션들 ...]
 | `[TABLESPACE [=] tablespace]`             | 지정한 TABLESPACE가 데이터베이스에서 만든 개체에 사용되는 기본 테이블이 됨. |
 | `[CONNECTION LIMIT [=] collection_limit]` | 데이터베이스에 대한 동시 접속 수 제한. 기본값은 -1로 무제한. |
 
+##### 데이터베이스의 기본 테이블스페이스를 지정
+
+##### 기본 테이블 스페이스 지정
+
+```
+SET default_tablespace = 테이블스페이스이름
+```
+
 #### 데이터베이스 변경
 
 psql에서:
 
 ```
-ALTER DATABASE 데이터베이스이름
+postgres=# ALTER DATABASE 데이터베이스이름
 ```
 
 #### 데이터베이스 삭제
@@ -268,7 +480,7 @@ ALTER DATABASE 데이터베이스이름
 psql에서:
 
 ```
-DROP DATABASE 데이터베이스이름
+postgres=# DROP DATABASE 데이터베이스이름
 ```
 
 #### 데이터베이스 목록
@@ -299,7 +511,7 @@ psql에서:
 또는
 
 ```
-SELECT * FROM pg_database;
+postgres=# SELECT * FROM pg_database;
 ```
 
 ```
@@ -317,12 +529,54 @@ SELECT * FROM pg_database;
 psql에서:
 
 ```
-ALTER DATABASE OWNER TO 새오너이름
+postgres=# ALTER DATABASE OWNER TO 새오너이름
+```
+
+#### 데이터베이스의 모든 권한을 지정한 유저에게 주기
+
+```
+GRANT ALL PRIVILEGES ON DATABASE TEST TO TEST
+```
+
+#### 새 데이터베이스에 접속
+
+호스트 OS에 로그인 상태에서 psql로 새 데이터베이스에 접속
+
+```
+$ psql -d 유저이름
 ```
 
 
 
+#### 특정 테이블스페이스에서 특정 오너에게 테이블스페이스 생성
+
+```
+postgres=# create database poomo with owner 오너이름 tablespace 테이블스페이스이름
+```
+
+
+
+
+
 ### 스키마
+
+스키마는 객체들의 논리적인 집합을 말합니다. 스키마는 테이블, 뷰, 시퀀스, 동의어, 도메인, 함수 등의 개체들로 구성되어 있습니다. 스키마를 사용하는 이유는 논리적 집합체를 만들어서 관리의 편의성을 높이고 여러 유저들 간의 간섭 없이 접속할 수 있게 합니다. 
+
+#### 스키마 조회
+
+현재 존재하고 있는 스키마를 조회하기 위해서는 psql에서 \dn 명령어로 조회할 수 있습니다.  
+
+```
+postgres=# \dn
+```
+
+```sql
+List of schemas
+ Name    |  Owner 
+---------+---------
+ 스키마이름 | 소유자
+ ...      | ...
+```
 
 #### 스키마 생성
 
@@ -364,35 +618,7 @@ DROP SCHEMA 스키마이름
 SHOW SEARCH_PATH
 ```
 
-### 테이블스페이스
 
-#### 테이블스페이스 생성
-
-```
-CREATE TABLESPACE 테이블스페이스이름 옵션들...
-```
-
-| 옵션                | 설명           |
-| ------------------- | -------------- |
-| OWNER 소유유저이름  | 소유 유저 이름 |
-| LOCATION '디렉토리' | 디렉토리       |
-
-#### 테이블스페이스 변경
-
-```
-ALTER TABLESPACE 테이블스페이스이름
-```
-
-| options                          | 설명           |
-| -------------------------------- | -------------- |
-| `RENAME TO 새테이블스페이스이름` | 이름 변경      |
-| `OWNER TO 새오너유저이름`        | 소유 유저 변경 |
-
-#### 테이블스페이스 삭제
-
-```
-DROP TABLESPACE 테이블스페이스이름
-```
 
 ## 데이터 타입 (type)
 
@@ -441,6 +667,10 @@ DROP TABLESPACE 테이블스페이스이름
 | `uuid`                              |                  | universally unique identifier                 |
 | `xml`                               |                  | XML                                           |
 
+
+
+
+
 ### 테이블
 
 #### 테이블 생성
@@ -458,7 +688,135 @@ CREATE TABLE 테이블이름 (컬럼들, ...)
 #### 테이블 변경
 
 ```
-ALTER TABLE 테이블이름 [options]
+ALTE#### 날짜
+
+오늘
+
+​```
+select current_date
+select current - 1 			-- 어제
+select current + 1			-- 내일
+​```
+
+현지 시각 타임스탬프
+
+​```
+select now()
+또는
+select current_timestamp
+​```
+
+오늘의 요일 (일요일:0 ~ 토요일:6)
+
+​```
+select extract(dow from current_date)
+​```
+
+오늘의 요일 (월요일:1 ~ 일요일:7)
+
+​```
+select extract(isodow from current_date)
+​```
+
+day of year:
+
+​```
+select extract(doy from current_date)
+​```
+
+week of year:
+
+​```
+select extract(week from current_date)
+​```
+
+두 날짜 사이의 일 수:
+
+​```
+select '2019-01-11'::date - '2032-02-22'::date
+​```
+
+##### 주
+
+###### 첫날을 월요일로 할때
+
+이번 주의 첫 날
+
+​```
+select date_trunc('week', current_date)::date
+​```
+
+이번 주의 마지막 날
+
+​```
+select date_trunc('week', current_date)::date+6
+​```
+
+저번 주의 첫 날
+
+​```
+select date_trunc('week', current_date-7)::date
+​```
+
+저번 주의 마지막 날
+
+​```
+select date_trunc('week', current_date-7)::date+6
+​```
+
+다음 주의 첫 날
+
+​```
+select date_trunc('week', current_date+7)::date
+​```
+
+다음 주의 마지막 날
+
+​```
+select date_trunc('week', current_date+7)::date+6
+​```
+
+###### 첫날을 일요일로 할때
+
+이번 주의 첫 날
+
+​```
+select date_trunc('week', current_date)::date-1
+​```
+
+이번 주의 마지막 날
+
+​```
+select date_trunc('week', current_date)::date+6-1
+​```
+
+저번 주의 첫 날
+
+​```
+select date_trunc('week', current_date-7)::date-1
+​```
+
+저번 주의 마지막 날
+
+​```
+select date_trunc('week', current_date-7)::date+6-1
+​```
+
+다음 주의 첫 날
+
+​```
+select date_trunc('week', current_date+7)::date-1
+​```
+
+다음 주의 마지막 날
+
+​```
+select date_trunc('week', current_date+7)::date+6-1
+​```
+
+
+
+R TABLE 테이블이름 [options]
 ```
 
 ##### 테이블 컬럼 추가
@@ -665,6 +1023,201 @@ DELETE FROM 테이블이름 WHERE condition
 
 ---
 
+## 응용
+
+#### 날짜
+
+오늘
+
+```
+select current_date
+select current - 1 			-- 어제
+select current + 1			-- 내일
+```
+
+현지 시각 타임스탬프
+
+```
+select now()
+또는
+select current_timestamp
+```
+
+오늘의 요일 (일요일:0 ~ 토요일:6)
+
+```
+select extract(dow from current_date)
+```
+
+오늘의 요일 (월요일:1 ~ 일요일:7)
+
+```
+select extract(isodow from current_date)
+```
+
+day of year:
+
+```
+select extract(doy from current_date)
+```
+
+week of year:
+
+```
+select extract(week from current_date)
+```
+
+두 날짜 사이의 일 수:
+
+```
+select '2019-01-11'::date - '2032-02-22'::date
+```
+
+##### 주
+
+###### 첫날을 월요일로 할때
+
+이번 주의 첫 날
+
+```
+select date_trunc('week', current_date)::date
+```
+
+이번 주의 마지막 날
+
+```
+select date_trunc('week', current_date)::date+6
+```
+
+저번 주의 첫 날
+
+```
+select date_trunc('week', current_date-7)::date
+```
+
+저번 주의 마지막 날
+
+```
+select date_trunc('week', current_date-7)::date+6
+```
+
+다음 주의 첫 날
+
+```
+select date_trunc('week', current_date+7)::date
+```
+
+다음 주의 마지막 날
+
+```
+select date_trunc('week', current_date+7)::date+6
+```
+
+###### 첫날을 일요일로 할때
+
+이번 주의 첫 날
+
+```
+select date_trunc('week', current_date)::date-1
+```
+
+이번 주의 마지막 날
+
+```
+select date_trunc('week', current_date)::date+6-1
+```
+
+저번 주의 첫 날
+
+```
+select date_trunc('week', current_date-7)::date-1
+```
+
+저번 주의 마지막 날
+
+```
+select date_trunc('week', current_date-7)::date+6-1
+```
+
+다음 주의 첫 날
+
+```
+select date_trunc('week', current_date+7)::date-1
+```
+
+다음 주의 마지막 날
+
+```
+select date_trunc('week', current_date+7)::date+6-1
+```
+
+한 주의 날짜들 (일~토)
+
+```
+select date_trunc('week', current_date)::date -1 + i "일~토"
+from generate_series(0,6) as t(i)
+```
+
+한 주의 날짜들 (월~일)
+
+```
+select date_trunc('week', current_date)::date    + i "월~일"
+from generate_series(0,6) as t(i);
+```
+
+#### 달
+
+한 달 전
+
+```
+select current_date - interval '1 months'
+```
+
+한 달 후
+
+```
+select current_date + interval '1 months'
+```
+
+이번 달 첫 일
+
+```
+select date_trunc('month', current_date)::date
+```
+
+이번 달 마지막 일
+
+```
+select date_trunc('month', current_date + interval '1 months')::date - 1
+```
+
+전 달 첫 일
+
+```
+select date_trunc('month', current_date - interval '1 months')::date
+```
+
+전 달 마지막 일
+
+```
+select date_trunc('month', current_date)::date - 1
+```
+
+다음 달 첫 일
+
+```
+select date_trunc('month', current_date + interval '1 months')::date
+```
+
+다음 달 마지막 일
+
+```
+select date_trunc('month', current_date + interval '2 months')::date - 1
+```
+
+
+
 ## 참조
 
 - [PostgreSQL](https://www.postgresql.org)
+- [@ntalbs' stuff: PostgreSQL 날짜 연산](https://ntalbs.github.io/2010/postgresql-date/)

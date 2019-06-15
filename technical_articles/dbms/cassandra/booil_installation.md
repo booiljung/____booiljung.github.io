@@ -60,6 +60,48 @@ Cassandra를 설치합니다.
 sudo apt install -y cassandra
 ```
 
+#### Debian에서 일괄 설치 셸스크립트
+
+위 과정을 셸스크립트로 작성하였습니다.
+
+```
+sudo apt install -y curl
+sudo apt install -y openjdk-11-jdk 
+echo "deb http://www.apache.org/dist/cassandra/debian 36x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+sudo apt update -y
+sudo apt install -y curl openjdk-11-jdk
+curl https://www.apache.org/dist/cassandra/KEYS | sudo apt-key add -
+sudo apt update -y
+sudo apt adv --keyserver pool.sks-keyservers.net --recv-key A278B781FE4B2BDA
+sudo apt install -y cassandra
+```
+
+#### 서비스 상태
+
+서비스가 구동되고 있는지 확인 합니다.
+
+```sh
+$ sudo service cassandra status
+```
+
+싱글 노드로 구동하겠다면 기본 설정으로 구동할 수 있습니다.
+
+```sh
+$ sudo service cassandra start
+```
+
+노드 상태를 확인합니다.
+
+```sh
+$ sudo nodetool status
+```
+
+클라이언트 CLI를 실행합니다.
+
+```sh
+$ cqlsh
+```
+
 ## 참조:
 
 - [Apache: Cassandra: Documentation: Installing](http://cassandra.apache.org/doc/latest/getting_started/installing.html)

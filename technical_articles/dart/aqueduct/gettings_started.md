@@ -15,7 +15,7 @@ pub global activate aqueduct
 ### 프로젝트 생성
 
 ```
-squedcut create 플젝이름
+aquedcut create 플젝이름
 ```
 
 버전 3.2.1 기준 폴더 구조는 다음과 같습니다.
@@ -61,12 +61,12 @@ dart bin/main.dart
 -- Aqueduct CLI Version: 3.2.1
 -- Aqueduct project version: 3.2.1
 -- Preparing...
--- Starting application 'poomoapis/poomoapis'
+-- Starting application '프로젝트이름/실행파일이름'
     Channel: PoomoapisChannel
-    Config: /media/booil/DATA/workspace/poomon/poomoapis/config.yaml
+    Config: /프로젝트경로/config.yaml
     Port: 8888
 [INFO] aqueduct: Server aqueduct/1 started.  
-[INFO] aqueduct: Server aqueduct/2 started.  
+[INFO] aqueduct: Server aqueduct/2 started. 
 ```
 
 ### localhost:8888/example
