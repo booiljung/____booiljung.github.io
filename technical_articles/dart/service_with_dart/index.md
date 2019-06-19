@@ -20,6 +20,12 @@ PostgreSQL은 오래된 RDBMS임에도 불구하고 사용층은 적습니다. �
 
 구글이 내부 프로젝트로 진행하다가 2018년 4월에 발표한 모바일 프레임워크입니다. Reactive Native와 달리 웹 기반이 아닌 네이티브로 빌드 됩니다. Flutter를 데스크탑과 웹으로 이식한 프레임워크도 있습니다.
 
+## 필수
+
+- OS: Ubuntu 18.04 LTS (시스템 구성이 엄격하여 리소스 관리에 대한 기본 커뮤니케이션이 쉽습니다.)
+- RAM: 8G 이상.
+- CPU: i3 이상.
+
 ## 준비
 
 ### PostgreSQL 설치
@@ -209,7 +215,7 @@ $ sudo apt-get install dart
 export PATH="$PATH:/usr/lib/dart/bin/"
 ```
 
-변경사항을 업데이트 합니다.
+변경사항을 로드 합니다.
 
 ```sh
 $ source ~/.profile
@@ -341,11 +347,13 @@ Precompiled aqueduct:aqueduct.
 
 Aquduct ORM은 PostgreSQL만을 지원합니다.
 
-#### 테이블스페이스 폴더 생성
+#### 테이블스페이스가 사용할 폴더 생성
+
+리눅스에서 데이터베이스나 로그 파일들은 `/var/lib/` 폴더에 생성되고 저장됩니다. Oracle과 PostgreSQL에서 테이블스페이스는 독립된 데이터 저장을 위한 파일 그룹입니다. Oracle은 데이터베이스나 스키마 개념이 없이 테이블스페이스가 있지만, PostgreSQL은 테이블스페이스, 데이터베이스, 스키마를 각각 지정해 주어야 합니다.
+
+Ubuntun 18.04 LTS 상에서 PostgreSQL 테이블스페이스를 위한 폴더를 `/var/lib/`폴더에 생성합니다.  수퍼유저 권한으로 생성하여 소유권을 `postgres`  계정에 넘깁니다.
 
 ```sh
-sudo -i -u postgres # postgres 유저
-
 sudo mkdir /var/lib/폴더이름/
 sudo chown -R postgres /var/lib/폴더이름/
 
@@ -355,34 +363,58 @@ sudo chown -R postgres /var/lib/폴더이름/서브폴더이름/
 # 기타 로그 폴더 등도 생성.
 ```
 
-#### 데이터베이스 및 유저 생성
+#### 테이블스페이스를 사용할 유저 생성
 
-```sql
-CREATE USER 유저이름 WITH createdb;
+```Sql
+CREATE USER 유저이름 WITH createdb login;
 ALTER USER 유저이름 WITH password '패스워드';
-GRANT all ON DATABASE 데이터베이스이름 TO 유저이름;
-CREATE TABLESPACE 테이블스페이스이름 OWNER 유저이름 LOCATION '/var/lib/폴더이름/서브폴더이름/';
-CREATE DATABASE 데이터베이스이름 ;
 ```
 
-#### 데이터베이스 구성 파일
+#### 테이블스페이스 생성
 
-데이터베이스 구성 파일은 프로젝트 폴더의 `config.yaml` 이며 내용은:
+```
+CREATE TABLESPACE 테이블스페이스이름 OWNER 유저이름 LOCATION '/var/lib/폴더이름/서브폴더이름/';
+```
+
+#### 데이터베이스 생성
+
+```sql
+GRANT all ON DATABASE 데이터베이스이름 TO 유저이름;
+CREATE DATABASE 데이터베이스이름;
+```
+
+#### PostgreSQL에서 SCHEME
+
+일반적으로 DBMS에서 스키마는 테이블 이름이라던지 컬럼 구성이라던지, 컬럼과 컬럼의 관계라던지 데이터베이스를 구성하는 일종의 메타 정보를 말합니다. PostgreSQL에서 `SCHEME`는 프로그래밍 언어의 네임스페이스에 해당합니다. Oracle에서는 `TABLESPACE`가 `DATABASE`와 `SCHEME` 에 해당하고, MySQL, MS SQL Server에서는 `DATABASE`가 `TABLESPACE`와 `SCHEME`에 에 해당합니다. 다른 DBMS는 테이블스페이스나 데이터베이스 하나로 퉁치는데, PostgreSQL은 테이블스페이스, 데이터베이스, 스키마를 따로 지정한다고 보시면 됩니다. 별도로 데이터베이스에 스키마를 생성하지 않더라도 기본적으로  `public` 스키마가 사용됩니다.
+
+##### 스키마 생성
+
+```sql
+CREATE SCHEME 스키마이름 TABLESPACE 테이블스페이스;
+```
+
+매뉴얼에 이렇게 한다고 나오는데 해보면 되지 않습니다. 다만, DBeaver에서 생성은 되었습니다. 중요한 것은 Aqueduct의 ORM이 스키마를 지원하지 않는 것으로 보입니다. 소스 코드까지 읽어 봤지만 스키마를 지정하는 방법을 현재 찾지 못했습니다. 현재 기본적으로 `public` 스키마를 사용해야 하는 것으로 보입니다.
+
+
+
+#### Aueduct 데이터베이스 구성 파일
+
+Aqueduct가 생성한 프로젝트에서 데이터베이스 구성 파일은 프로젝트 폴더의 `config.yaml` 이며 내용은:
 
 ```yaml
 database:
- username: 데이터베이스유저이름
- password: 데이터베이스유저의패스워드
- host: 데이터베이스호스트이름
- port: 데이터베이스포트
- databaseName: 데이터베이스이름
+ username: 데이터베이스유저이름 (기본값 dart)
+ password: 데이터베이스유저의패스워드 (기본값 dart)
+ host: 데이터베이스호스트이름 (기본값 localhost)
+ port: 데이터베이스포트 (기본값 5432)
+ databaseName: 데이터베이스이름 (기본값 dart_test)
 ```
 
 입니다.
 
 
 
-### 테스트
+### 프로젝트 테스트
 
 #### 단위 테스트
 
@@ -392,7 +424,9 @@ $ pub run test
 
 이것을 `utest.sh` 셸스크립트로 만들어 두고 사용합니다.
 
-### 실행
+
+
+### 프로젝트 실행
 
 서버를 구동 합니니다.
 
@@ -422,11 +456,13 @@ $ dart bin/main.dart
 
 aqueduct 서버를 중단하려면 `ctrl+c`를 누릅니다.
 
+
+
 ### ORM
 
 #### 기본 클래스 구성
 
-`lib/model/model.dart` 파일에 두개의 클래스
+`lib/model/model.dart` 파일에 두개의 클래스:
 
 ```dart
 $ pub run testclass Model extends ManagedObject<_Model> implement _Model {}
@@ -437,7 +473,7 @@ class _Model { ... }
 
 #### 테이블 이름 커스터마이징
 
-테이블이름을 변경하려면 템플릿 클래스에 `@Table(name:테이블이름)`을 지정합니다. 예를 들어 `_Model`이라는 클래스의 테이블이름은 복수형으로 `models`라고 주는 것이 관습입니다.
+테이블 이름을 변경하려면 템플릿 클래스에 `@Table(name:테이블이름)`을 지정합니다. 예를 들어 `_Model`이라는 클래스의 테이블 이름은 복수형으로 `models`라고 주는 것이 관습입니다.
 
 ```dart
 class Model extends ManagedObject<_Model> implement _Model {}
@@ -491,15 +527,15 @@ class _Model {
 
 이 `ManagedObject<>` 파일들은 `lib/channel.dart`에서 `import`가 되어야 마이그레이션이 됩니다.
 
-##### @primary()
+##### @primaryKey
 
 프로퍼티에 `@primaryKey`를 지정하면:
 
 ```dart
-primaryKey: true,
-databaseType: ManagedPropertyType.bigInteger,
-autoincrement: true,
-validators: [Validate.constant()]
+@Column(primaryKey: true,
+	databaseType: ManagedPropertyType.bigInteger,
+	autoincrement: true,
+	validators: [Validate.constant()])
 ```
 
 가 지정한 것과 같습니다. 예를들면:
@@ -507,7 +543,7 @@ validators: [Validate.constant()]
 ```dart
 class Model extends ManagedObject<_Model> implement _Model {}
 class _Model {
-	@Column(...)
+	@primaryKey
 	int id;
 }
 ```
@@ -553,7 +589,7 @@ aqueduct db generate
 
 를 표시하고, 첫 버전 마이그레이션 파일은 `00000001_initial.migration.dart` 이름으로 생성됩니다.
 
-2회 이상 실행시
+ORM 소스 파일을 추가하고, 2회 이상 실행시
 
 ```
 -- Aqueduct CLI Version: 3.2.1
@@ -579,6 +615,8 @@ aqueduct db generate
 
 #### 데이터베이스 마이그레이션을 데이터베이스에 업그레이드
 
+업그레이들 하면 생성된 마이그레이션 소스코드를 실행하여 데이터베이스에 반영합니다.
+
 ```sh
 aqueduct db upgrade --connect postgres://유저이름:비밀번호@호스트:포트/데이터베이스이름
 ```
@@ -602,6 +640,8 @@ aqueduct db upgrade --connect postgres://유저이름:비밀번호@호스트:포
 됩니다.
 
 #### SwaggerUI 클라이언트 생성
+
+SwaggerUI는 자동 생성되는 API 문서 파일입니다.
 
 ```sh
 aqueduct document client
@@ -652,8 +692,7 @@ import 'package:프로젝트이름/model/model.dart';
 import 'harness/app.dart';
 
 Future main() async {
-  final harness = Harness()
-    ..install();
+  final harness = Harness()..install();
 
   tearDown(() async {
     await harness.resetData();
