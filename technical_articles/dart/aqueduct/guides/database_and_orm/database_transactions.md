@@ -2,7 +2,7 @@ https://aqueduct.io/docs/db/transactions/
 
 # Database Transactions
 
-데이터베이스 트랜잭션에서 여러 `Query<T>`를 실행하는 법을 배워라.
+데이터베이스 트랜잭션에서 여러 `Query<T>`를 실행하는 법을 배우겠습니다.
 
 ## Transactions
 

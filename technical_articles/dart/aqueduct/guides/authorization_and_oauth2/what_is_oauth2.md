@@ -58,13 +58,7 @@ request.body = {
 
 ### Other Methods for Obtaining Authorization
 
-The method of getting a token above - sending a username and password to `/auth/token` - is just one of four possible methods OAuth 2.0 uses to authenticate a user. This particular one is called the *resource owner password credentials grant*.  A resource owner is a fancy word for a 'user'. We can shorten it up to  just the 'password flow'. It's probably the most common flow - mobiles  applications and front-end web applications often use this flow. When  you enter your credentials, the client application sends them directly  to the server.
-
-The other commonly used flow prevents the client application from  ever seeing the user's credentials. For example, you might sign into  Pivotal Tracker with your Google account. Your account on Pivotal  Tracker doesn't have a password. Instead, it is linked to your Google  account - which does. Pivotal Tracker never sees your Google password.  When you login to Pivotal Tracker in this way, it takes you to Google's  authentication page - owned and operated by Google. When you login  successfully, Google gives Pivotal Tracker your token. Pivotal Tracker  is now an application that can do things on your behalf.
-
-This is called the *authorization code grant* - or just 'auth code flow'. An instance of `AuthCodeController` handles granting authorization codes. Once a code is received, it can be exchanged for a token via an `AuthController`.
-
-위의 토큰을 얻는 방법 - 사용자 이름과 패스워드를 `/auth/token`에 보내는 방법은 OAuth 2.0이 사용자를 인증하는데 사용할 수 있는 4 가지 방법 중 하나 일뿐입니다. 이 특정한 것을 자원 소유자 암호 자격 증명 부여라고합니다. 자원 소유자는 '사용자'를 위한 멋진 단어입니다. 우리는 '암호 흐름'으로 줄일 수 있습니다. 아마도 가장 일반적인 흐름 모바일 응용 프로그램이고 프런트 엔드 웹 응용 프로그램은 이 흐름을 자주 사용합니다. 자격 증명을 입력하면 클라이언트 응용 프로그램에서 자격 증명을 직접 서버로 보냅니다.
+위의 토큰을 얻는 방법 - 사용자 이름과 패스워드를 `/auth/token`에 보내는 방법은 OAuth 2.0이 사용자를 인증하는데 사용할 수 있는 4 가지 방법 중 하나 일뿐 입니다. 이 특정한 것을 자원 소유자 암호 자격 증명 부여라고합니다. 자원 소유자는 '사용자'를 위한 멋진 단어입니다. 우리는 '암호 흐름'으로 줄일 수 있습니다. 아마도 가장 일반적인 흐름 모바일 응용 프로그램이고 프런트 엔드 웹 응용 프로그램은 이 흐름을 자주 사용합니다. 자격 증명을 입력하면 클라이언트 응용 프로그램에서 자격 증명을 직접 서버로 보냅니다.
 
 일반적으로 사용되는 다른 흐름은 클라이언트 응용 프로그램이 사용자의 자격 증명을 볼 수 없도록합니다. 예를 들어 Google 계정으로 Pivotal Tracker에 로그인 할 수 있습니다. Pivotal Tracker의 계정에 비밀번호가 없습니다. 대신 Google 계정과 연결되어 있습니다. Pivotal Tracker에는 Google 비밀번호가 표시되지 않습니다. 이런 방식으로 Pivotal Tracker에 로그인하면 Google이 소유하고 운영하는 Google 인증 페이지로 이동합니다. 성공적으로 로그인하면 Google에서 Pivotal Tracker에 토큰을 제공합니다. Pivotal Tracker는 이제 사용자를 대신하여 작업을 수행 할 수있는 응용 프로그램입니다.
 

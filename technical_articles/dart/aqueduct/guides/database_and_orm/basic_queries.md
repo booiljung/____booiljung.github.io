@@ -37,7 +37,7 @@ class _User {
 
 ### Inserting Data with a Query
 
-질의를 사용하여 데이터를 삽입하려면 새로운 `Query<T>`객체를 만들고, 그것의 `values` 속성을 설정 한 다음 `insert ()`메소드를 호출하십시오.
+질의를 사용하여 데이터를 삽입하려면 새로운 `Query<T>`객체를 만들고, 그것의 `values` 속성을 설정 한 다음 `insert()`메소드를 호출하십시오.
 
 ```dart
 final query = Query<User>(context)
@@ -49,7 +49,7 @@ final user = await query.insert();
 
 `Query<T>`의 `values`는 `T` (당신이 삽입하는 관리 객체 타입)의 인스턴스입니다. `values`의 개별 속성을 설정하거나, 다른 곳에서 만든 인스턴스에 `values`를 할당 할 수 있습니다:
 
-```
+```dart
 final userValues = User()
   ..name = "Bob"
   ..email = "bob@stablekernel.com";
@@ -82,7 +82,7 @@ Prefer the Inserted Object
 
 개체를 삽입 한 후에 쿼리를 채우는 데 사용한 값보다는 삽입 쿼리에서 반환 한 개체를 사용하는 것이 좋습니다. 쿼리를 반환하는 개체는 데이터베이스 행을 정확하게 나타내지만 쿼리를 작성하는 데 사용된 개체는 불완전하거나 다를 수 있습니다. 예를 들어 자동 증가 기본 키는 쿼리 작성 인스턴스에서 사용할 수 없지만 성공적인 쿼리에서 반환 된 개체에 사용됩니다.
 
-인스턴스를 `values`에 할당하거나 `values`의 속성을 구성 할 때 선택할 때 주의 할 점이 하나 있습니다. 작성한 인스턴스에서 관계 특성을 특성화에 액세스하기 전에 인스턴스화해야 합니다. `values`의 관계 속성에 접근 할 때, 관련된 객체의 빈 인스턴스가 접근 즉시 생성됩니다.
+인스턴스를 `values`에 할당하거나 `values`의 속성을 구성 할 때 선택할 때 주의 할 점이 하나 있습니다. 작성한 인스턴스에서 관계 속성에 액세스하기 전에 인스턴스화해야 합니다. `values`의 관계 속성에 접근 할 때, 관련된 객체의 빈 인스턴스가 접근 즉시 생성됩니다.
 
 ```dart
 final employee = Employee()
@@ -119,8 +119,6 @@ var query = Query<User>(context)
 
 List<User> bobsThatAreNowFreds = await query.update();
 ```
-
-Like `values`, `where` is also the same managed object type the query is being executed on. In the above example, then, both `values` and `where` and instances of `User`. This query executes the following SQL:
 
 `values`와 마찬가지로 `where`는 질의가 수행되는 것과 동일한 관리 객체 유형입니다. 위의 예제에서, `values`와 `where` 둘은  `User`의 인스턴스 입니다. 이 쿼리는 다음 SQL을 실행합니다.
 

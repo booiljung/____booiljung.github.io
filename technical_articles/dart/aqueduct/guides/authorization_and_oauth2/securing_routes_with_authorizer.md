@@ -128,4 +128,4 @@ class BasicValidator implements AuthValidator {
 }
 ```
 
-`validate` 메쏘드는 신임장이 유효하면 `Authorization`을, 그렇지 않으면 null을 리턴해야 합니다. `파서(parser)`는 validator가 권한 부여 헤더 (예 :`Basic` 또는 `Bearer`)의 형식을 알 수 있게하고, `authorizationData`는 해당 헤더의 의미 있는 정보입니다. `AuthorizationParser <T>`의 두 가지 구체적 유형, `AuthorizationBasicParser`와 `AuthorizationBearerParser`가 있습니다. 기본 파서에 대한 인증 데이터는 사용자 이름과 비밀번호를 포함하는 `AuthBasicCredentials`의 인스턴스이며, 베어러 파서의 인증 데이터는 베어러 토큰 문자열입니다.
+`validate` 메쏘드는 신임장이 유효하면 `Authorization`을, 그렇지 않으면 null을 리턴해야 합니다. `파서(parser)`는 validator가 권한 부여 헤더 (예 :`Basic` 또는 `Bearer`)의 형식을 알 수 있게하고, `authorizationData`는 해당 헤더의 의미 있는 정보입니다. `AuthorizationParser<T>`의 두 가지 구체적 유형, `AuthorizationBasicParser`와 `AuthorizationBearerParser`가 있습니다. 기본 파서에 대한 인증 데이터는 사용자 이름과 비밀번호를 포함하는 `AuthBasicCredentials`의 인스턴스이며, 베어러 파서의 인증 데이터는 베어러 토큰 문자열입니다.

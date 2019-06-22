@@ -16,12 +16,12 @@ Aqueduct의 ORM은 데이터를 데이터베이스 테이블에 저장하고 테
 
 Aqueduct와 함께 작업하는 데 필요한 PostgreSQL의 최소 버전은 9.6입니다.
 
-- [Connecting to a Database](connecting_to_a_database_from_aqueduct.md)
+- [Connecting to a Database from Aqueduct](connecting_to_a_database_from_aqueduct.md)
 - [Modeling Data](modeling_data_and_relationshops.md)
-- [Storage, Serialization and Deserialization](managed_object_serialization_and_deserialization.md)
-- [Executing Queries](basic_queries.md)
-- [Joins, Filtering and Paging](advanced_queries_filtering_joins_paging_and_reduce.md)
+- [ManagedObject Serialization and Deserialization](managed_object_serialization_and_deserialization.md)
+- [Inserting, Updating, Deleting and Fetching Objects](basic_queries.md)
+- [Filtering, Joins, Paging and Reduce](advanced_queries_filtering_joins_paging_and_reduce.md)
 - [Executing Queries in a Transaction](database_transactions.md)
-- [Adding Validations and Callbacks to ManagedObject](validating_data.md)
-- [Aqueduct Database Tool](database_migration_and_tooling.md)
+- [Validating Data](validating_data.md)
+- [Database Migration and Tooling](database_migration_and_tooling.md)
 - [JSON Document Columns and Operations](json_document_storage.md)

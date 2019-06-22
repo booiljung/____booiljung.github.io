@@ -2,11 +2,11 @@ https://aqueduct.io/docs/db/modeling_data/
 
 # Modeling Data
 
-In this guide, you will learn how to create types that are mapped to  database tables. At the end of this guide are additional examples of  data model types.
+이 가이드에서는 데이터베이스 테이블에 매핑되는 형식을 만드는 방법에 대해 설명합니다. 이 가이드의 끝에는 데이터 모델 유형의 추가 예제가 있습니다.
 
 ## Defining a Table
 
-In your application, you declare types whose instances are stored in a  database. Each of these types is mapped to a database table, where each  property of the type is a column of the table. For example, consider  modeling newspaper articles, where each article has a unique identifier,  text contents and published date:
+응용 프로그램에서 인스턴스가 데이터베이스에 저장되는 형식을 선언합니다. 이러한 각 유형은 데이터베이스 테이블에 매핑됩니다. 여기서 유형의 각 속성은 테이블의 열입니다. 예를 들어, 신문 기사를 모델링하는 것을 고려해보십시오. 각 기사는 고유 한 식별자, 텍스트 내용 및 게시 날짜가 있습니다.
 
 ```dart
 // This is a table definition of an 'article'
@@ -21,34 +21,34 @@ class _Article {
 }
 ```
 
-This plain Dart class is called a *table definition* because it defines a database table named `_Article`. The table has three columns, `id`, `contents`, `publishedDate`. An example of the data stored in this table might look like this:
+이 평범한 Dart 클래스는 `_Article`이라는 이름의 데이터베이스 테이블을 정의하기 때문에 테이블 정의라고 부릅니다. 이 테이블은 `id`, `contents`, `publishedDate`의 3 개의 열을 가지고 있습니다. 이 테이블에 저장된 데이터의 예는 다음과 같습니다.
 
 | id   | contents            | publishedDate           |
 | ---- | ------------------- | ----------------------- |
 | 1    | Today, the local... | 2018-02-01 00:00:00.000 |
 | 2    | In other news, ...  | 2018-03-01 04:30:00.000 |
 
-A property in a table definition can optionally have a `Column`  annotation. This annotation configures the behavior of the associated  database column. If a property doesn't have an annotation, the column  has default behavior. These behaviors are shown in the table below:
+테이블 정의의 속성은 선택적으로 `Column` 어노테이션을 가질 수 있습니다. 이 어노테이션은 연관된 데이터베이스 컬럼의 작동을 구성합니다. 속성에 주석이 없으면 열의 기본 비헤이비어가 있습니다. 이러한 행동은 아래 표에 나와 있습니다.
 
-| Option        | Type                  | Behavior                                                     | Default                    |
-| ------------- | --------------------- | ------------------------------------------------------------ | -------------------------- |
-| primaryKey    | `bool`                | sets primary key column                                      | false (not primary key)    |
-| databaseType  | `ManagedPropertyType` | sets underlying column type                                  | inferred from Dart type    |
-| nullable      | `bool`                | toggles whether column can be null                           | false (not nullable)       |
-| unique        | `bool`                | toggles whether column is unique across all rows             | false (not unique)         |
-| defaultValue  | `String`              | provides default value for new rows when value is undefined  | null                       |
-| indexed       | `bool`                | whether an index should be created for the column            | false (no index)           |
-| omitByDefault | `bool`                | whether this column should be left out by default            | false (fetch column value) |
-| autoincrement | `bool`                | whether this column's value is automatically generated from a series | false (not generated)      |
+| Option        | Type                  | Behavior                                                    | Default                    |
+| ------------- | --------------------- | ----------------------------------------------------------- | -------------------------- |
+| primaryKey    | `bool`                | sets primary key column                                     | false (not primary key)    |
+| databaseType  | `ManagedPropertyType` | sets underlying column type                                 | inferred from Dart type    |
+| nullable      | `bool`                | toggles whether column can be null                          | false (not nullable)       |
+| unique        | `bool`                | toggles whether column is unique across all rows            | false (not unique)         |
+| defaultValue  | `String`              | provides default value for new rows when value is undefined | null                       |
+| indexed       | `bool`                | whether an index should be created for the column           | false (no index)           |
+| omitByDefault | `bool`                | 이 열을 기본적으로 생략해야 하는지 여부                     | false (fetch column value) |
+| autoincrement | `bool`                | 이 열의 값이 series에서 자동으로 생성되는지 여부            | false (not generated)      |
 
-You must use either zero or one `Column` annotation per property, and you must set all behaviors in one annotation, e.g.:
+속성 당 0 또는 1 개의 `Column` 주석을 사용해야하며, 하나의 주석에 모든 동작을 설정해야합니다 (예 :
 
-```
+```dart
 @Column(nullable: true, unique: true, indexed: true)
 int field;
 ```
 
-The data type of a column is inferred from the Dart type of the property as shown by the following table.
+열의 데이터 유형은 다음 표에 표시된대로 속성의 dart 유형에서 유추됩니다.
 
 | Dart Type  | General Column Type            | PostgreSQL Column Type |
 | ---------- | ------------------------------ | ---------------------- |
@@ -60,7 +60,7 @@ The data type of a column is inferred from the Dart type of the property as show
 | `Document` | a JSON object or array         | `JSONB`                |
 | Any `enum` | text, restricted to enum cases | `TEXT`                 |
 
-Some types can be represented by many database types; for example, an integer can be stored as 2, 4 or 8 bytes. Use the `databaseType` of a `Column` annotation to specify:
+일부 유형은 많은 데이터베이스 유형으로 표현 될 수 있습니다. 예를 들어 정수는 2, 4 또는 8 바이트로 저장할 수 있습니다. `Column` 어노테이션의`databaseType`을 사용하여 다음을 지정하십시오:
 
 ```dart
 @Column(databaseType: ManagedType.bigInteger)
@@ -86,9 +86,9 @@ class _Article {
 
 Creating Tables
 
-Tables are created in a database by using the `aqueduct`  command line tool to generate and execute migration scripts. The tool  inspects your database types and automatically synchronizes a databases  schema to match your them.
+테이블은 `aqueduct` 명령 행 도구를 사용하여 이주 스크립트를 생성하고 실행함으로써 데이터베이스에 작성됩니다. 이 도구는 데이터베이스 유형을 검사하고 데이터베이스 유형을 자동으로 동기화하여 일치시킵니다.
 
-By default, the name of the table definition is the name of the database table. You can configure this with the `Table` annotation.
+기본적으로 테이블 정의의 이름은 데이터베이스 테이블의 이름입니다. 이것을 `Table` 어노테이션으로 설정할 수 있습니다.
 
 ```dart
 @Table(name: "ArticleTable")
@@ -103,19 +103,19 @@ class _Article {
 }
 ```
 
-It is convention that table definitions are *private classes*, that is, their name is prefixed with an underscore (`_`). This convention is discussed later in this guide.
+테이블 정의는 * private 클래스 *입니다. 즉, 이름 앞에 밑줄 (`_`)이 붙습니다. 이 규칙은이 가이드의 뒷부분에서 설명합니다.
 
 ## Defining a Managed Object Subclass
 
-A table definition by itself is just a plain Dart class. You must also declare a `ManagedObject` subclass to bring your table definition to life. Here's an example:
+테이블 정의 자체는 단순한 Dart 클래스 일뿐입니다. 또한 테이블 정의를 구현하기 위해 `ManagedObject` 서브 클래스를 선언해야 합니다. 다음은 그 예입니다.
 
 ```dart
 class Article extends ManagedObject<_Article> implements _Article {}
 ```
 
-A managed object subclass, also called the *instance type*, is  the object type that you work with in your application code. For  example, when you fetch rows from a database, you will get a list of  managed objects. A managed object subclass declares its table definition  in two places: once as the type argument of its superclass, and again  as an interface it implements.
+* 인스턴스 유형이라고도 하는 관리 객체 하위 클래스는 응용 프로그램 코드에서 작업하는 객체 유형입니다. 예를 들어 데이터베이스에서 행을 가져 오는 경우 관리 객체 목록을 가져옵니다. 관리 대상 객체 하위 클래스는 해당 테이블 정의를 수퍼 클래스의 유형 인수로 한 번, 다시 구현하는 인터페이스의 두 위치에서 선언합니다.
 
-A managed object subclass inherits all of the properties from its table definition; i.e., an `Article` has an `id`, `contents` and `publishedDate` because `_Article` declares those properties. You create and use instances of a managed object subclass like any other object:
+관리 객체 하위 클래스는 테이블 정의에서 모든 속성을 상속받습니다. `Article`은`id`,`contents`,`publishedDate`를 가지고 있습니다.`_Article`은 그 속성을 선언하기 때문입니다. 다른 객체와 마찬가지로 관리 객체 하위 클래스의 인스턴스를 만들고 사용할 수 있습니다.
 
 ```dart
 final article = new Article();
@@ -125,15 +125,15 @@ article.publishedDate = DateTime.now();
 
 Managed Object Constructors
 
-You can add new constructors to a managed object subclass, but you  must always have a default, no-argument constructor. This default  constructor is used when the ORM creates instances from rows in your  database.
+관리 객체 하위 클래스에 새 생성자를 추가 할 수 있지만 항상 인수가 없는 기본 생성자가 있어야합니다. 이 기본 생성자는 ORM이 데이터베이스의 행에서 인스턴스를 만들 때 사용됩니다.
 
 ## Modeling Relationships
 
-A managed object can have *relationships* to other managed  objects. For example, an author can have many books, an article can  belong to a newspaper, and an employee can have a manager. In a  relational database, relationships between tables are established by  storing the primary key of a table row in a column of the related table.  This column is a *foreign key reference* to the related table.
+관리 오브젝트는 다른 관리 오브젝트와 * 관계 *를 가질 수 있습니다. 예를 들어 저자에게는 책이 많고 기사는 신문에 속할 수 있으며 직원에게는 관리자가 있을 수 있습니다. 관계형 데이터베이스에서 테이블 간의 관계는 테이블 행의 기본 키를 관련 테이블의 열에 저장하여 설정됩니다. 이 열은 관련 테이블에 대한 * 외래 키 참조 *입니다.
 
-When a table has a foreign key reference, it is said to *belong to* the related table. In the example of an employee and manager, the employee *belongs to*  the manager and therefore the employee table has a foreign key  reference to the manager table. The inverse of this statement is also  true: a manager *has* employees. A manager has-many employees - this is called a *has-many relationship*. There are also *has-one relationships* - for example, a country has-one capital.
+테이블에 외래 키 참조가 있는 경우 관련 테이블에 속한다고 합니다. 직원 및 관리자의 예에서 직원 *은 관리자에 속하므로 직원 테이블에는 manager 테이블에 대한 외 부 키 참조가 있습니다. 이 명령문의 반대는 또한 사실입니다. 관리자는 종업원입니다. 관리자는 많은 직원을 보유하고 있습니다. 많은 관계라고합니다. 또한 has-one relationship 이 있습니다. 예를 들어, 각 국가는 하나의 수도를 가지고 있습니다.
 
-The following is an example of a country and a has-one relationship to a capital city:
+다음은 수도 도시에 대한 국가와 하나의 관계의 예입니다.
 
 ```dart
 class City extends ManagedObject<_City> implements _City {}
@@ -164,6 +164,16 @@ A foreign key column in the database is named by joining the name of  the relati
 
 The property without `Relate` is the *inverse* of  the relationship and is conceptually either a has-one or has-many  relationship property. In this example, a country's relationship to its  capital is has-one. A relationship is has-many when the type of the  inverse property is a `ManagedSet`. For example, if we wanted to model a relationship between a country and all of its cities, we'd declare a `ManagedSet<City>` property in the country:
 
+두 테이블 정의 유형 모두에서 특성을 선언하여 두 테이블간에 관계가 형성됩니다. 이러한 속성의 유형은 관련 관리 객체 하위 클래스이므로 `Contry`는 `City` 유형의 속성을 가지며 `City`는 `Contry`유형의 속성을 갖습니다.
+
+정확히 그 속성 중 하나에는 `Relate` 주석이 있어야 합니다. `Relate` 주석은 기본 컬럼을 외래 키 컬럼으로 지정합니다. 이 예제에서 city 테이블에는 country 테이블에 대한 외래 키 열이 있습니다. 개념적으로, 그때 city는 한 contry에 속하고 한 contry는 한 개의 capital city에 속합니다. city는 이 관계를 통해 한 contry에 속할 수 있으며 이는 모든 속한 관계 속성에 해당됩니다.
+
+Foreign Key Column Names
+
+관계형 속성의 이름과 관련 테이블의 기본 키를 밑줄로 결합하여 데이터베이스의 외래 키 열 이름을 지정합니다. 예를 들어, city 테이블의 열 이름은 `country_id`입니다.
+
+`Relate`가 없는 속성은 관계의 inverse 이며 개념적으로 has-one 또는 has-many 관계 속성입니다. 이 예에서 자본과 국가의 관계는 1입니다. inverse 속성의 타입이 `ManagedSet` 일 때 관계는 has-many입니다. 예를 들어 한 contry와 모든 city 간의 관계를 모델링하고 싶다면 contry에 `ManagedSet<City>`속성을 선언해야합니다.
+
 ```dart
 class City extends ManagedObject<_City> implements _City {}
 class _City {
@@ -183,7 +193,7 @@ class _Country {
 
 ManagedSet Behavior
 
-A `Relate` property can never be a `ManagedSet`. A `ManagedSet` is a `List`, and therefore can be used in the same way a list is used.
+`Relate` 속성은 절대로 `ManagedSet`이 될 수 없습니다. `ManagedSet`은 `List`이므로 리스트가 사용 된 것과 같은 방식으로 사용될 수 있습니다.
 
 `Relate` 주석에는 적어도 하나의 인수, 즉 inverse 속성의 이름과 일치하는 심볼이 필요 합니다. 이것은 두 관계 속성을 서로 연결하는 것입니다. 첫 번째 예제에서 inverse 속성의 이름이 `capital`이기 때문에 이 인수는 `#capital`입니다. 마찬가지로, '도시'와 '도시'도 마찬가지입니다. 이 페어링 이름이 일치해야합니다. 그렇지 않으면 오류가 발생합니다.
 
@@ -199,14 +209,14 @@ Symbols
 
 관계가 필요할 수도 있고 선택적 일 수도 있습니다. 예를 들어 `City.country`가 필요한 경우 `City`는 항상 `Country`를 가져야 합니다. 기본적으로 관계는 선택 사항입니다.
 
-관계는 삭제 규칙을 가집니다. 오브젝트가 삭제되면 해당 관계에 속하는 모든 오브젝트가 이 규칙의 적용을받습니다. 다음 표는 규칙과 동작을 보여줍니다.
+관계는 삭제 규칙을 가집니다. 오브젝트가 삭제되면 해당 관계에 속하는 모든 오브젝트가 이 규칙의 적용을 받습니다. 다음 표는 규칙과 동작을 보여줍니다.
 
 | Rule              | Behavior                         | Example                                                      |
 | ----------------- | -------------------------------- | ------------------------------------------------------------ |
-| nullify (default) | inverse is set to null           | When deleting an author, its articles' author becomes null   |
-| cascade           | related objects are also deleted | When deleting an author, its articles are deleted            |
-| restrict          | delete fails                     | When attempting to delete an author with articles, the delete operation fails |
-| default           | inverse set to a default value   | When deleting an author, its articles author is set to the default value of the column |
+| nullify (default) | inverse is set to null           | 저자를 삭제할 때 기사의 저자는 null이 됩니다.                |
+| cascade           | related objects are also deleted | 작성자를 삭제할 때 기사가 삭제됩니다.                        |
+| restrict          | delete fails                     | 아티클이 있는 작성자를 삭제하려고 하면 삭제 작업이 실패합니다. |
+| default           | inverse set to a default value   | 작성자를 삭제할 때 기사 작성자는 열의 기본값으로 설정됩니다. |
 
 ## Special Behaviors
 
@@ -292,7 +302,7 @@ class Author extends ManagedObject<_Author> implements _Author {
 
 ## Project File Structure
 
-managed object 하위 클래스와 해당 테이블 정의를 함께 * 엔티티 *라고합니다. 각 엔티티는 동일한 파일에서 선언되어야 하고, 테이블 정의는 프로젝트의 다른 곳에서 사용되는 것을 방지하기 위해 `_` 접두사가 붙어야 합니다. 파일 하나당 하나의 엔티티를 선언하고, 모든 엔티티를 프로젝트의`lib/model/`디렉토리에 저장하는 것이 바람직합니다.
+managed object 하위 클래스와 해당 테이블 정의를 함께 * 엔티티 *라고합니다. 각 엔티티는 동일한 파일에서 선언되어야 하고, 테이블 정의는 프로젝트의 다른 곳에서 사용되는 것을 방지하기 위해 `_` 접두사가 붙어야 합니다. 파일 하나당 하나의 엔티티를 선언하고, 모든 엔티티를 프로젝트의 `lib/model/`디렉토리에 저장하는 것이 바람직합니다.
 
 모델 정의가 선언 된 파일은 Aqueduct 툴링에서 볼 수 있어야 합니다. 정상적인 상황에서는 다음과 같은 이유로 자동으로 발생합니다.
 
@@ -307,7 +317,7 @@ managed object 하위 클래스와 해당 테이블 정의를 함께 * 엔티티
 
 ### Example: One-to-Many Relationship
 
-An author has many books:
+저자는 많은 책을 가지고 있습니다:
 
 ```dart
 class Author extends ManagedObject<_Author> implements _Author {}
@@ -332,7 +342,7 @@ class _Book {
 }
 ```
 
-To insert an author and a book associated with that author:
+저자와 그 저자와 관련된 서적을 삽입하려면 :
 
 ```
 final authorQuery = Query<Author>(context)
@@ -345,7 +355,7 @@ final bookQuery = Query<Book>(context)
 final book = await bookQuery.insert();  
 ```
 
-To fetch authors and their books:
+작성자와 도서 가져 오기:
 
 ```dart
 final query = Query<Author>(context)
@@ -353,7 +363,7 @@ final query = Query<Author>(context)
 final authors = await query.fetch();
 ```
 
-To fetch a book and their full author object:
+책과 전체 작성자 오브젝트를 가져 오려면 다음을 수행하십시오:
 
 ```dart
 final query = Query<Book>(context)
@@ -387,7 +397,7 @@ class _City {
 }
 ```
 
-To fetch a country and its capital:
+국가와 수도를 가져 오려면 :
 
 ```dart
 final query = Query<Country>(context)

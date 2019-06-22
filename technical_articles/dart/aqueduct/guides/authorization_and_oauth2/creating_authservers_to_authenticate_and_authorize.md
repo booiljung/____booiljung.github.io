@@ -14,7 +14,7 @@ https://aqueduct.io/docs/auth/server/
 
 `AuthServerDelegate`는 `AuthServer`가 클라이언트 식별자, 토큰 및 다른 권한 산출물의 저장을 처리하기 위해 사용하는 인터페이스입니다. `AuthServer`는 `AuthServerDelegate`의 구체적인 구현으로 생성 되어야 합니다. Aqueduct는 ORM을 사용하는 `AuthServerDelegate`의 구체적인 구현을 포함합니다. 철저한 테스트를 거쳐 만료 된 데이터를 올바르게 처리하므로 자체 스토리지를 구현하는 대신 이 구현을 사용하는 것이 좋습니다.
 
-이 구현의 이름은 `ManagedAuthDelegate<T>`입니다. Aqueduct의 하위 패키지에 있으며 명시 적으로 가져와야합니다. 다음은 `AuthServer`와 `ManagedAuthDelegate<T>`를 만드는 예입니다:
+이 구현의 이름은 `ManagedAuthDelegate<T>`입니다. Aqueduct의 하위 패키지에 있으며 명시적으로 가져와야 합니다. 다음은 `AuthServer`와 `ManagedAuthDelegate<T>`를 만드는 예입니다:
 
 ```dart
 import 'package:aqueduct/aqueduct.dart';
@@ -29,12 +29,9 @@ class MyApplicationChannel extends ApplicationChannel {
     final delegate = ManagedAuthDelegate<User>(context);
     authServer = AuthServer(delegate);
   }
-
   ...
 }
 ```
-
-
 
 (`ManagedAuthDelegate`는 타입 인자를 가지고 있습니다 - 이것은 다음 섹션에서 다룰 것입니다.)
 

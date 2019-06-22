@@ -57,7 +57,7 @@ final map = request.body.as<Map<String, dynamic>>();
 
 Inferred Types
 
-유형을 추론 할 수 있는 경우 `as`또는 `decode`에 유형 인수를 제공 할 필요가 없습니다. 예를 들어, `object.read (await request.body.decode())`는 타입 매개 변수를 제공 할 필요 없이 디코딩 된 바디의 타입을`Map <String, dynamic>`으로 유추합니다.
+유형을 추론 할 수 있는 경우 `as`또는 `decode`에 유형 인수를 제공 할 필요가 없습니다. 예를 들어, `object.read (await request.body.decode())`는 타입 매개 변수를 제공 할 필요 없이 디코딩 된 바디의 타입을 `Map<String, dynamic>`으로 유추합니다.
 
 내용 유형에 따라 본문을 디코딩 할 수없는 경우 (데이터 형식이 잘못됨) 적절한 오류 응답을 클라이언트에 보내는 오류가 발생합니다.
 
@@ -104,7 +104,7 @@ var response = Response.ok(html)
   ..contentType = ContentType.html;
 ```
 
-이미지 바디 객체는 이미 바이트의 목록이므로 전혀 변환 할 필요가 없습니다. content-type에 대해 등록 된 코덱이 없으면 본문 객체는 바이트 배열이어야합니다 (각 값은 0-255 사이에있는 `List <int>`).
+이미지 바디 객체는 이미 바이트의 목록이므로 전혀 변환 할 필요가 없습니다. content-type에 대해 등록 된 코덱이 없으면 본문 객체는 바이트 배열이어야합니다 (각 값은 0-255 사이에있는 `List<int>`).
 
 ```dart
 final imageFile = File("image.jpg");
@@ -137,12 +137,6 @@ final response = new Response.ok(imageByteStream)
 
 ## Codecs and Content Types
 
-In the above sections, we glossed over how a codec gets selected when preparing the response body. The common case of `ManagedObject<T>`  body objects that are sent as UTF8 encoded JSON 'just works' and is  suitable for most applications. When serving assets for a web  application or different data formats like XML, it becomes important to  understand how Aqueduct's codec registry works.
-
-`CodecRegistry` contains mappings from content types to `Codec`s. These codecs encode response bodies and decode request bodies. There are three built-in codecs for `application/json`, `application/x-www-form-urlencoded` and `text/*`. When a response is being sent, the repository is searched for an entry that exactly matches the primary and subtype of the `Response.contentType`. If an entry exists, the associated `Codec` starts the conversion. For example, if the content type is `application/json; charset=utf-8`, the built-in `application/json` codec encodes the body object.
-
-If there isn't an exact match, but there is an entry for the primary type with the wildcard (`*`) subtype, that codec is used. For example, the built-in codec for `text/*` will be selected for both `text/plain` and `text/html`. If there was something special that had to be done for `text/html`, a more specific codec may be added for that type:
-
 위 섹션에서는 응답 본문을 준비 할 때 코덱을 선택하는 방법을 살펴 보았습니다. UTF8 인코딩 된 JSON으로 보내지는 `ManagedObject<T>`바디 객체의 일반적인 경우는 '잘 작동'하며 대부분의 애플리케이션에 적합합니다. 웹 애플리케이션의 애셋 또는 XML과 같은 다른 데이터 형식을 제공 할 때 Aqueduct의 코덱 레지스트리 작동 방식을 이해하는 것이 중요합니다.
 
 `CodecRegistry`는 내용 유형에서 `Codec`까지의 매핑을 포함합니다. 이 코덱은 응답 본문을 인코딩하고 요청 본문을 디코딩합니다. `application/json`, `application/x-www-form-urlencoded`, `text/*`를 위한 3 가지 내장 코덱이 있습니다. 응답이 보내질 때, 저장소는 `Response.contentType`의 프라이머리와 서브 타입과 정확히 일치하는 엔트리를 검색합니다. 엔트리가 존재하면 관련된 `코덱`이 변환을 시작합니다. 예를 들어, 내용 유형이 `application/json; charset=utf-8`, 내장 된 `application/json` 코덱은 body 객체를 인코딩합니다.
@@ -158,7 +152,7 @@ class MyChannel extends ApplicationChannel {
 }
 ```
 
-코덱은 `ApplicationChannel.prepare` 메소드에 추가되어야 합니다. 코덱은 `dart:convert`에서 `Codec`을 구현해야 합니다. 위의 예에서 응답의 컨텐트 유형이 `text/html` 일 때, `HTMLCodec`은 body 객체를 인 코드 할 것입니다. 이 코덱은 보다 구체적이기 때문에 'text/ *'보다 우선합니다.
+코덱은 `ApplicationChannel.prepare` 메소드에 추가 되어야 합니다. 코덱은 `dart:convert`에서 `Codec`을 구현해야 합니다. 위의 예에서 응답의 컨텐트 유형이 `text/html` 일 때, `HTMLCodec`은 body 객체를 인 코드 할 것입니다. 이 코덱은 보다 구체적이기 때문에 'text/ *'보다 우선합니다.
 
 응답 본문에 대한 코덱을 선택하면 `ContentType.charset`이 선택된 코덱에 영향을 주지 않습니다. 응답의 content-type에 charset이 있으면 'UTF8'과 같은 charset 인코더가 마지막 인코딩 단계로 적용됩니다. 예를 들어, content-type `application/json; charset=utf-8`은 본문 개체를 JSON 문자열로 인코딩 한 다음 UTF8 바이트 목록으로 인코딩합니다. 응답 바디의 최종 인코딩 형식은 바이트 목록이므로 문자열을 생성하는 코덱에는 charset이 있어야 합니다.
 

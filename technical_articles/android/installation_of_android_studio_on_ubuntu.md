@@ -11,7 +11,7 @@
 64비트 우분트라면 다음 패키지들을 설치 합니다.
 
 ```sh
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
+$ sudo apt install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-1.0:i386
 ```
 
 ## 안드로이드 스튜디오 설치
@@ -19,25 +19,25 @@ sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1 libbz2-
 다음 PPA 저장소를 우분투를 위한 안드로이드 패키지를 제공하고 있습니다. PPA를 추가 합니다.
 
 ```sh
-sudo add-apt-repository ppa:maarten-fonville/android-studio
+$ sudo add-apt-repository ppa:maarten-fonville/android-studio
 ```
 
 저장소의 패키지 리스트들을 받아 옵니다.
 
 ```sh
- sudo apt-get update
+ $ sudo apt update
 ```
 
 두가지 패키중에 하나를 선택할 수 있습니다.
 
 ```sh
-apt-cache search android-studio
+$ apt-cache search android-studio
 ```
 
 stable 패키지를 설치합니다.
 
 ```sh
-sudo apt install android-studio
+$ sudo apt install android-studio
 ```
 
 ##### 실행
@@ -85,6 +85,20 @@ SDK가 설치되면 Finish 버튼을 누릅니다.
 - 새 안드로이드 프로젝트를 시작 하거나 기존 프로젝트를 열 수 있습니다.
 - SDK 매니저를 실행할 수 있습니다.
 - 플러그인 매니저를 설치할 수 있습니다.
+
+## CLI에서 사용하기
+
+##### 가상 디바이스 목록
+
+```sh
+$ ~/Android/Sdk/tools/emulator -list-avds
+```
+
+##### 가상 디바이스 실행
+
+```
+$ ~/Android/Sdk/tools/emulator -adv 디바이스이름
+```
 
 ## 참조
 

@@ -4,19 +4,21 @@
 
 ## What is routing?
 
-Every HTTP request has a URL. A URL identifies a *resource*. In the early days of the Internet, a resource was a file. For example, the URL `http://www.geocities.com/my_page/image.jpg` would return the file `image.jpg` from the folder `my_page` on the webserver located at `www.geocities.com`.  In a web application today, resources come from many other sources of  data, like a database or a connected device. The job of a web  application is to provide, create or modify a resource for a URL,  wherever that resource might come from.
+모든 HTTP 요청에는 URL이 있습니다. URL은 * resource *을 식별합니다. 초기 인터넷에서 리소스는 파일이었습니다. 예를 들어, URL  `http://www.geocities.com/my_page/image.jpg`는 www.geocities.com에 위치한 웹 서버의 my_page 폴더에서 image.jpg 파일을 반환 합니다. 오늘날 웹 응용 프로그램에서 자원은 데이터베이스 나 연결된 장치와 같은 많은 다른 데이터 원본에서 비롯됩니다. 웹 응용 프로그램의 작업은 해당 자원이 어디에서 왔는지에 관계없이 URL에 대한 자원을 제공, 작성 또는 수정하는 것입니다.
 
-A URL is made up of many parts, some of which are optional. The typical URL we see as humans looks like this: `http://stablekernel.com/about`.  Most people recognize that typing this URL into a browser would take  them to our company's "About" page. In other words, our "About" page is a  resource and the URL identifies it.
+URL은 여러 부분으로 구성되며 일부는 선택 사항입니다. 우리가 인간으로 보는 전형적인 URL은`http://stablekernel.com/about`입니다. 대부분의 사람들은이 URL을 브라우저에 입력하면 회사의 "정보"페이지로 이동하게 됩니다. 즉, '정보'페이지는 리소스이고 URL은이를 식별합니다.
 
-More generally, the "About" page URL has the three required components of a URL: a *scheme* (`http`), a *host* (`stablekernel.com`) and a *path* (`/about`).  The host specifies the computer responsible for providing the resource,  the path identifies the resource and the scheme lets both the requester  and the host know how they should exchange information.
+좀 더 일반적으로, "About"페이지 URL은 * scheme * (`http`), * host * (`stablekernel.com`), * path * (`/about`) URL의 세 가지 필수 구성 요소를 가지고 있습니다. . 호스트는 자원 제공을 담당하는 컴퓨터를 지정하고 경로는 자원을 식별하며 체계는 요청자와 호스트 모두 정보를 교환하는 방법을 알립니다.
 
-An Aqueduct application receives requests when the scheme is `http` (or `https`)  and the host refers to a machine where the application is running.  Therefore, once the application gets the request, it only cares about  the remaining component: the path.
+Aqueduct 응용 프로그램은 스키마가 `http` (또는`https`)이고 호스트가 응용 프로그램이 실행중인 컴퓨터를 참조 할 때 요청을 수신합니다. 따라서 응용 프로그램이 요청을 받으면 나머지 구성 요소 인 경로 만 고려합니다.
 
-In Aqueduct, a `Router` routes `Request`s to a `Controller` based on the request path. This process is known as *routing*. When an application starts up, routes are registered in a subclass of `ApplicationChannel`. Each registered route creates a new [channel](https://aqueduct.io/docs/application/structure/) of `Controller`s that will handle the request.
+Aqueduct에서 `Router`는 요청 경로에 따라 `Controller`에 `Request`s를 라우팅합니다. 이 프로세스를 * 라우팅 *이라고합니다. 응용 프로그램이 시작되면 경로는`ApplicationChannel` 하위 클래스에 등록됩니다. 등록 된 각 라우트는 요청을 처리 할`Controller`의 새로운 [channel](https://aqueduct.io/docs/application/structure/)을 만듭니다.
 
 ## Route Specifications Match HTTP Request Paths
 
 A route is registered by invoking `Router.route`. This method takes a *route specification* - a `String`  with some syntax rules that will match the path of a request. This  registration occurs when an application first starts by overriding `ApplicationChannel.entryPoint`. For example:
+
+라우트는 `Router.route`를 호출하여 등록됩니다. 이 메소드는 요청 경로와 일치하는 구문 규칙이 있는 `String`을 경로 지정으로 사용합니다. 이 등록은 응용 프로그램이`ApplicationChannel.entryPoint`를 재정의하여 처음 시작할 때 발생합니다. 예:
 
 ```dart
 class MyApplicationChannel extends ApplicationChannel {

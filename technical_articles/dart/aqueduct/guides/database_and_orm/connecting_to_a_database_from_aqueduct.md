@@ -2,7 +2,7 @@ https://aqueduct.io/docs/db/connecting/
 
 # Connecting to a Database from Aqueduct
 
-이 문서의 목적은 새로운 PostgreSQL 데이터베이스를 만들고 그것을 연결하는 Aqueduct 응용 프로그램을 설정하는 방법을 안내합니다.
+이 문서는 새로운 PostgreSQL 데이터베이스를 만들고 그것을 연결하는 Aqueduct 응용 프로그램을 설정하는 방법을 안내합니다.
 
 ## Creating a Database
 

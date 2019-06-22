@@ -10,7 +10,7 @@ OAuth 2.0 클라이언트에는 클라이언트를 고유하게 식별하는 문
 
 간단한 OAuth 2.0 클라이언트를 만들려면 다음 명령 줄 유틸리티를 실행할 수 있습니다.
 
-```
+```sh
 aqueduct auth add-client \
   --id com.food_app.mobile \
   --connect postgres://user:password@dbhost:5432/food_app
