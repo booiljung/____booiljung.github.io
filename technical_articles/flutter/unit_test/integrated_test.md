@@ -2,16 +2,24 @@
 
 어느 유닛 테스트는 개발 환경에서 테스트 할 수 있지만, 어느 테스트들은 장치나 에뮬레이터에서 테스트 해야 하기도 합니다. 이런 경우를 위해 Flutter는 '통합 테스트'를 지원합니다. 이 통합 테스트는 `flutter_driver` 패키지에 의해 지원 됩니다.
 
+`flutter_driver`에 의한 통합 테스트는 웹 브라우저를 테스트하는 Selenium과 구조가 유사합니다. **중요한 포인트입니다.**  문서화도 되어 있지 않아 이 문제로 5시간을 헤멨습니다.
+
+그럼 시작 하겠습니다.
+
+## 시작
+
 `pubspec.yaml`을 편집하여 `dev_dependencies:`에 `flutter_driver`패키지를 추가 합니다.
 
 ```yaml
 dev_dependencies:
-  flutter_driver:
-    sdk: flutter
-  test: any
+	flutter_driver:
+    	sdk: flutter
+    flutter_test:
+    	sdk: flutter
+    test: any
 ```
 
-IDE를 사용중이라면 `pubspec.yaml`을 편집 후 저장하면 자동으로 패키지를 설치할 것입니다. 그렇지 않으면
+IDE를 사용중이라면 `pubspec.yaml`을 편집 후 저장하면 자동으로 패키지를 설치할 것입니다. IDE를 사용하지 않는다면
 
 ```
 flutter pub get
@@ -19,7 +27,7 @@ flutter pub get
 
 를 터미널에서 실행해 줍니다.
 
-`lib/main.dart`가 버튼을 누르면 1이 증가하는 앱이라고 보겠습니다.
+`lib/main.dart`은 버튼을 누르면 1이 증가하는 공식 예제로 카운터 앱입니다.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -91,13 +99,14 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 ```
 
-이 앱이 실행된 상태에서 `flutter_driver`로 단위 테스트가 진행 됩니다.
+이 앱이 실행된 상태에서 `flutter_driver`로 통합 테스트가 진행 됩니다.
 
-테스트 유닛 소스 파일은 조건이 구조가 정해져 있습니다.
+통합 테스트 소스  파일의 구조는 룰이 있습니다.
 
 -  `test_driver\` 폴더에 위치해야 합니다.
-- 하나의 유닛 테스트는 런처 파일과 테스트 파일 쌍으로 만들어져야 합니다.
-- 런처가 `파일명.dart` 이라면, 테스트 파일은 `파일명_test.dart` 가 됩니다.
+- 유닛 테스트 소스 파일은 런처 파일과 테스트 파일 쌍으로 구성되어야 합니다.
+- 런처는 운영체제가 인정하는 어떤 이름이라도 줄 수 있습니다. 테스트 파일은 `_test.dart`로 이르을 주어야 합니다.
+- 예를 들어 런처 파일명이 `app.dart`라면, 테스트 파일명은 `app_test.dart`가 됩니다.
 
 예를 들어 디렉토리 구조를 보면 아래와 같습니다.
 
@@ -183,13 +192,13 @@ void main() {
 }
 ```
 
-이 유닛 테스트를 진행하려면 터미널에서
+이 유닛 테스트를 진행하려면 터미널에서 다음 명령으로 런처 파일을 실행 합니다.
 
 ```sh
 $ flutter drive --target=test_driver/app.dart
 ```
 
-을 실행 합니다.
+테스트에 문제가 없으면 아래와 유사한 메시지가 표시 될 것입니다.
 
 ```
 Using device Android SDK built for x86.
@@ -252,10 +261,6 @@ void main() {
 }
 ```
 
-### CommonFider
-
-`CommonFider`는 위젯을 찾는데 사용됩니다.
-
 ## FlutterDriver
 
 `FlutterDriver` 의 테스트 주요 메소드들은 다음과 같습니다.
@@ -274,8 +279,68 @@ void main() {
 | `forceGC`            | 가비지콜렉션을 강제로 진행합니다.                            |      |
 | `screenshot`         | 화면을 캡쳐 합니다.                                          |      |
 
-보다 자세한 내요은 참조를 확인하시기 바랍니다.
+보다 자세한 내요은 참조에서 공식 문서에서 볼 수 있습니다.
+
+## 주의
+
+다음은 제가 5시간을 헤멘 끝에 얻은 경험입니다. Flutter Driver로 통합테스트를 할때 다음과 같은 `dart:ui`가 없다는 오류를 얻을 수도 있습니다. 
+
+```
+test_driver/cache_test.dart:1:8: Error: Not found: 'dart:ui'
+import 'dart:ui';
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/animated_icons.dart:9:8: Error: Not found: 'dart:ui'
+import 'dart:ui' as ui show Paint, Path, Canvas;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/animated_icons.dart:10:8: Error: Not found: 'dart:ui'
+import 'dart:ui' show lerpDouble;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/app.dart:5:8: Error: Not found: 'dart:ui'
+import 'dart:ui' as ui;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/app_bar_theme.dart:5:8: Error: Not found: 'dart:ui'
+import 'dart:ui' show lerpDouble;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/arc.dart:6:8: Error: Not found: 'dart:ui'
+import 'dart:ui' show lerpDouble;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/bottom_app_bar_theme.dart:5:8: Error: Not found: 'dart:ui'
+import 'dart:ui' show lerpDouble;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/card_theme.dart:5:8: Error: Not found: 'dart:ui'
+import 'dart:ui' show lerpDouble;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/chip_theme.dart:5:8: Error: Not found: 'dart:ui'
+import 'dart:ui' show lerpDouble;
+       ^
+file:///home/.../flutter/packages/flutter/lib/src/material/colors.dart:5:8: Error: Not found: 'dart:ui'
+import 'dart:ui' show Color;
+       ^
+Stopping application instance.
+Driver tests failed: 254
+```
+
+`dart:ui`는 개발중인 데스크탑이나 서버 컴퓨터에서 사용할 수 없는 패키지이며 따라서 발견할 수 없다는 오류가 발생하는 것입니다.  위 오류 메시지로 구글링을 하면 
+
+> The built-in library 'dart:ui' is not available on the stand-alone VM.
+
+가 공통으로 제시됩니다. Flutter Driver가 문서에 제대로 명시하지 않았기 때문에 이 문제에 봉착한 개발자들이 더러 있는것 같습니다. 위에서
+
+> Flutter Driver는 Selenium과 비슷한 방식이다.
+>
+> 통합 테스트 파일은 2개의 파일이 1쌍으로 구성된다.
+
+라고 언급을 했었습니다.
+
+이 예제로 보면 1쌍의 파일은 `test_driver/app.dart` 과 `test_driver/app_test.dart`  이 있습니다. 여기서
+
+- `test_driver/app.dart`는 장치에 전송되어 장치 앱을 구성하는 역할입니다. 예제 코드를 보면 `enableFlutterDriverExtension()`를 실행하여 TCP/IP 포트를 listen하고 명령을 수신하고 실행 결과를 전송합니다.
+- `test_driver/app_test.dart`는 개발용 데스크탑 등 에서 실행 됩니다. 예제 코드를 보면 `FlutterDriver.connect()`로 장치에 접속하여 테스트를 위한 명령을 보내고 결과를 받습니다.
+
+따라서, `test_driver/app_test.dart`에는 Flutter 전용 패키지를 사용할 수 없습니다! `dart:ui`도 사용할 수 없습니다. 파일 쌍이 함께 단말단으로 전송되는 줄 알았더니 아니었습니다.
 
 ## 참조
 
-[A introduction to integration testing](https://flutter.dev/docs/cookbook/testing/integration/introduction)
+- [A introduction to integration testing](https://flutter.dev/docs/cookbook/testing/integration/introduction)
+- [[How to solve Not found: 'dart:ui' error while running integration tests on Flutter](https://stackoverflow.com/questions/52462646/how-to-solve-not-found-dartui-error-while-running-integration-tests-on-flutt)](https://stackoverflow.com/questions/52462646/how-to-solve-not-found-dartui-error-while-running-integration-tests-on-flutt?rq=1)
+- [How to write an integration test in Flutter](http://cogitas.net/write-integration-test-flutter/)
