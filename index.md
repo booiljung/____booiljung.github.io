@@ -2,6 +2,7 @@
 
 #### 최신 글
 
+- Flutter: [통합 테스트](technical_articles/flutter/unit_test/integrated_test.md)
 - 번역: [Aqueduct](technical_articles/dart/aqueduct/index.md)
 - Dart: [커스텀 패키지](./technical_articles/dart/custom_package.md)
 - 번역: [LinkedIn 확장의 간략한 역사](./technical_articles/software_architecture/a_brief_history_of_scaling_linkedin.md)
