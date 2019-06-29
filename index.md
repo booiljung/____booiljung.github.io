@@ -2,6 +2,7 @@
 
 #### 최신 글
 
+- Flutter: [플러터에서 유닛 테스트](technical_articles/flutter/unit_test/flutter_unit_test.md)
 - Flutter: [통합 테스트](technical_articles/flutter/unit_test/integrated_test.md)
 - 번역: [Aqueduct](technical_articles/dart/aqueduct/index.md)
 - Dart: [커스텀 패키지](./technical_articles/dart/custom_package.md)

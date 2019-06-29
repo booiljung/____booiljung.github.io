@@ -105,8 +105,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
 -  `test_driver\` 폴더에 위치해야 합니다.
 - 유닛 테스트 소스 파일은 런처 파일과 테스트 파일 쌍으로 구성되어야 합니다.
-- 런처는 운영체제가 인정하는 어떤 이름이라도 줄 수 있습니다. 테스트 파일은 `_test.dart`로 이르을 주어야 합니다.
+- 런처는 운영체제가 인정하는 어떤 이름이라도 줄 수 있습니다. 테스트 파일은 `런처파일명_test.dart`로 이르을 주어야 합니다.
 - 예를 들어 런처 파일명이 `app.dart`라면, 테스트 파일명은 `app_test.dart`가 됩니다.
+- Flutter Driver 문서는 런처 파일이 'Instrument' 역할을 한다고 합니다. 런처라는 이름은 제가 임의로 붙였습니다.
 
 예를 들어 디렉토리 구조를 보면 아래와 같습니다.
 
@@ -143,10 +144,10 @@ void main() {
 }
 ```
 
-그리고 유닛 테스트 파일은 아래와 같습니다.
+그리고 통합 테스트 파일은 아래와 같습니다.
 
 ```dart
-// test와 flutter_driver 패키지를 임포트 합니ㅏㄷ.
+// test와 flutter_driver 패키지를 임포트 합니다.
 import 'package:test/test.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 
@@ -192,7 +193,7 @@ void main() {
 }
 ```
 
-이 유닛 테스트를 진행하려면 터미널에서 다음 명령으로 런처 파일을 실행 합니다.
+이 통합 테스트를 진행하려면 터미널에서 다음 명령으로 런처 파일을 실행 합니다.
 
 ```sh
 $ flutter drive --target=test_driver/app.dart
@@ -225,18 +226,16 @@ Stopping application instance.
 $
 ```
 
-소스 파일 쌍을 추가하여 유닛 테스트를 추가 할 수 있습니다. 위에서 `widget.dart`와 `widget_test.dart`가 그것입니다.  `widget.dart `는 직접 위젯을 시작하도록 하겠습니다.
+추가로 소스 파일 쌍을 추가하여 유닛 테스트를 추가 할 수 있습니다. 위에서 `widget.dart`와 `widget_test.dart`가 그것입니다. 아래 예제에서  `widget.dart `는 직접 위젯을 시작하도록 하였습니다.
 
 ```dart
 import 'package:flutter_driver/driver_extension.dart';
 import 'package:flutter/material.dart';
 
-import 'package:example/main.dart' as app;
-
 void main() {
 	enableFlutterDriverExtension();
 
-    // main 함수를 호출하는 대신 테스트용 위젯을 생성하도록 하였습니다.
+    // 다른 소스 파일의 main 함수를 호출하는 직접 테스트용 위젯을 생성하도록 하였습니다.
 	runApp(
 		TestApp()
 	);
