@@ -1,6 +1,6 @@
 # Flutter Unit Test
 
-[공식문서에서 Flutter에서는 3가지 테스트를 소개](https://flutter.dev/docs/testing) 합니다.
+[Flutter 공식문서는 3가지 테스트를 소개](https://flutter.dev/docs/testing) 합니다.
 
 1. `pub run`을 사용한 Dart 유닛 테스트.
 2. `flutter run`을 사용한 Flutter Widget 유닛 테스트.
