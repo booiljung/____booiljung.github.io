@@ -184,7 +184,7 @@ $ flutter run test/*
 
 를 해보았습니다. 단말기에 빈 위젯이 올라오며,
 
-![1561800478631](/home/booil/.config/Typora/typora-user-images/1561800478631.png)
+![1561800478631](flutter_unit_test.assets/1561800478631.png)
 
 테스트가 진행됩니다.
 
