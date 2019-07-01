@@ -97,13 +97,13 @@ $ flutter run test
 
 를 하면 `test가 없다`는 오류를 표시하면서 테스트가 되지 않습니다. 
 
-전체 테스트를 하려면
+전체 테스트를 하려고,
 
 ```
 $ flutter run test/*
 ```
 
-로 하면 가능 합니다.
+를 하면 되지 않습니다.
 
 각 Flutter 위젯 유닛 테스트는 
 
@@ -186,7 +186,7 @@ $ flutter run test/*
 
 ![1561800478631](flutter_unit_test.assets/1561800478631.png)
 
-테스트가 진행됩니다.
+테스트 파일이 하나일때만 테스트가 진행됩니다.
 
 ```
 Using hardware rendering with device Android SDK built for x86. If you get graphics artifacts, consider enabling
